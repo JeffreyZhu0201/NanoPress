@@ -1,13 +1,13 @@
-package com.jeffrey.jeffreysblogbackend;
+package com.jeffrey.jeffreysblog;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class JeffreysblogbackendApplication {
+public class JeffreysblogApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(JeffreysblogbackendApplication.class, args);
+        SpringApplication.run(JeffreysblogApplication.class, args);
     }
 
 }
