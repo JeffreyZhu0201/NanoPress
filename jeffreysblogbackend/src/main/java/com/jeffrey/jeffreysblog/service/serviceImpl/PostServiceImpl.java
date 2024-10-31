@@ -1,9 +1,9 @@
-package com.jeffrey.jeffreysblog.service;
+package com.jeffrey.jeffreysblog.service.serviceImpl;
 
 import com.jeffrey.jeffreysblog.entity.Post;
 import com.jeffrey.jeffreysblog.mapper.PostMapper;
+import com.jeffrey.jeffreysblog.service.PostService;
 import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
