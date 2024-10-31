@@ -6,6 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public interface PostService {
 
-    boolean addPost(Post post);
+    Boolean addPost(Post post);
+
+    Boolean deletePost(Integer id);
+
+    Boolean updatePost(Post post);
+
+    Post getPostById(Integer id);
+
 
 }
