@@ -5,7 +5,6 @@ import com.jeffrey.jeffreysblog.entity.Account;
 import com.jeffrey.jeffreysblog.mapper.AccountMapper;
 import com.jeffrey.jeffreysblog.service.AccountService;
 import jakarta.annotation.Resource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -26,27 +25,22 @@ public class AccountServiceImpl implements AccountService {
             if(!dbAccount.getUserPassword().equals(account.getUserPassword())){
                 return Result.error("用户名或密码错误!");
             }
-            else{
-                return Result.success(dbAccount);
-            }
+            return Result.success("200","登录成功",dbAccount);
         }
     }
 
     public Result register(String dataBase, Account account) {
         account.setRegisterDatetime(new Date());
-        Account dbAccount =  accountMapper.getAccountByUserEmail(dataBase,account);
-        if(dbAccount == null){
-            Account newAccount = accountMapper.insertAccount(dataBase,account);
-            if(newAccount == null){
-                return Result.error("注册失败");
+        if(accountMapper.getAccountByUserEmail(dataBase,account) == null){
+            if(accountMapper.insertAccount(dataBase,account)){
+                return new Result("200","注册成功!请登录",account);
             }
-            else{
-                return new Result("200","注册成功!请登录",newAccount);
-            }
+            return Result.error("注册失败");
         }
-        else {
-            return new Result("400","该用户已注册,请登录!",null);
-        }
+        return new Result("400","该用户已注册,请登录!",null);
     }
 
+    public Result getAccount(String dataBase, Account account){
+        return new Result("200","123",accountMapper.getAccountByUserEmail(dataBase,account));
+    }
 }

@@ -6,10 +6,7 @@ import com.jeffrey.jeffreysblog.service.AccountService;
 import jakarta.annotation.Resource;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/account")
@@ -28,6 +25,10 @@ public class AccountController {
         return accountService.register(role,account);
     }
 
+    @GetMapping("/get")
+    public Result getAccount(@RequestBody Account account, @Param("role") String role) {
+        return accountService.getAccount(role,account);
+    }
 
 
 }

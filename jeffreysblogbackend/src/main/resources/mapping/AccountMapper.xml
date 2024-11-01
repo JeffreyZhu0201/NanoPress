@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--	上面的依赖可以从mybatis中文网复制	-->
+<!-- namespace属性为Mapper接口全限定名一致 -->
+<mapper namespace="com.jeffrey.jeffreysblog.mapper.AccountMapper">
+    <!--  id为Mapper接口中对应的方法名，resultType为返回的实体全类名  -->
+
+    <select id="getAccountById" parameterType="int">
+        <if test="dataBase == user">SELECT * FROM user WHERE id=#{id}</if>
+        <if test="dataBase == admin">SELECT * FROM admin WHERE id=#{id}</if>
+    </select>
+
+    <select id="getAccountByUserName" parameterType="com.jeffrey.jeffreysblog.entity.Account">
+        <if test="dataBase == user">SELECT * FROM user WHERE userName=#{account.userName}</if>
+        <if test="dataBase == admin">SELECT * FROM admin WHERE userName=#{account.userName}</if>
+    </select>
+
+    <select id="getAccountByUserEmail" parameterType="com.jeffrey.jeffreysblog.entity.Account">
+        <if test="dataBase == 'user'">SELECT * FROM user WHERE userEmail=#{account.userEmail};</if>
+        <if test="dataBase == 'admin'">SELECT * FROM admin WHERE userEmail=#{account.userEmail};</if>
+    </select>
+
+    <insert id="insertAccount" parameterType="com.jeffrey.jeffreysblog.entity.Account" keyProperty="account.id" useGeneratedKeys="true">
+        <if test="dataBase == 'user'">INSERT INTO user (userName,userEmail,userPassword,registerDatetime) VALUES (#{account.userName},#{account.userEmail},#{account.userPassword},#{account.registerDatetime});</if>
+        <if test="dataBase == 'admin'">INSERT INTO admin (userName,userEmail,userPassword,registerDatetime) VALUES (#{account.userName},#{account.userEmail},#{account.userPassword},#{account.registerDatetime});</if>
+    </insert>
+
+</mapper>
