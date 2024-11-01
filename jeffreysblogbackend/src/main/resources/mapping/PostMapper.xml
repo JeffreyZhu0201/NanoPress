@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--	上面的依赖可以从mybatis中文网复制	-->
+<!-- namespace属性为Mapper接口全限定名一致 -->
+<mapper namespace="com.jeffrey.jeffreysblog.mapper.PostMapper">
+    <!--  id为Mapper接口中对应的方法名，resultType为返回的实体全类名  -->
+    <insert id="addPost" useGeneratedKeys="true" parameterType="com.jeffrey.jeffreysblog.entity.Post" keyProperty="post.id">
+        INSERT INTO posts (authorId,title,createDatetime,content) VALUES (#{post.authorId},#{post.title},#{post.createDatetime},#{post.content});
+    </insert>
+
+    <delete id="deletePost" parameterType="int">
+        DELETE FROM posts WHERE id = #{id}
+    </delete>
+
+    <update id="updatePost" parameterType="com.jeffrey.jeffreysblog.entity.Post">
+        UPDATE posts SET title=#{post.title},content=#{post.content} WHERE id=#{post.id}
+    </update>
+    
+    <select id="getPostById" parameterType="int">
+        SELECT * FROM posts WHERE id=#{id};
+    </select>
+
+</mapper>
