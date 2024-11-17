@@ -6,9 +6,8 @@ import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.jeffrey.jeffreysblog.common.Result;
-import com.jeffrey.jeffreysblog.utils.JWTUtils;
+import com.jeffrey.jeffreysblog.utils.jwtUtils.JWTUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +29,9 @@ public class TestController {
         log.info("当前token为：[{}]",token);
         try{
             DecodedJWT verify = JWTUtils.verify(token);
+
+            // verify.getClaim("name").asString();
+
             return new Result("200","成功!",null);
         }
         catch (SignatureVerificationException e){

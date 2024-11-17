@@ -1,11 +1,10 @@
-package com.jeffrey.jeffreysblog.utils.interceptors;
+package com.jeffrey.jeffreysblog.utils.jwtUtils.interceptors;
 
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.auth0.jwt.interfaces.DecodedJWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jeffrey.jeffreysblog.utils.JWTUtils;
+import com.jeffrey.jeffreysblog.utils.jwtUtils.JWTUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;

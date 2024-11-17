@@ -1,6 +1,6 @@
-package com.jeffrey.jeffreysblog.utils.config;
+package com.jeffrey.jeffreysblog.utils.jwtUtils.config;
 
-import com.jeffrey.jeffreysblog.utils.interceptors.JWTInterceptors;
+import com.jeffrey.jeffreysblog.utils.jwtUtils.interceptors.JWTInterceptors;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
