@@ -14,8 +14,6 @@ public class PostController {
 
     @PostMapping(value = "/addpost")
     public Result addPost(@RequestBody Post post) {
-//        Date createDatetime = new Date();
-//        Post post = new Post(null,"123321","title",createDatetime,"content");
         boolean res =  postService.addPost(post);
         if(res){
             return new Result("200","成功!",post);

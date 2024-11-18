@@ -17,12 +17,14 @@ public class User {
     private String userPassword;
     private Date registerDatetime;
 
-//    User(String id, String userEmail, String userName, String userPassword, Timestamp registerDatetime) {
-//        this.id = id;
-//        this.userEmail = userEmail;
-//        this.userName = userName;
-//        this.userPassword = userPassword;
-//        this.registerDatetime = registerDatetime;
-//    }
+/*
+*     User(String id, String userEmail, String userName, String userPassword, Timestamp registerDatetime) {
+        this.id = id;
+        this.userEmail = userEmail;
+        this.userName = userName;
+        this.userPassword = userPassword;
+        this.registerDatetime = registerDatetime;
+    }
+* */
 
 }

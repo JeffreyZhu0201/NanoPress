@@ -32,7 +32,7 @@ public class TestController {
 
             // verify.getClaim("name").asString();
 
-            return new Result("200","成功!",null);
+            return new Result("200","成功!",verify);
         }
         catch (SignatureVerificationException e){
             return Result.error("无效签名!");

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public interface AccountService {
 
-    public Result login(String dataBase, Account account);
+    Result login(String dataBase, Account account);
 
-    public Result register(String dataBase, Account account);
+    Result register(String dataBase, Account account);
 
-    public Result getAccount(String dataBase, Account account);
+    Result getAccount(String dataBase, Account account);
 
 }

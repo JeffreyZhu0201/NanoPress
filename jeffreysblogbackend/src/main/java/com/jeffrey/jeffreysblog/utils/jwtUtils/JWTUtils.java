@@ -27,13 +27,12 @@ public class JWTUtils {
         JWTCreator.Builder builder = JWT.create();
 
         // payload
-        map.forEach((k, v) -> {
-            builder.withClaim(k, v);
-        });
+        map.forEach(builder::withClaim);
 
-        String token = builder.withExpiresAt(instance.getTime())  //指定令牌过期时间
-                .sign(Algorithm.HMAC256(SING));  // sign
-        return token;
+        //指定令牌过期时间
+        // sign
+        return builder.withExpiresAt(instance.getTime())  //指定令牌过期时间
+                .sign(Algorithm.HMAC256(SING));
     }
 
     /**
@@ -43,11 +42,10 @@ public class JWTUtils {
         return JWT.require(Algorithm.HMAC256(SING)).build().verify(token);
     }
 
-    /**
-     * 获取token信息方法
-     */
-    /*public static DecodedJWT getTokenInfo(String token){
+    /*
+    * public static DecodedJWT getTokenInfo(String token){
         DecodedJWT verify = JWT.require(Algorithm.HMAC256(SING)).build().verify(token);
         return verify;
-    }*/
+    }
+    * */
 }

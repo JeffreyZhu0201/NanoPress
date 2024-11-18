@@ -21,8 +21,6 @@ public class AccountServiceImpl implements AccountService {
     @Resource
     AccountMapper accountMapper;
 
-    CryptoUtil cryptoUtil;
-
     public Result login(String dataBase, Account account) {
         Map<String, String> payload = new HashMap<>();
         try{
