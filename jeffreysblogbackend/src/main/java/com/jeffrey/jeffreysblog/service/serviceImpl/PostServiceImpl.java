@@ -1,9 +1,11 @@
 package com.jeffrey.jeffreysblog.service.serviceImpl;
 
+import com.jeffrey.jeffreysblog.common.Result;
 import com.jeffrey.jeffreysblog.entity.Post;
 import com.jeffrey.jeffreysblog.mapper.PostMapper;
 import com.jeffrey.jeffreysblog.service.PostService;
 import jakarta.annotation.Resource;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -14,21 +16,41 @@ public class PostServiceImpl implements PostService {
     @Resource
     PostMapper postMapper;
 
-    public Boolean addPost(Post post) {
+    public Result addPost(@NotNull Post post) {
         post.setCreateDatetime(new Date()); //发布时间设置为服务器系统时间
-        return postMapper.addPost(post);
+        if(postMapper.addPost(post)){
+            return Result.success("200","插入成功",post);
+        }
+        else{
+            return Result.error("400","插入失败",null);
+        }
     }
 
-    public Boolean deletePost(Integer id) {
-        return postMapper.deletePost(id);
+    public Result deletePost(Integer id) {
+        if(postMapper.deletePost(id)){
+            return Result.success("200","删除成功",id);
+        }
+        else{
+            return Result.error("400","删除失败",null);
+        }
     }
 
-    public Boolean updatePost(Post post) {
-        return postMapper.updatePost(post);
+    public Result updatePost(Post post) {
+        if(postMapper.updatePost(post)){
+            return Result.success("200","更新成功",null);
+        }
+        else{
+            return Result.error("400","更新失败",null);
+        }
     }
 
-    public Post getPostById(Integer id) {
-        return postMapper.getPostById(id);
+    public Result getPostById(Integer id) {
+        Post post = postMapper.getPostById(id);
+        if(post != null){
+            return Result.success("200","获取成功",post);
+        }
+        else{
+            return Result.error("400","获取失败",null);
+        }
     }
-
 }

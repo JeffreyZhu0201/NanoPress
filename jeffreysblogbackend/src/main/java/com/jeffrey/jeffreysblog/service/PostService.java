@@ -1,18 +1,18 @@
 package com.jeffrey.jeffreysblog.service;
 
+import com.jeffrey.jeffreysblog.common.Result;
 import com.jeffrey.jeffreysblog.entity.Post;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface PostService {
 
-    Boolean addPost(Post post);
+    Result addPost(Post post);
 
-    Boolean deletePost(Integer id);
+    Result deletePost(Integer id);
 
-    Boolean updatePost(Post post);
+    Result updatePost(Post post);
 
-    Post getPostById(Integer id);
-
+    Result getPostById(Integer id);
 
 }
