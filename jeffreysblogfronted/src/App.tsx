@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-24 23:42:30
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-25 21:16:45
+ * @LastEditTime: 2024-11-25 22:17:38
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\App.tsx
  * @Description: File Description Here...
  * 
@@ -13,10 +13,10 @@ import React from 'react';
 // import ReactDOM from 'react-dom/client';
 
 import {
- BrowserRouter as Router,
+  BrowserRouter as Router,
   Routes,
   Route,
-//  Link
+  //  Link
 } from 'react-router-dom';
 
 
@@ -31,21 +31,24 @@ import Projects from './pages/Projects'
 
 function App() {
   return (
-   <Router>
-     <div className="App">
-      <NavBar/>
+    <Router>
+      <div className="App">
+        <div className='max-w-[1280px] m-auto'>
+          <NavBar />
 
-      <Routes>
-        <Route path='/home' element={<Homepage/>}/>
-        <Route path='/blogs' element={<Blogs/>}/>
-        <Route path='/projects' element={<Projects/>}/>
-        <Route path='/me' element={<Me/>}/>
-        <Route path='/user' element={<User/>}/>
-      </Routes>
-      
-      <FootBar/>
-    </div>
-   </Router>
+          <Routes>
+            <Route path='/home' element={<Homepage />} />
+            <Route path='/blogs' element={<Blogs />} />
+            <Route path='/projects' element={<Projects />} />
+            <Route path='/me' element={<Me />} />
+            <Route path='/user' element={<User />} />
+          </Routes>
+
+          <FootBar />
+        </div>
+        
+      </div>
+    </Router>
   );
 }
 
