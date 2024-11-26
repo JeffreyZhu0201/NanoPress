@@ -2,19 +2,19 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-26 15:44:56
+ * @LastEditTime: 2024-11-27 00:32:26
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
-import React from "react"
+import React, { ReactElement } from "react"
 import Avatar from "../resource/avatar.jpeg"
 import ArticleCard from "../components/ArticleCard"
 
 
-function Homepage(){
+function Homepage():ReactElement{
 
 
     return (
@@ -41,8 +41,10 @@ function Homepage(){
             <div className="p-2">
                 <p className="text-2xl font-bold">最新发布</p>
 
-                <ArticleCard></ArticleCard>
-                
+                <ArticleCard title={"123"} intro={"123"} date={"123"}></ArticleCard>
+                /*
+                    unfinished:动态传参
+                 */
             </div>
 
         </div>
