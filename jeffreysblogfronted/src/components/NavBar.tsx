@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:52:43
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-26 14:54:49
+ * @LastEditTime: 2024-11-26 15:15:52
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\NavBar.tsx
  * @Description: File Description Here...
  * 
@@ -26,9 +26,9 @@ function NavBar(){
             <h1 className="w-full text-3xl font-bold text-[#00df9a]">Jeffrey's Blog</h1>
 
             <ul className='hidden md:flex font-bold text-lg'>
-                <li className='p-4 hover:underline hover:decoration-solid hover:underline-offset-4 cursor-pointer'>Home</li>
-                <li className='p-4 hover:underline hover:decoration-solid hover:underline-offset-4 cursor-pointer'>Blogs</li>
-                <li className='p-4 hover:underline hover:decoration-solid hover:underline-offset-4 cursor-pointer'>Projects</li>
+                <li className='p-4 hover:underline hover:decoration-solid hover:underline-offset-8 decoration-4 cursor-pointer'>Home</li>
+                <li className='p-4 hover:underline hover:decoration-solid hover:underline-offset-8 decoration-4 cursor-pointer'>Blogs</li>
+                <li className='p-4 hover:underline hover:decoration-solid hover:underline-offset-8 decoration-4 cursor-pointer'>Projects</li>
             </ul>
             
             <div onClick={handleNav} className='block md:hidden'>
