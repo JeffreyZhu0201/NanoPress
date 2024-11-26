@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-24 23:42:30
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-25 22:17:38
+ * @LastEditTime: 2024-11-26 14:42:48
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\App.tsx
  * @Description: File Description Here...
  * 
@@ -33,7 +33,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <div className='max-w-[1280px] m-auto'>
+        <div className='max-w-[854px] m-auto'>
           <NavBar />
 
           <Routes>

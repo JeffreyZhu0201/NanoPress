@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:52:43
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-25 22:22:40
+ * @LastEditTime: 2024-11-26 14:54:49
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\NavBar.tsx
  * @Description: File Description Here...
  * 
@@ -37,7 +37,7 @@ function NavBar(){
                 }
             </div>
             
-            <div className={nav ? ' fixed right-0 top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 md:hidden' : "fixed right-[-60%] top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500 md:hidden"}>
+            <div className={nav ? ' fixed right-0 top-0 w-[60%] h-full border-r bg-slate-600 ease-in-out duration-500 md:hidden' : "fixed right-[-60%] top-0 w-[60%] h-full border-r bg-slate-600 ease-in-out duration-500 md:hidden"}>
                 <h1 className='w-full text-3xl font-bold text-[#00df9a] m-8'>Jeffrey's Blog</h1>
 
                 <ul className='uppercase p-4'>
@@ -46,12 +46,13 @@ function NavBar(){
                     <li className='p-4 border-b border-gray-600'>Resource</li>
                     <li className='p-4 border-b border-gray-600'>About</li>
                     <li className='p-4 border-b border-gray-600'>Contact</li>
+                    <div onClick={handleNav} className='block md:hidden p-4 my-10'>
+                        {
+                            !nav ? <></> : <AiOutlineClose size={40} />
+                        }
+                    </div>
                 </ul>
-                <div onClick={handleNav} className='block md:hidden'>
-                    {
-                        !nav ? <AiOutlineMenu size={20} /> : <AiOutlineClose size={20} />
-                    }
-                </div>
+                
             </div>
 
         </div>
