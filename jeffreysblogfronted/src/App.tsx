@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-24 23:42:30
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-26 14:42:48
+ * @LastEditTime: 2024-11-26 23:33:10
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\App.tsx
  * @Description: File Description Here...
  * 
@@ -29,6 +29,29 @@ import Me from './pages/Me'
 import User from './pages/User'
 import Projects from './pages/Projects'
 
+const RouterList = [
+  {
+    path:"/home",
+    page:<Homepage></Homepage>
+  },
+  {
+    path:"/blogs",
+    page:<Blogs></Blogs>
+  },
+  {
+    path:"/projects",
+    page:<Projects></Projects>
+  },
+  {
+    path:"/me",
+    page:<Me></Me>
+  },
+  {
+    path:"/user",
+    page:<User></User>
+  }
+]
+
 function App() {
   return (
     <Router>
@@ -37,11 +60,11 @@ function App() {
           <NavBar />
 
           <Routes>
-            <Route path='/home' element={<Homepage />} />
-            <Route path='/blogs' element={<Blogs />} />
-            <Route path='/projects' element={<Projects />} />
-            <Route path='/me' element={<Me />} />
-            <Route path='/user' element={<User />} />
+              {
+                RouterList.map((item)=>{
+                  return <Route path={item.path} element={item.page}/>
+                })
+              }
           </Routes>
 
           <FootBar />
