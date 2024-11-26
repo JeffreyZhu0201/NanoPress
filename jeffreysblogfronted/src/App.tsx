@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-24 23:42:30
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-26 23:33:10
+ * @LastEditTime: 2024-11-26 23:47:51
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\App.tsx
  * @Description: File Description Here...
  * 
@@ -15,10 +15,10 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Route,
+  Navigate,
+  Route
   //  Link
 } from 'react-router-dom';
-
 
 import NavBar from "./components/NavBar"
 import FootBar from './components/FootBar';
@@ -31,24 +31,28 @@ import Projects from './pages/Projects'
 
 const RouterList = [
   {
+    path:"/",
+    page:<Navigate to="/home" replace/>
+  },
+  {
     path:"/home",
-    page:<Homepage></Homepage>
+    page:<Homepage/>
   },
   {
     path:"/blogs",
-    page:<Blogs></Blogs>
+    page:<Blogs/>
   },
   {
     path:"/projects",
-    page:<Projects></Projects>
+    page:<Projects/>
   },
   {
     path:"/me",
-    page:<Me></Me>
+    page:<Me/>
   },
   {
     path:"/user",
-    page:<User></User>
+    page:<User/>
   }
 ]
 
@@ -69,7 +73,6 @@ function App() {
 
           <FootBar />
         </div>
-        
       </div>
     </Router>
   );
