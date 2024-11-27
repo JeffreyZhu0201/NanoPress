@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-27 22:10:24
+ * @LastEditTime: 2024-11-27 23:29:59
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -11,8 +11,9 @@
 
 import React, { ReactElement } from "react"
 import Avatar from "../resource/avatar.jpeg"
-import ArticleCard from "../components/ArticleCard"
 
+import ProjectCard from "../components/ProjectCard"
+import ArticleCard from "../components/ArticleCard"
 
 function Homepage(): ReactElement {
 
@@ -24,8 +25,8 @@ function Homepage(): ReactElement {
                 <p className="text-3xl font-extrabold md:text-4xl my-6">Hi,I am Jeffrey Zhu</p>
                 <p className="text-xl font-sans my-6 ">A software engineer and open-source advocate enjoying the sunny life in Barcelona, Spain.</p>
 
-                <div className="flex h-12 md:w-36 w-full text-2xl font-bold text-gray-200
-                rounded-s-sm items-center justify-center bg-green-500 hover:bg-green-800 ease-in-out transition-colors hover:cursor-pointer
+                <div className="flex h-12 md:w-36 w-full text-2xl font-bold text-gray-200 duration-500
+                rounded-s-sm items-center justify-center bg-green-500 hover:bg-green-800 ease-in-out transition-colors cursor-pointer
                 ">
                     <div>Say Hello!</div>
                 </div>
@@ -46,9 +47,17 @@ function Homepage(): ReactElement {
                     <p className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</p>
                 </div>
 
-                <ArticleCard title={"123"} intro={"123"} date={"123"}></ArticleCard>
-                <ArticleCard title={"123"} intro={"123"} date={"123"}></ArticleCard>
-                <ArticleCard title={"123"} intro={"123"} date={"123"}></ArticleCard>
+                <ArticleCard category={"123"} title={"123"} date={"123"} read={"123"} ></ArticleCard>
+                <ProjectCard title={"123"} intro={"123"} date={"123"}></ProjectCard>
+                {/* <ProjectCard title={"123"} intro={"123"} date={"123"}></ProjectCard>
+                <ProjectCard title={"234"} intro={"asbc"} date={"123"}></ProjectCard>
+                <ProjectCard title={"111"} intro={"123"} date={"123"}></ProjectCard> */}
+
+            </div>
+
+            {/*  */}
+            <div>
+                
             </div>
 
         </div>
