@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-27 19:35:06
+ * @LastEditTime: 2024-11-27 19:45:46
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -38,11 +38,12 @@ function Homepage():ReactElement{
                 <p className="text-base font-light md:text-lg">Maecenas accumsan lacus vel facilisis. Eget egestas purus viverra accumsan in nisl nisi scelerisque eu. Non tellus orci ac auctor augue mauris augue neque gravida. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Amet mauris commodo quis imperdiet massa. Integer vitae justo eget magna fermentum iaculis eu non.</p>
             </div>
 
-            <div className="p-2">
+            <div className="p-2  grid grid-flow-row gap-4">
                 <p className="text-2xl font-bold">最新发布</p>
 
                 <ArticleCard title={"123"} intro={"123"} date={"123"}></ArticleCard>
-                
+                <ArticleCard title={"123"} intro={"123"} date={"123"}></ArticleCard>
+                <ArticleCard title={"123"} intro={"123"} date={"123"}></ArticleCard>
             </div>
 
         </div>
