@@ -1,3 +1,13 @@
+/*
+ * @Author: JeffreyZhu 1624410543@qq.com
+ * @Date: 2024-11-27 22:26:22
+ * @LastEditors: JeffreyZhu 1624410543@qq.com
+ * @LastEditTime: 2024-11-27 23:42:19
+ * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\ArticleCard.tsx
+ * @Description: File Description Here..II
+ * 
+ * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
+ */
 
 import React from "react"
 
