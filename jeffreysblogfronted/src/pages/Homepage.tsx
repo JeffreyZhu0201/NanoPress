@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-27 00:32:26
+ * @LastEditTime: 2024-11-27 19:35:06
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -42,9 +42,7 @@ function Homepage():ReactElement{
                 <p className="text-2xl font-bold">最新发布</p>
 
                 <ArticleCard title={"123"} intro={"123"} date={"123"}></ArticleCard>
-                /*
-                    unfinished:动态传参
-                 */
+                
             </div>
 
         </div>
