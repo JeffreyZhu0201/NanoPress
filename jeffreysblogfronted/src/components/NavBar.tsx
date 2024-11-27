@@ -22,7 +22,7 @@ function NavBar(){
     }
 
     return (
-        <div className="flex justify-between items-center h-24 md:h-36 w-full mx-auto px-4 text-white bg-slate-600 md:px-10">
+        <div className="flex justify-between items-center h-20 md:h-24 w-full mx-auto px-4 text-white bg-slate-600 md:px-10">
             <h1 className="w-full text-3xl font-bold text-[#00df9a]">Jeffrey's Blog</h1>
 
             <ul className='hidden md:flex font-bold text-lg'>

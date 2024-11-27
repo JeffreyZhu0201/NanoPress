@@ -60,7 +60,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <div className='max-w-[854px] m-auto'>
+        <div className='max-w-[950px] m-auto'>
           <NavBar />
 
           <Routes>
