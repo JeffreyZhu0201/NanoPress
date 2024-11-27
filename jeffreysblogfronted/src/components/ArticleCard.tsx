@@ -13,15 +13,13 @@ function ArticleCard(props:{category:string,title:string,date:string,read:string
                 <div className="cursor-pointer text-white hover:text-gray-500 transition-colors duration-700">
                     <div className="m-2 text-xl md:text-2xl font-bold truncate md:mb-2">{ props.title }</div>
                         <div className="flex m-2 font-thin text-sm">
-                            <div>{ props.date}</div>
+                            <div>{ props.date }</div>
                             <span>//</span>
                             <div>{props.read} read</div>
                             <div className="ml-auto text-gray-300 text-sm cursor-pointer hover:text-slate-100 transition-colors">查看更多</div>
                         </div>
                     </div>
-
            </div>
-
         </div>)
 }
 
