@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-28 14:22:13
+ * @LastEditTime: 2024-11-28 15:27:23
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -49,9 +49,9 @@ function Homepage(): ReactElement {
                     <Link to="/blogs" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
                 </div>
 
-                <ArticleCard category={"123"} title={"123"} date={"123"} read={"123"} ></ArticleCard>
-                <ArticleCard category={"123"} title={"123"} date={"123"} read={"123"} ></ArticleCard>
-                <ArticleCard category={"123"} title={"123"} date={"123"} read={"123"} ></ArticleCard>
+                <ArticleCard category={[{name:"123",color:"red"}]} title={"123"} date={"123"} read={"123"} ></ArticleCard>
+                <ArticleCard category={[{name:"123",color:"blue"}]} title={"123"} date={"123"} read={"123"} ></ArticleCard>
+                <ArticleCard category={[{name:"123",color:"yellow"}]} title={"123"} date={"123"} read={"123"} ></ArticleCard>
             </div>
 
             <div className="p-2  grid grid-flow-row gap-4">
