@@ -14,6 +14,7 @@ import Avatar from "../resource/avatar.jpeg"
 
 import ProjectCard from "../components/ProjectCard"
 import ArticleCard from "../components/ArticleCard"
+import { Link } from "react-router-dom"
 
 function Homepage(): ReactElement {
 
@@ -44,8 +45,8 @@ function Homepage(): ReactElement {
             {/* 博客板块 */}
             <div className="p-2  grid grid-flow-row gap-4">
                 <div className="flex items-center">
-                    <p className="text-2xl font-bold">最新发布</p>
-                    <p className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</p>
+                    <p className="text-2xl font-bold text-white">最新发布</p>
+                    <Link to="/blogs" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
                 </div>
 
                 <ArticleCard category={"123"} title={"123"} date={"123"} read={"123"} ></ArticleCard>
@@ -55,13 +56,11 @@ function Homepage(): ReactElement {
 
             <div className="p-2  grid grid-flow-row gap-4">
                 <div className="flex items-center">
-                    <p className="text-2xl font-bold">最新项目</p>
-                    <p className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多项目--&gt;</p>
+                    <p className="text-2xl font-bold text-white">最新项目</p>
+                    <Link to="/projects" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多项目--&gt;</Link>
                 </div>
-
                 <ProjectCard title={"title1"} date={"123-123-123"} intro={"123"}></ProjectCard>
             </div>
-
         </div>
     )
 
