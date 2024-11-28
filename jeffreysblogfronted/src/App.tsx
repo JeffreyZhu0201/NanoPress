@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-24 23:42:30
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-26 23:47:51
+ * @LastEditTime: 2024-11-28 14:46:38
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\App.tsx
  * @Description: File Description Here...
  * 
@@ -15,46 +15,13 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Routes,
-  Navigate,
   Route
   //  Link
 } from 'react-router-dom';
 
 import NavBar from "./components/NavBar"
 import FootBar from './components/FootBar';
-
-import Blogs from './pages/Blogs';
-import Homepage from './pages/Homepage';
-import Me from './pages/Me'
-import User from './pages/User'
-import Projects from './pages/Projects'
-
-const RouterList = [
-  {
-    path:"/",
-    page:<Navigate to="/home" replace/>
-  },
-  {
-    path:"/home",
-    page:<Homepage/>
-  },
-  {
-    path:"/blogs",
-    page:<Blogs/>
-  },
-  {
-    path:"/projects",
-    page:<Projects/>
-  },
-  {
-    path:"/me",
-    page:<Me/>
-  },
-  {
-    path:"/user",
-    page:<User/>
-  }
-]
+import links from './common/Links';
 
 function App() {
   return (
@@ -65,7 +32,7 @@ function App() {
 
           <Routes>
               {
-                RouterList.map((item)=>{
+                links.map((item)=>{
                   return <Route path={item.path} element={item.page}/>
                 })
               }
