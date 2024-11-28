@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-27 23:29:59
+ * @LastEditTime: 2024-11-28 14:22:13
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -19,6 +19,7 @@ function Homepage(): ReactElement {
 
     return (
         <div className="Homepage bg-slate-400 w-full flex flex-col p-2 md:p-14">
+            {/* hero板块 */}
             <div className="introduction my-12 md:mb-20">
                 {/* 介绍板块 */}
                 <img src={Avatar} alt="" className="border-2 md:border-4 h-14 md:h-20 border-emerald-100 md:border-emerald-300 my-6 rounded-full" />
@@ -48,16 +49,17 @@ function Homepage(): ReactElement {
                 </div>
 
                 <ArticleCard category={"123"} title={"123"} date={"123"} read={"123"} ></ArticleCard>
-                <ProjectCard title={"123"} intro={"123"} date={"123"}></ProjectCard>
-                {/* <ProjectCard title={"123"} intro={"123"} date={"123"}></ProjectCard>
-                <ProjectCard title={"234"} intro={"asbc"} date={"123"}></ProjectCard>
-                <ProjectCard title={"111"} intro={"123"} date={"123"}></ProjectCard> */}
-
+                <ArticleCard category={"123"} title={"123"} date={"123"} read={"123"} ></ArticleCard>
+                <ArticleCard category={"123"} title={"123"} date={"123"} read={"123"} ></ArticleCard>
             </div>
 
-            {/*  */}
-            <div>
-                
+            <div className="p-2  grid grid-flow-row gap-4">
+                <div className="flex items-center">
+                    <p className="text-2xl font-bold">最新项目</p>
+                    <p className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多项目--&gt;</p>
+                </div>
+
+                <ProjectCard title={"title1"} date={"123-123-123"} intro={"123"}></ProjectCard>
             </div>
 
         </div>
