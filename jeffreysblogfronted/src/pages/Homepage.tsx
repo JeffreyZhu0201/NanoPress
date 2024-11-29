@@ -49,9 +49,9 @@ function Homepage(): ReactElement {
                     <Link to="/blogs" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
                 </div>
 
-                <ArticleCard category={[{name:"123",color:"red"}]} title={"123"} date={"123"} read={"123"} ></ArticleCard>
-                <ArticleCard category={[{name:"123",color:"blue"}]} title={"123"} date={"123"} read={"123"} ></ArticleCard>
-                <ArticleCard category={[{name:"123",color:"yellow"}]} title={"123"} date={"123"} read={"123"} ></ArticleCard>
+                <ArticleCard category={[{name:"123",color:"red"}]} title={"123"} date={"123"} read={"123"} blogId={"123"}></ArticleCard>
+                <ArticleCard category={[{name:"123",color:"blue"}]} title={"123"} date={"123"} read={"123"} blogId={"123"}></ArticleCard>
+                <ArticleCard category={[{name:"123",color:"yellow"}]} title={"123"} date={"123"} read={"123"} blogId={"123"}></ArticleCard>
             </div>
 
             <div className="p-2  grid grid-flow-row gap-4">

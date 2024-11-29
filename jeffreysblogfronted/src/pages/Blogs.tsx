@@ -21,7 +21,7 @@ function Blogs() {
                 <p className="text-base md:text-lg text-white overflow-ellipsis">Articles, tutorials, snippets, rants, and everything else. Subscribe for updates as they happen.</p>
             </div>
             <div>
-                <ArticleCard title={"123"} read={"123"} date={"123"} category={[{name:"123",color:"red"}]}></ArticleCard>
+                <ArticleCard title={"123"} read={"123"} date={"123"} category={[{name:"123",color:"red"}]} blogId={"123"}></ArticleCard>
             </div>
         </div>
     )

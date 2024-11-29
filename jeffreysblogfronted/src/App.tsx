@@ -2,13 +2,13 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-24 23:42:30
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-28 14:46:38
+ * @LastEditTime: 2024-11-29 11:46:00
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\App.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
-import React from 'react';
+import React, { Suspense } from 'react';
 
 // import ReactDOM from 'react-dom/client';
 
@@ -22,6 +22,7 @@ import {
 import NavBar from "./components/NavBar"
 import FootBar from './components/FootBar';
 import links from './common/Links';
+import Loading from './common/Loading';
 
 function App() {
   return (
@@ -31,11 +32,15 @@ function App() {
           <NavBar />
 
           <Routes>
-              {
-                links.map((item)=>{
-                  return <Route path={item.path} element={item.page}/>
-                })
-              }
+                {
+                  links.map((item)=>{
+                    return <Route path={item.path} element={
+                      <Suspense fallback={<Loading></Loading>}>{item.page}</Suspense>}
+                    >
+                      
+                    </Route>
+                  })
+                }
           </Routes>
 
           <FootBar />
