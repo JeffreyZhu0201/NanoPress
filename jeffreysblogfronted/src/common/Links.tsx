@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-28 14:26:40
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-29 11:42:58
+ * @LastEditTime: 2024-11-29 12:06:38
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\common\Links.tsx
  * @Description: File Description Here...
  * 
@@ -39,7 +39,7 @@ const links = [
     },
     {
         name:"BlogDetail",
-        path:'/blogdetail/:id',
+        path:'/blogdetail/:blogId',
         page:<BlogDetail/>
     }
 ]

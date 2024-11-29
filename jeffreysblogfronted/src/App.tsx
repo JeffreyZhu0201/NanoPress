@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-24 23:42:30
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-29 11:52:14
+ * @LastEditTime: 2024-11-29 11:54:23
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\App.tsx
  * @Description: File Description Here...
  * 
@@ -37,7 +37,6 @@ function App() {
                     return <Route path={item.path} element={
                       <Suspense fallback={<Loading></Loading>}>{item.page}</Suspense>}
                     >
-                      
                     </Route>
                   })
                 }
