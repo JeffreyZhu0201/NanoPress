@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-24 23:42:30
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-29 11:46:00
+ * @LastEditTime: 2024-11-29 11:52:14
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\App.tsx
  * @Description: File Description Here...
  * 
@@ -27,8 +27,8 @@ import Loading from './common/Loading';
 function App() {
   return (
     <Router>
-      <div className="App">
-        <div className='max-w-[950px] m-auto'>
+      <div className="App h-full">
+        <div className='max-w-[950px] m-auto '>
           <NavBar />
 
           <Routes>

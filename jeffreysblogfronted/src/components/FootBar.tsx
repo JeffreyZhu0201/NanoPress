@@ -22,7 +22,7 @@ function FootBar(){
     // }
 
     return (
-        <div className="items-center flex justify-between p-4 md:p-12 bg-slate-600">
+        <div className="items-center flex justify-between p-4 md:p-12 bg-slate-600 mt-auto">
             <div className="text-white text-lg md:text-xl font-bold">
                 JeffreysBlog © 2024 JeffreyZhu
             </div>
