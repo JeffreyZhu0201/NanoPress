@@ -59,7 +59,7 @@ function Homepage(): ReactElement {
                     <p className="text-2xl font-bold text-white">最新项目</p>
                     <Link to="/projects" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多项目--&gt;</Link>
                 </div>
-                <ProjectCard title={"title1"} date={"123-123-123"} intro={"123"}></ProjectCard>
+                <ProjectCard title={"title1"} date={"123-123-123"} intro={"123"} projectId="123"></ProjectCard>
             </div>
         </div>
     )

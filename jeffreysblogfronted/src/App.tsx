@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-24 23:42:30
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 11:37:19
+ * @LastEditTime: 2024-11-30 12:05:10
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\App.tsx
  * @Description: File Description Here...
  * 
@@ -27,20 +27,22 @@ import Loading from './common/Loading';
 function App() {
   return (
     <Router>
-      <div className="App h-full overflow-ellipsis">
+      <div className="App overflow-ellipsis">
         <div className='max-w-[950px] m-auto min-w-[258px]'>
           <NavBar />
 
-          <Routes>
-                {
-                  links.map((item)=>{
-                    return <Route path={item.path} element={
-                      <Suspense fallback={<Loading></Loading>}>{item.page}</Suspense>}
-                    >
-                    </Route>
-                  })
-                }
-          </Routes>
+          <div className='min-h-screen'>
+            <Routes>
+              {
+                links.map((item) => {
+                  return <Route path={item.path} element={
+                    <Suspense fallback={<Loading></Loading>}>{item.page}</Suspense>}
+                  >
+                  </Route>
+                })
+              }
+            </Routes>
+          </div>
 
           <FootBar />
         </div>

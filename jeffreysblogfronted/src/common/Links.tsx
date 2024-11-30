@@ -14,7 +14,7 @@ import React from 'react';
 const Blogs = React.lazy(() => import('../pages/Blogs'))
 const Homepage = React.lazy(() => import('../pages/Homepage'))
 const Projects = React.lazy(() => import('../pages/Projects'))
-const BlogDetail = React.lazy(() => import('../pages/ArticleDetail'))
+const ArticleDetail = React.lazy(() => import('../pages/ArticleDetail'))
 
 const links = [
     {
@@ -42,9 +42,9 @@ const links = [
         number: 1
     },
     {
-        name: "BlogDetail",
-        path: '/blogdetail/:blogId',
-        page: <BlogDetail />
+        name: "ArticleDetail",
+        path: '/articledetail/:type/:Id',
+        page: <ArticleDetail />
     }
 ]
 

@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-26 15:46:51
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-27 23:26:15
+ * @LastEditTime: 2024-11-30 11:54:40
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\ProjectCard.tsx
  * @Description: File Description Here...
  * 
@@ -11,12 +11,17 @@
 
 import React from "react"
 
+import {Link} from "react-router-dom"
+
 //{title:string;intro:string;date:string}
 
-function ProjectCard(props:{title:string,intro:string,date:string}){
+function ProjectCard(props:{title:string,intro:string,date:string,projectId:string}){
     
+    
+
     return (
-        <div className="bg-transparent border-yellow-200 rounded border hover:border-white transition-colors duration-300 shadow-purple-500 hover:shadow-2xl">
+        <Link to={`/articledetail/project/${props.projectId}`}>
+            <div className="bg-transparent border-yellow-200 rounded border hover:border-white transition-colors duration-300 shadow-purple-500 hover:shadow-2xl">
             <div className="m-3 flex flex-col  cursor-pointer">
                 <h1 className="text-xl md:text-2xl font-bold text-white truncate md:mb-2">{props.title}</h1>
                 <div className="line-clamp-1 text-sm font-thin text-white">{props.intro}</div>
@@ -26,6 +31,8 @@ function ProjectCard(props:{title:string,intro:string,date:string}){
                 </div>
             </div>
         </div>
+        </Link>
+        
     )
 }
 

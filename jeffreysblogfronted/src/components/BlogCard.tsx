@@ -18,7 +18,7 @@ function ArticleCard(props: { category: { name: string, color: string }[], title
     return (
 
         <>
-            <Link to={`/blogdetail/${props.blogId}`}>
+            <Link to={`/articledetail/blog/${props.blogId}`}>
                 <div className="m-2 md:m-4 border-b-1 border-x-white">
                     <div className="">
                         {
