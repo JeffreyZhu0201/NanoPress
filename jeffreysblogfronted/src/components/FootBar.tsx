@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:12:26
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 12:09:40
+ * @LastEditTime: 2024-11-30 16:39:33
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\FootBar.tsx
  * @Description: File Description Here...
  * 
@@ -38,7 +38,6 @@ function FootBar() {
             </div>
         </div>
     )
-
 }
 
 export default FootBar

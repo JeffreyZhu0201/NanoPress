@@ -7,6 +7,4 @@ const CategoryColor = new Map([
 ]
 )
 
-
-
 export default CategoryColor

@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-27 22:26:22
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 11:12:21
+ * @LastEditTime: 2024-11-30 20:19:30
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\BlogCard.tsx
  * @Description: File Description Here..II
  * 
@@ -13,7 +13,7 @@ import React from "react"
 import CategoryColor from "../common/CategoryColor"
 import { Link } from "react-router-dom"
 
-function ArticleCard(props: { category: { name: string, color: string }[], title: string, date: string, read: string, blogId: string }) {
+function blogCard(props: { category: { name: string, color: string }[], title: string, date: string, read: string, blogId: string }) {
 
     return (
 
@@ -40,4 +40,4 @@ function ArticleCard(props: { category: { name: string, color: string }[], title
             </Link ></>)
 }
 
-export default ArticleCard
+export default blogCard
