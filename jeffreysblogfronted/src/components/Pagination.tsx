@@ -9,9 +9,16 @@ export default function Pagination(props: {
     paginateBack: any,
     currentPage: number,
 }) {
+    
+    const items = [...Array(Math.ceil(props.totalPosts / props.postsPerPage))].map((_item,_itemIndex)=>{
+        return <div className="h-10 w-10 cursor-pointer bg-red-500 rounded mx-1 flex flex-row items-center justify-center">
+            {_itemIndex}
+        </div>
+    })
+
     return (
-        <div className='py-2'>
-            <div>
+        <div className='py-2 flex flex-row'>
+            {/* <div>
                 <p className='text-sm text-gray-700'>
                     Showing
                     <span className='font-medium'>{props.currentPage * props.postsPerPage - 10}</span>
@@ -22,33 +29,32 @@ export default function Pagination(props: {
                     results
                 </p>
             </div>
-            <nav className='block'></nav>
-            <div>
-                <nav
-                    className='relative z-0 inline-flex rounded-md shadow-sm -space-x-px'
-                    aria-label='Pagination'
-                >
-                    <a
-                        onClick={() => {
+            <nav className='block'></nav> */}
+                <a
+                    onClick={() => {
+                        if (!(props.currentPage === 1)) {
                             props.paginateBack();
-                        }}
-                        href='#'
-                        className='relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
-                    >
-                        <span>Previous</span>
-                    </a>
-
-                    <a
-                        onClick={() => {
+                        }
+                    }}
+                    href='#'
+                    className='relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
+                >
+                    <span>Previous</span>
+                </a>
+                <div className="flex flex-row">
+                    {items}
+                </div>
+                <a
+                    onClick={() => {
+                        if (!(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage))) {
                             props.paginateFront();
-                        }}
-                        href='#'
-                        className='relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
-                    >
-                        <span>Next</span>
-                    </a>
-                </nav>
-            </div>
+                        }
+                    }}
+                    href='#'
+                    className='relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
+                >
+                    <span>Next</span>
+                </a>
         </div>
     );
 }

@@ -19,6 +19,10 @@ function Blogs() {
 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
+
+    const [previousEnable,setPrevoisEnable] = useState(0);
+    const [nextEnable,setNextEnable] = useState(1);
+
     const [blogsPerPage] = useState(10);
 
     useEffect(() => {
@@ -39,7 +43,9 @@ function Blogs() {
     var blogList: Blog[] = testBlogs.slice(indexOfFirstPost, indexOfLastPost);
 
     // Change page
-    const paginateFront = () => setCurrentPage(currentPage + 1);
+    const paginateFront = () => {
+            setCurrentPage(currentPage + 1);
+    }
     const paginateBack = () => setCurrentPage(currentPage - 1);
 
 
