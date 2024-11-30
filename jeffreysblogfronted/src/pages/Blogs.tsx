@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:03:31
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 20:52:29
+ * @LastEditTime: 2024-11-30 23:52:14
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Blogs.tsx
  * @Description: File Description Here...
  * 
@@ -23,7 +23,7 @@ function Blogs() {
     const [previousEnable,setPrevoisEnable] = useState(0);
     const [nextEnable,setNextEnable] = useState(1);
 
-    const [blogsPerPage] = useState(10);
+    const [blogsPerPage] = useState(5);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -50,7 +50,7 @@ function Blogs() {
 
 
     return (
-        <div className="p-2 md:p-16 bg-slate-700 h-full flex flex-col">
+        <div className="p-2 md:p-16 bg-slate-700 h-screen flex flex-col">
             <div className="mb-2 md:mb-16">
                 <h1 className="font-bold text-xl md:text-4xl text-white mt-2 mb-8">Blogs</h1>
                 <p className="text-base md:text-lg text-white overflow-ellipsis">Articles, tutorials, snippets, rants, and everything else. Subscribe for updates as they happen.</p>

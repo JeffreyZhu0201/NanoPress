@@ -2,6 +2,8 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React from "react";
 
+import {GoChevronLeft, GoChevronRight } from "react-icons/go"
+
 export default function Pagination(props: {
     postsPerPage: number,
     totalPosts: number,
@@ -11,13 +13,13 @@ export default function Pagination(props: {
 }) {
     
     const items = [...Array(Math.ceil(props.totalPosts / props.postsPerPage))].map((_item,_itemIndex)=>{
-        return <div className="h-10 w-10 cursor-pointer bg-red-500 rounded mx-1 flex flex-row items-center justify-center">
-            {_itemIndex}
+        return <div className={`h-10 w-10 cursor-pointer rounded-full mx-1 flex flex-row items-center justify-center ${(props.currentPage === (_itemIndex+1)) ?'bg-blue-500':'bg-red-100'}`}>
+            {_itemIndex+1}
         </div>
     })
 
     return (
-        <div className='py-2 flex flex-row'>
+        <div className='py-2 flex flex-row items-center'>
             {/* <div>
                 <p className='text-sm text-gray-700'>
                     Showing
@@ -37,9 +39,9 @@ export default function Pagination(props: {
                         }
                     }}
                     href='#'
-                    className='relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
+                    className={`${(props.currentPage === 1)?'pointer-events-none':''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50`}
                 >
-                    <span>Previous</span>
+                    <span><GoChevronLeft></GoChevronLeft></span>
                 </a>
                 <div className="flex flex-row">
                     {items}
@@ -51,9 +53,9 @@ export default function Pagination(props: {
                         }
                     }}
                     href='#'
-                    className='relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
+                    className={`${(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage))?'pointer-events-none':''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50`}
                 >
-                    <span>Next</span>
+                    <span><GoChevronRight></GoChevronRight></span>
                 </a>
         </div>
     );
