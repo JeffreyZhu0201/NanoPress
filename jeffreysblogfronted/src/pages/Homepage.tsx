@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-28 15:27:23
+ * @LastEditTime: 2024-11-30 20:46:03
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -13,10 +13,17 @@ import React, { ReactElement } from "react"
 import Avatar from "../resource/avatar.jpeg"
 
 import ProjectCard from "../components/ProjectCard"
-import ArticleCard from "../components/BlogCard"
+import BlogCard from "../components/BlogCard"
 import { Link } from "react-router-dom"
+import testBlogs from "../common/testData/blogData"
+import testProjects from "../common/testData/projectData"
+import Blog from "../common/entity/blogEntity"
+import Project from "../common/entity/projectEntity"
 
 function Homepage(): ReactElement {
+
+    var blogPreviewList:Blog[] = testBlogs.slice(0, 3);
+    var proejctPreviewList:Project[] = testProjects.slice(0, 3)
 
     return (
         <div className="Homepage bg-slate-400 w-full flex flex-col p-2 md:p-14">
@@ -49,9 +56,12 @@ function Homepage(): ReactElement {
                     <Link to="/blogs" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
                 </div>
 
-                <ArticleCard category={[{name:"123",color:"red"}]} title={"123"} date={"123"} read={"123"} blogId={"123"}></ArticleCard>
-                <ArticleCard category={[{name:"123",color:"blue"}]} title={"123"} date={"123"} read={"123"} blogId={"123"}></ArticleCard>
-                <ArticleCard category={[{name:"123",color:"yellow"}]} title={"123"} date={"123"} read={"123"} blogId={"123"}></ArticleCard>
+                {
+                    blogPreviewList.map((blogItem) => {
+                        return <BlogCard blog={blogItem}></BlogCard>
+                    })
+                }
+
             </div>
 
             <div className="p-2  grid grid-flow-row gap-4">
@@ -59,7 +69,11 @@ function Homepage(): ReactElement {
                     <p className="text-2xl font-bold text-white">最新项目</p>
                     <Link to="/projects" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多项目--&gt;</Link>
                 </div>
-                <ProjectCard title={"title1"} date={"123-123-123"} intro={"123"} projectId="123"></ProjectCard>
+                {
+                    proejctPreviewList.map((projectItem) => {
+                        return <ProjectCard project={projectItem}></ProjectCard>
+                    })
+                }
             </div>
         </div>
     )

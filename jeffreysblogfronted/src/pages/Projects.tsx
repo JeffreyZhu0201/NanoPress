@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:04:39
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 12:07:09
+ * @LastEditTime: 2024-11-30 20:53:55
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Projects.tsx
  * @Description: File Description Here...
  * 
@@ -22,7 +22,7 @@ function Projects() {
                 <p className="text-base md:text-lg text-white overflow-ellipsis">Articles, tutorials, snippets, rants, and everything else. Subscribe for updates as they happen.</p>
             </div>
             <div>
-                <ProjectCard title={"I'm title"} intro={"Introduction"} date={"im'date"} projectId="123"></ProjectCard>      
+                {/* <ProjectCard project={project1}></ProjectCard>       */}
             </div>
         </div>
     )
