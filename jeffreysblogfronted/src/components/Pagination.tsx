@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-no-comment-textnodes */
-import React, { useState } from "react";
 
 import { GoChevronLeft, GoChevronRight } from "react-icons/go"
 

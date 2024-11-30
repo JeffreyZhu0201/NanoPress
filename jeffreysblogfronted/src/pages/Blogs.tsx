@@ -20,9 +20,6 @@ function Blogs() {
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
 
-    const [previousEnable,setPrevoisEnable] = useState(0);
-    const [nextEnable,setNextEnable] = useState(1);
-
     const [blogsPerPage] = useState(5);
 
     useEffect(() => {
@@ -48,7 +45,6 @@ function Blogs() {
     }
     const paginateBack = () => setCurrentPage(currentPage - 1);
 
-
     return (
         <div className="p-2 md:px-16 bg-slate-700 h-screen flex flex-col">
             <div className="mb-2 md:mb-16">
@@ -62,7 +58,6 @@ function Blogs() {
                     })
                 }
             </div>
-
             <div className="mt-auto flex flex-row items-center justify-center">
                 <Pagination
                     postsPerPage={blogsPerPage}
@@ -73,7 +68,6 @@ function Blogs() {
                     setCurrentPage={setCurrentPage}
                 />
             </div>
-
         </div>
     )
 }
