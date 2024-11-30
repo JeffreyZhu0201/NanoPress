@@ -13,7 +13,7 @@ export default function Pagination(props: {
 }) {
 
     var items = [...Array(Math.ceil(props.totalPosts / props.postsPerPage))].map((_item, _itemIndex) => {
-        return <a className={`h-10 w-10 cursor-pointer rounded-full mx-1 flex flex-row items-center justify-center ${(props.currentPage === (_itemIndex + 1)) ? 'bg-blue-500' : 'bg-red-100'}`} onClick={() => handleClick(_itemIndex)}>
+        return <a className={`h-10 w-10 cursor-pointer rounded-full mx-1 flex flex-row items-center justify-center select-none ${(props.currentPage === (_itemIndex + 1)) ? 'bg-blue-500' : 'bg-red-100'}`} onClick={() => handleClick(_itemIndex)}>
             {_itemIndex + 1}
         </a>
     }).slice(Math.max(0,props.currentPage-3),Math.min(Math.max(0,props.currentPage-3)+5,Math.ceil(props.totalPosts / props.postsPerPage)))
@@ -46,7 +46,7 @@ export default function Pagination(props: {
                     }
                 }}
                 href='#'
-                className={`${(props.currentPage === 1) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50`}
+                className={`${(props.currentPage === 1) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-transparent text-sm font-medium text-gray-500 hover:bg-gray-50`}
             >
                 <span><GoChevronLeft></GoChevronLeft></span>
             </a>
@@ -60,7 +60,7 @@ export default function Pagination(props: {
                     }
                 }}
                 href='#'
-                className={`${(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage)) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50`}
+                className={`${(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage)) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-transparent text-sm font-medium text-gray-500 hover:bg-gray-50`}
             >
                 <span><GoChevronRight></GoChevronRight></span>
             </a>
