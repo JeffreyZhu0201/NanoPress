@@ -13,7 +13,7 @@ import React, { ReactElement } from "react"
 import Avatar from "../resource/avatar.jpeg"
 
 import ProjectCard from "../components/ProjectCard"
-import ArticleCard from "../components/ArticleCard"
+import ArticleCard from "../components/BlogCard"
 import { Link } from "react-router-dom"
 
 function Homepage(): ReactElement {

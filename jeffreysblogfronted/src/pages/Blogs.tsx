@@ -10,7 +10,7 @@
  */
 
 import React from "react"
-import ArticleCard from "../components/ArticleCard"
+import ArticleCard from "../components/BlogCard"
 
 function Blogs() {
     
