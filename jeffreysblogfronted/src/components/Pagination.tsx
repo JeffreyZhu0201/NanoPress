@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-no-comment-textnodes */
-import React from "react";
+import React, { useState } from "react";
 
-import {GoChevronLeft, GoChevronRight } from "react-icons/go"
+import { GoChevronLeft, GoChevronRight } from "react-icons/go"
 
 export default function Pagination(props: {
     postsPerPage: number,
@@ -10,13 +10,21 @@ export default function Pagination(props: {
     paginateFront: any,
     paginateBack: any,
     currentPage: number,
+    setCurrentPage: any
 }) {
-    
-    const items = [...Array(Math.ceil(props.totalPosts / props.postsPerPage))].map((_item,_itemIndex)=>{
-        return <div className={`h-10 w-10 cursor-pointer rounded-full mx-1 flex flex-row items-center justify-center ${(props.currentPage === (_itemIndex+1)) ?'bg-blue-500':'bg-red-100'}`}>
-            {_itemIndex+1}
-        </div>
-    })
+
+    var items = [...Array(Math.ceil(props.totalPosts / props.postsPerPage))].map((_item, _itemIndex) => {
+        return <a className={`h-10 w-10 cursor-pointer rounded-full mx-1 flex flex-row items-center justify-center ${(props.currentPage === (_itemIndex + 1)) ? 'bg-blue-500' : 'bg-red-100'}`} onClick={() => handleClick(_itemIndex)}>
+            {_itemIndex + 1}
+        </a>
+    }).slice(Math.max(0,props.currentPage-3),Math.min(Math.max(0,props.currentPage-3)+5,Math.ceil(props.totalPosts / props.postsPerPage)))
+
+    // var [items,setItemsVal] = useState(a.slice(0,5));
+
+    function handleClick(_itemIndex: number) {
+        // setItemsVal(a.slice(Math.max(_itemIndex-1,0),Math.min(Math.max(_itemIndex-1,0)+4,Math.ceil(props.totalPosts / props.postsPerPage))));
+        props.setCurrentPage(_itemIndex + 1)
+    }
 
     return (
         <div className='py-2 flex flex-row items-center'>
@@ -32,31 +40,31 @@ export default function Pagination(props: {
                 </p>
             </div>
             <nav className='block'></nav> */}
-                <a
-                    onClick={() => {
-                        if (!(props.currentPage === 1)) {
-                            props.paginateBack();
-                        }
-                    }}
-                    href='#'
-                    className={`${(props.currentPage === 1)?'pointer-events-none':''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50`}
-                >
-                    <span><GoChevronLeft></GoChevronLeft></span>
-                </a>
-                <div className="flex flex-row">
-                    {items}
-                </div>
-                <a
-                    onClick={() => {
-                        if (!(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage))) {
-                            props.paginateFront();
-                        }
-                    }}
-                    href='#'
-                    className={`${(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage))?'pointer-events-none':''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50`}
-                >
-                    <span><GoChevronRight></GoChevronRight></span>
-                </a>
+            <a
+                onClick={() => {
+                    if (!(props.currentPage === 1)) {
+                        props.paginateBack();
+                    }
+                }}
+                href='#'
+                className={`${(props.currentPage === 1) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50`}
+            >
+                <span><GoChevronLeft></GoChevronLeft></span>
+            </a>
+            <div className="flex flex-row">
+                {items}
+            </div>
+            <a
+                onClick={() => {
+                    if (!(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage))) {
+                        props.paginateFront();
+                    }
+                }}
+                href='#'
+                className={`${(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage)) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50`}
+            >
+                <span><GoChevronRight></GoChevronRight></span>
+            </a>
         </div>
     );
 }
