@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:12:26
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-28 15:01:49
+ * @LastEditTime: 2024-11-30 11:40:48
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\FootBar.tsx
  * @Description: File Description Here...
  * 
@@ -22,8 +22,8 @@ function FootBar(){
     // }
 
     return (
-        <div className="items-center flex justify-between p-4 md:p-12 bg-slate-600 mt-auto">
-            <div className="text-white text-lg md:text-xl font-bold">
+        <div className="items-center flex justify-between p-2 md:p-12 bg-slate-600 mt-auto flex-col md:flex-row">
+            <div className="text-white md:text-xl font-bold">
                 JeffreysBlog © 2024 JeffreyZhu
             </div>
             <div className="flex items-center gap-4">
