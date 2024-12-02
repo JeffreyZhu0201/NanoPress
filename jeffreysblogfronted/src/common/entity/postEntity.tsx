@@ -1,12 +1,12 @@
 
-interface Blog{
-    blogId:string,
+interface Post{
+    postId:string,
     title:string,
-    author:string,
+    author:{name:string,id:string},
     read:string,
     date:string,
     content:string,
     category:{name:string,color:string}[]
 }
 
-export default Blog
+export default Post

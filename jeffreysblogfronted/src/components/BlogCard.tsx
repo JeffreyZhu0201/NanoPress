@@ -12,7 +12,7 @@
 import React from "react"
 import CategoryColor from "../common/CategoryColor"
 import { Link } from "react-router-dom"
-import Blog from "../common/entity/blogEntity"
+import Blog from "../common/entity/postEntity"
 
 function BlogCard(props: {blog:Blog}) {
 

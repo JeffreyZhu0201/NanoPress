@@ -2,8 +2,8 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:03:31
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-01 00:34:45
- * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Blogs.tsx
+ * @LastEditTime: 2024-12-02 19:39:44
+ * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Post.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
@@ -12,10 +12,10 @@
 import React, { useEffect, useState } from "react"
 import Pagination from "../components/Pagination"
 import testBlogs from "../common/testData/blogData"
-import Blog from "../common/entity/blogEntity"
+import Blog from "../common/entity/postEntity"
 import BlogCard from "../components/BlogCard"
 
-function Blogs() {
+function Post() {
 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
@@ -72,4 +72,4 @@ function Blogs() {
     )
 }
 
-export default Blogs
+export default Post

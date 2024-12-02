@@ -17,7 +17,7 @@ import BlogCard from "../components/BlogCard"
 import { Link } from "react-router-dom"
 import testBlogs from "../common/testData/blogData"
 import testProjects from "../common/testData/projectData"
-import Blog from "../common/entity/blogEntity"
+import Blog from "../common/entity/postEntity"
 import Project from "../common/entity/projectEntity"
 
 function Homepage(): ReactElement {

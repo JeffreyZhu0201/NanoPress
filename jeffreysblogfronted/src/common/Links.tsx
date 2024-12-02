@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-28 14:26:40
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 11:11:27
+ * @LastEditTime: 2024-12-02 19:05:49
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\common\Links.tsx
  * @Description: File Description Here...
  * 
@@ -11,7 +11,7 @@
 import { Navigate } from 'react-router-dom';
 import React from 'react';
 
-const Blogs = React.lazy(() => import('../pages/Blogs'))
+const Blogs = React.lazy(() => import('../pages/Post'))
 const Homepage = React.lazy(() => import('../pages/Homepage'))
 const Projects = React.lazy(() => import('../pages/Projects'))
 const ArticleDetail = React.lazy(() => import('../pages/ArticleDetail'))
@@ -43,7 +43,7 @@ const links = [
     },
     {
         name: "ArticleDetail",
-        path: '/articledetail/:type/:Id',
+        path: '/articledetail/:type/:id',
         page: <ArticleDetail />
     }
 ]
