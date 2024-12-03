@@ -31,4 +31,10 @@ public class PostController {
     public Result getPostById(@RequestParam(value="id") Integer id){
         return postService.getPostById(id);
     }
+
+    @GetMapping("/getrangeposts")
+    public Result getRangePosts(@RequestParam(value = "beginPage") Integer beginPage,@RequestParam(value = "count") Integer count) {
+        return postService.getRangePosts(beginPage,count);
+    }
+
 }

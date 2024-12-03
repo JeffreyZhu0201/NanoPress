@@ -22,4 +22,8 @@
         SELECT * FROM posts WHERE id=#{id};
     </select>
 
+    <select id="getRangePosts" parameterType="int">
+        SELECT * FROM posts LIMIT #{beginIndex} #{count}
+    </select>
+
 </mapper>

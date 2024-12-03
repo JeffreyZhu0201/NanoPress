@@ -53,4 +53,10 @@ public class PostServiceImpl implements PostService {
             return Result.error("400","获取失败",null);
         }
     }
+
+    @Override
+    public Result getRangePosts(Integer beginPage, Integer count) {
+
+        return Result.success("400","获取成功",postMapper.getRangePosts((beginPage-1)*count,count));
+    }
 }

@@ -15,4 +15,5 @@ public interface PostService {
 
     Result getPostById(Integer id);
 
+    Result getRangePosts(Integer beginPage, Integer count);
 }
