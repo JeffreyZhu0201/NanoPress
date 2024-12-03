@@ -39,4 +39,9 @@ public class PostController {
         return postService.getRangePosts(beginPage,count);
     }
 
+    @GetMapping("/getallposts")
+    public Result getAllPosts() {
+        return postService.getAllPosts();
+    }
+
 }

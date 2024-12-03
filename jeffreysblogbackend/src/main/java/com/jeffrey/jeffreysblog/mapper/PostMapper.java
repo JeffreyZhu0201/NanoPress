@@ -7,6 +7,8 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface PostMapper {
@@ -19,5 +21,7 @@ public interface PostMapper {
 
     Post getPostById(@NonNull String postId);
 
-    Post getRangePosts(Integer beginIndex, Integer count);
+    List<Post> getRangePosts(Integer beginIndex, Integer count);
+
+    List<Post> getAllPosts();
 }

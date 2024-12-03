@@ -23,7 +23,11 @@
     </select>
 
     <select id="getRangePosts" parameterType="int">
-        SELECT * FROM post LIMIT #{beginIndex} #{count}
+        SELECT * FROM post LIMIT #{count} OFFSET #{beginIndex}
+    </select>
+
+    <select id="getAllPosts">
+        SELECT * FROM post
     </select>
 
 </mapper>

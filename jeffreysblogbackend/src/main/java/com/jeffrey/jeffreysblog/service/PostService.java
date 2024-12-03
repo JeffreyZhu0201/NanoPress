@@ -19,4 +19,6 @@ public interface PostService {
     Result getPostById(String postId);
 
     Result getRangePosts(Integer beginPage, Integer count);
+
+    Result getAllPosts();
 }

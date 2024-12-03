@@ -12,10 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -86,7 +83,15 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Result getRangePosts(Integer beginPage, Integer count) {
-        Post post = postMapper.getRangePosts((beginPage-1)*count,count);
-        return Result.success("400","获取成功",post);
+        List<Post> posts = postMapper.getRangePosts((beginPage-1)*count,count);
+        posts.forEach(this::parseParam);
+        return Result.success("400","获取成功",posts);
+    }
+
+    @Override
+    public Result getAllPosts(){
+        List<Post> posts = postMapper.getAllPosts();
+        posts.forEach(this::parseParam);
+        return Result.success(posts);
     }
 }
