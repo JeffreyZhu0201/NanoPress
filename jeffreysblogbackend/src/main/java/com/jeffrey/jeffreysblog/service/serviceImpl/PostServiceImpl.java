@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Service
 @Slf4j
@@ -23,7 +24,10 @@ public class PostServiceImpl implements PostService {
         post.setDate(new Date()); //发布时间设置为服务器系统时间
         post.setAuthor(JSON.toJSONString(post.getAuthor()));
         post.setCategory(JSON.toJSONString(post.getCategory()));
+        post.setPostId(String.valueOf(UUID.randomUUID()));
         if(postMapper.addPost(post)){
+            post.setAuthor(JSON.parseObject(post.getAuthor().toString()));
+            post.setCategory(JSON.parseObject(post.getCategory().toString()));
             return Result.success("200","插入成功",post);
         }
         else{
@@ -31,9 +35,9 @@ public class PostServiceImpl implements PostService {
         }
     }
 
-    public Result deletePost(Integer id) {
-        if(postMapper.deletePost(id)){
-            return Result.success("200","删除成功",id);
+    public Result deletePost(String postId) {
+        if(postMapper.deletePost(postId)){
+            return Result.success("200","删除成功",postId);
         }
         else{
             return Result.error("400","删除失败",null);
@@ -41,6 +45,9 @@ public class PostServiceImpl implements PostService {
     }
 
     public Result updatePost(Post post) {
+        post.setDate(new Date()); //发布时间设置为服务器系统时间
+        post.setAuthor(JSON.toJSONString(post.getAuthor()));
+        post.setCategory(JSON.toJSONString(post.getCategory()));
         if(postMapper.updatePost(post)){
             return Result.success("200","更新成功",null);
         }

@@ -20,8 +20,8 @@ public class PostController {
     }
 
     @PostMapping("/deletepost")
-    public Result deletePost(@RequestParam(value = "id") Integer id) {
-        return postService.deletePost(id);
+    public Result deletePost(@RequestParam(value = "postId") String postId) {
+        return postService.deletePost(postId);
     }
 
     @PostMapping("/updatepost")

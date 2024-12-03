@@ -9,7 +9,7 @@ public interface PostService {
 
     Result addPost(Post post);
 
-    Result deletePost(Integer id);
+    Result deletePost(String postId);
 
     Result updatePost(Post post);
 
