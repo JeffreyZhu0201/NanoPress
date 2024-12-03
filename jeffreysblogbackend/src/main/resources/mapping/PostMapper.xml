@@ -18,7 +18,7 @@
         UPDATE post SET title=#{post.title},content=#{post.content},category=#{post.category},readNum=#{post.readNum},date=#{post.date} WHERE postId=#{post.postId}
     </update>
     
-    <select id="getPostById" parameterType="int">
+    <select id="getPostById" parameterType="String">
         SELECT * FROM post WHERE postId=#{postId};
     </select>
 

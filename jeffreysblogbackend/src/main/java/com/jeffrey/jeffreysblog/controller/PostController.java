@@ -30,8 +30,8 @@ public class PostController {
     }
 
     @GetMapping("/getpostbyid")
-    public Result getPostById(@RequestParam(value="id") Integer id){
-        return postService.getPostById(id);
+    public Result getPostById(@RequestParam(value="postId") String postId){
+        return postService.getPostById(postId);
     }
 
     @GetMapping("/getrangeposts")

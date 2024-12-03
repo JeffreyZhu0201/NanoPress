@@ -13,6 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -22,15 +24,25 @@ public class PostServiceImpl implements PostService {
     @Resource
     PostMapper postMapper;
 
-    public Result addPost(@NotNull Post post) {
-        post.setDate(new Date()); //发布时间设置为服务器系统时间
-
+    public Post stringfyParam(Post post){
         post.setAuthor(JSON.toJSONString(post.getAuthor()));
         post.setCategory(JSON.toJSONString(post.getCategory()));
+        return post;
+    }
+
+    public Post parseParam(Post post){
+        post.setAuthor(JSON.parseObject(post.getAuthor().toString()));
+        post.setCategory(JSONObject.parseArray(post.getCategory().toString()));
+        return post;
+    }
+
+    public Result addPost(@NotNull Post post) {
+        post.setDate(new Date()); //发布时间设置为服务器系统时间
         post.setPostId(String.valueOf(UUID.randomUUID()));
+        stringfyParam(post);
+
         if(postMapper.addPost(post)){
-            post.setAuthor(JSON.parseObject(post.getAuthor().toString()));
-            post.setCategory(JSONObject.parseArray(post.getCategory().toString()));
+            parseParam(post);
             return Result.success("200","插入成功",post);
         }
         else{
@@ -40,7 +52,9 @@ public class PostServiceImpl implements PostService {
 
     public Result deletePost(String postId) {
         if(postMapper.deletePost(postId)){
-            return Result.success("200","删除成功",postId);
+            Map<String,String> map = new HashMap<>();
+            map.put("postId",postId);
+            return Result.success("200","删除成功",map);
         }
         else{
             return Result.error("400","删除失败",null);
@@ -49,19 +63,20 @@ public class PostServiceImpl implements PostService {
 
     public Result updatePost(Post post) {
         post.setDate(new Date()); //发布时间设置为服务器系统时间
-        post.setAuthor(JSON.toJSONString(post.getAuthor()));
-        post.setCategory(JSON.toJSONString(post.getCategory()));
+        stringfyParam(post);
         if(postMapper.updatePost(post)){
-            return Result.success("200","更新成功",null);
+            parseParam(post);
+            return Result.success("200","更新成功",post);
         }
         else{
             return Result.error("400","更新失败",null);
         }
     }
 
-    public Result getPostById(Integer id) {
-        Post post = postMapper.getPostById(id);
+    public Result getPostById(String postId) {
+        Post post = postMapper.getPostById(postId);
         if(post != null){
+            parseParam(post);
             return Result.success("200","获取成功",post);
         }
         else{
@@ -71,7 +86,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public Result getRangePosts(Integer beginPage, Integer count) {
-
-        return Result.success("400","获取成功",postMapper.getRangePosts((beginPage-1)*count,count));
+        Post post = postMapper.getRangePosts((beginPage-1)*count,count);
+        return Result.success("400","获取成功",post);
     }
 }

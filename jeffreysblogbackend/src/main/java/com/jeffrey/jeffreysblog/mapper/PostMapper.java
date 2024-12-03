@@ -17,7 +17,7 @@ public interface PostMapper {
 
     Boolean updatePost(@Param("post") Post post);
 
-    Post getPostById(@NonNull Integer id);
+    Post getPostById(@NonNull String postId);
 
     Post getRangePosts(Integer beginIndex, Integer count);
 }
