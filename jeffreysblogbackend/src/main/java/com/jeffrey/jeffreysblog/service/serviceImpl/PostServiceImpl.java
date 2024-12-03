@@ -1,6 +1,8 @@
 package com.jeffrey.jeffreysblog.service.serviceImpl;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.jeffrey.jeffreysblog.common.Result;
 import com.jeffrey.jeffreysblog.entity.Post;
 import com.jeffrey.jeffreysblog.mapper.PostMapper;
@@ -22,12 +24,13 @@ public class PostServiceImpl implements PostService {
 
     public Result addPost(@NotNull Post post) {
         post.setDate(new Date()); //发布时间设置为服务器系统时间
+
         post.setAuthor(JSON.toJSONString(post.getAuthor()));
         post.setCategory(JSON.toJSONString(post.getCategory()));
         post.setPostId(String.valueOf(UUID.randomUUID()));
         if(postMapper.addPost(post)){
             post.setAuthor(JSON.parseObject(post.getAuthor().toString()));
-            post.setCategory(JSON.parseObject(post.getCategory().toString()));
+            post.setCategory(JSONObject.parseArray(post.getCategory().toString()));
             return Result.success("200","插入成功",post);
         }
         else{

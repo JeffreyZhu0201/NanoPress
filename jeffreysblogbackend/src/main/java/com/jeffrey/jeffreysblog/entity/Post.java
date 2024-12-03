@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -14,7 +15,7 @@ import java.util.Date;
 public class Post {
     private String postId;
     private String title;
-    private Author author;
+    private Object author;
     private String readNum;
     private Date date;
     private String content;
