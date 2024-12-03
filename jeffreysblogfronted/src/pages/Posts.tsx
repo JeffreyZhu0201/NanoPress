@@ -12,7 +12,7 @@
 import React, { useEffect, useState } from "react"
 import Pagination from "../components/Pagination"
 import testPosts from "../common/testData/postData"
-import Post from "../common/entity/postEntity"
+import Post from "../common/entity/Post"
 import PostCard from "../components/PostCard"
 
 function Posts() {

@@ -12,7 +12,7 @@
 import React from "react"
 
 import { Link } from "react-router-dom"
-import Project from "../common/entity/projectEntity"
+import Project from "../common/entity/Project"
 
 function ProjectCard(props: { project: Project }) {
 

@@ -10,9 +10,9 @@
  */
 
 import React from "react"
-import CategoryColor from "../common/CategoryColor"
+import CategoryColor from "../common/entity/CategoryColor"
 import { Link } from "react-router-dom"
-import Post from "../common/entity/postEntity"
+import Post from "../common/entity/Post"
 
 function BlogCard(props: {post:Post}) {
 
