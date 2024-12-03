@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 20:46:03
+ * @LastEditTime: 2024-12-03 09:39:02
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -13,16 +13,16 @@ import React, { ReactElement } from "react"
 import Avatar from "../resource/avatar.jpeg"
 
 import ProjectCard from "../components/ProjectCard"
-import BlogCard from "../components/BlogCard"
+import BlogCard from "../components/PostCard"
 import { Link } from "react-router-dom"
-import testBlogs from "../common/testData/blogData"
+import testPosts from "../common/testData/postData"
 import testProjects from "../common/testData/projectData"
-import Blog from "../common/entity/postEntity"
+import Post from "../common/entity/postEntity"
 import Project from "../common/entity/projectEntity"
 
 function Homepage(): ReactElement {
 
-    var blogPreviewList:Blog[] = testBlogs.slice(0, 3);
+    var blogPreviewList:Post[] = testPosts.slice(0, 3);
     var proejctPreviewList:Project[] = testProjects.slice(0, 3)
 
     return (
@@ -58,7 +58,7 @@ function Homepage(): ReactElement {
 
                 {
                     blogPreviewList.map((blogItem) => {
-                        return <BlogCard blog={blogItem}></BlogCard>
+                        return <BlogCard post={blogItem}></BlogCard>
                     })
                 }
 

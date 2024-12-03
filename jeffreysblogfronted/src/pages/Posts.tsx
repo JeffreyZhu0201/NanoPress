@@ -2,8 +2,8 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:03:31
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-02 19:39:44
- * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Post.tsx
+ * @LastEditTime: 2024-12-03 09:39:43
+ * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Posts.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
@@ -11,16 +11,16 @@
 
 import React, { useEffect, useState } from "react"
 import Pagination from "../components/Pagination"
-import testBlogs from "../common/testData/blogData"
-import Blog from "../common/entity/postEntity"
-import BlogCard from "../components/BlogCard"
+import testPosts from "../common/testData/postData"
+import Post from "../common/entity/postEntity"
+import PostCard from "../components/PostCard"
 
-function Post() {
+function Posts() {
 
     const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     console.log(loading)
-    const [blogsPerPage] = useState(5);
+    const [postsPerPage] = useState(5);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -34,10 +34,10 @@ function Post() {
     }, []);
 
     // Get current posts
-    const indexOfLastPost = currentPage * blogsPerPage;
-    const indexOfFirstPost = indexOfLastPost - blogsPerPage;
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
-    var blogList: Blog[] = testBlogs.slice(indexOfFirstPost, indexOfLastPost);
+    var postList: Post[] = testPosts.slice(indexOfFirstPost, indexOfLastPost);
 
     // Change page
     const paginateFront = () => {
@@ -53,15 +53,15 @@ function Post() {
             </div>
             <div>
                 {
-                    blogList.map((blogItem) => {
-                        return <BlogCard blog={blogItem}></BlogCard>
+                    postList.map((postItem) => {
+                        return <PostCard post={postItem}></PostCard>
                     })
                 }
             </div>
             <div className="mt-auto flex flex-row items-center justify-center">
                 <Pagination
-                    postsPerPage={blogsPerPage}
-                    totalPosts={testBlogs.length}
+                    postsPerPage={postsPerPage}
+                    totalPosts={testPosts.length}
                     paginateBack={paginateBack}
                     paginateFront={paginateFront}
                     currentPage={currentPage}
@@ -72,4 +72,4 @@ function Post() {
     )
 }
 
-export default Post
+export default Posts
