@@ -1,23 +1,28 @@
 package com.jeffrey.jeffreysblog.service.serviceImpl;
 
+import com.alibaba.fastjson.JSON;
 import com.jeffrey.jeffreysblog.common.Result;
 import com.jeffrey.jeffreysblog.entity.Post;
 import com.jeffrey.jeffreysblog.mapper.PostMapper;
 import com.jeffrey.jeffreysblog.service.PostService;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
 @Service
+@Slf4j
 public class PostServiceImpl implements PostService {
 
     @Resource
     PostMapper postMapper;
 
     public Result addPost(@NotNull Post post) {
-        post.setCreateDatetime(new Date()); //发布时间设置为服务器系统时间
+        post.setDate(new Date()); //发布时间设置为服务器系统时间
+        post.setAuthor(JSON.toJSONString(post.getAuthor()));
+        post.setCategory(JSON.toJSONString(post.getCategory()));
         if(postMapper.addPost(post)){
             return Result.success("200","插入成功",post);
         }
