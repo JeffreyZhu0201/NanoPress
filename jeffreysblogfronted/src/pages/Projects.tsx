@@ -2,16 +2,14 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:04:39
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 20:53:55
+ * @LastEditTime: 2024-12-04 20:24:02
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Projects.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
-import React from "react"
 import ProjectCard from "../components/ProjectCard"
-
 
 function Projects() {
     

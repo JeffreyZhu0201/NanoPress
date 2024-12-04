@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPostById } from "../common/Http/postData"
 import Post from "../common/entity/Post";
-import axios from "axios";
-import staticResource from "../common/staticResource";
 
 function ArticleDetail() {
     const { type, id } = useParams();

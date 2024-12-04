@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:12:26
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 16:39:33
+ * @LastEditTime: 2024-12-04 20:22:27
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\FootBar.tsx
  * @Description: File Description Here...
  * 
@@ -14,13 +14,6 @@ import { AiFillGithub, AiFillTwitterCircle } from "react-icons/ai"
 // import {useState} from 'react'
 
 function FootBar() {
-
-    // const [nav,setNav] = useState(false)
-
-    // const handleNav = ()=>{
-    //     setNav(!nav)
-    // }
-
     return (
         <div className="items-center flex justify-center md:justify-between p-2 md:p-12 bg-slate-600 mt-auto flex-col md:flex-row">
             <div className="flex flex-col items-center justify-center md:items-start">

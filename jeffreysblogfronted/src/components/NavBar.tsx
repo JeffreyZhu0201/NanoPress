@@ -9,7 +9,6 @@
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
-import React from "react"
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { useState } from 'react'
 import links from "../common/Links"
@@ -30,7 +29,7 @@ function NavBar() {
 
             <ul className='hidden md:flex font-bold text-lg'>
                 {
-                    links.map((item,index) => {
+                    links.map((item, index) => {
                         if (item.name && item.number === 1) {
                             return <Link key={index} to={item.path} replace className='p-4 hover:underline hover:decoration-solid hover:underline-offset-8 decoration-4 cursor-pointer transition-colors duration-500'>{item.name}</Link>
                         }
@@ -50,11 +49,10 @@ function NavBar() {
 
                 <ul className='uppercase p-4'>
                     {
-                        links.map((item,index) => {
+                        links.map((item, index) => {
                             return <li key={index} className='p-4 border-b border-gray-600'>{item.name}</li>
                         })
                     }
-
                     <div onClick={handleNav} className='block md:hidden p-4 my-10'>
                         {
                             !nav ? <></> : <AiOutlineClose size={40} />

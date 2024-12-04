@@ -2,14 +2,13 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-27 22:26:22
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-04 14:18:00
+ * @LastEditTime: 2024-12-04 20:22:49
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\PostCard.tsx
  * @Description: File Description Here..II
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
-import React from "react"
 import CategoryColor from "../common/entity/CategoryColor"
 import { Link } from "react-router-dom"
 import Post from "../common/entity/Post"
@@ -17,7 +16,6 @@ import Post from "../common/entity/Post"
 function BlogCard(props: {post:Post}) {
 
     return (
-
         <>
             <Link to={`/articledetail/post/${props.post.postId}`}>
                 <div className="m-2 md:m-4 border-b-1 border-x-white">

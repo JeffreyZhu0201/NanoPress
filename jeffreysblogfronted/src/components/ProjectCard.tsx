@@ -9,8 +9,6 @@
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
-import React from "react"
-
 import { Link } from "react-router-dom"
 import Project from "../common/entity/Project"
 
