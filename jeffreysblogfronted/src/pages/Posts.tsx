@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:03:31
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-03 09:39:43
+ * @LastEditTime: 2024-12-04 11:03:29
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Posts.tsx
  * @Description: File Description Here...
  * 
@@ -37,7 +37,7 @@ function Posts() {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
 
-    var postList: Post[] = testPosts.slice(indexOfFirstPost, indexOfLastPost);
+    //var postList: Post[] = testPosts.slice(indexOfFirstPost, indexOfLastPost);
 
     // Change page
     const paginateFront = () => {
@@ -52,11 +52,11 @@ function Posts() {
                 <p className="text-base md:text-lg text-white overflow-ellipsis">Articles, tutorials, snippets, rants, and everything else. Subscribe for updates as they happen.</p>
             </div>
             <div>
-                {
+                {/* {
                     postList.map((postItem) => {
                         return <PostCard post={postItem}></PostCard>
                     })
-                }
+                } */}
             </div>
             <div className="mt-auto flex flex-row items-center justify-center">
                 <Pagination

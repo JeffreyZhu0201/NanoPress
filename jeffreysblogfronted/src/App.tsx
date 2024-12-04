@@ -34,8 +34,8 @@ function App() {
           <div className='min-h-screen'>
             <Routes>
               {
-                links.map((item) => {
-                  return <Route path={item.path} element={
+                links.map((item,index) => {
+                  return <Route key={index} path={item.path} element={
                     <Suspense fallback={<Loading></Loading>}>{item.page}</Suspense>}
                   >
                   </Route>

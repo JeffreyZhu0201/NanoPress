@@ -2,14 +2,14 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-03 09:39:02
+ * @LastEditTime: 2024-12-04 14:09:16
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
-import React, { ReactElement } from "react"
+import React, { ReactElement, Suspense, useEffect, useState } from "react"
 import Avatar from "../resource/avatar.jpeg"
 
 import ProjectCard from "../components/ProjectCard"
@@ -20,10 +20,26 @@ import testProjects from "../common/testData/projectData"
 import Post from "../common/entity/Post"
 import Project from "../common/entity/Project"
 
-function Homepage(): ReactElement {
+import { getHomePagePostData } from "../common/Http/postData"
+import Loading from "../common/Loading"
 
-    var blogPreviewList:Post[] = testPosts.slice(0, 3);
-    var proejctPreviewList:Project[] = testProjects.slice(0, 3)
+function Homepage(){
+    const [postPreview,setPostPreview] = useState([]);
+
+    useEffect(()=>{
+        
+        const FetchPostPreview = async ()=>{
+            try{
+                const res = await getHomePagePostData(1,3);
+                setPostPreview(res.data.data);
+                console.log(res.data.data);
+            }catch(err){
+
+            }
+        }
+        FetchPostPreview();
+    },[])
+    
 
     return (
         <div className="Homepage bg-slate-400 w-full flex flex-col p-2 md:p-14">
@@ -55,13 +71,11 @@ function Homepage(): ReactElement {
                     <p className="text-2xl font-bold text-white">最新发布</p>
                     <Link to="/blogs" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
                 </div>
-
                 {
-                    blogPreviewList.map((blogItem) => {
-                        return <BlogCard post={blogItem}></BlogCard>
+                    postPreview.map((postItem,index) => {
+                        return <Suspense key={index} fallback={<Loading></Loading>}><BlogCard  post={postItem}></BlogCard></Suspense>
                     })
                 }
-
             </div>
 
             <div className="p-2  grid grid-flow-row gap-4">
@@ -69,12 +83,13 @@ function Homepage(): ReactElement {
                     <p className="text-2xl font-bold text-white">最新项目</p>
                     <Link to="/projects" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多项目--&gt;</Link>
                 </div>
-                {
+                {/* {
                     proejctPreviewList.map((projectItem) => {
                         return <ProjectCard project={projectItem}></ProjectCard>
                     })
-                }
+                } */}
             </div>
+
         </div>
     )
 

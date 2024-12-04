@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-27 22:26:22
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-03 09:34:23
+ * @LastEditTime: 2024-12-04 14:12:32
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\PostCard.tsx
  * @Description: File Description Here..II
  * 
@@ -23,8 +23,8 @@ function BlogCard(props: {post:Post}) {
                 <div className="m-2 md:m-4 border-b-1 border-x-white">
                     <div className="">
                         {
-                            props.post.category.map((categoryItem) => {
-                                return <div className={`text-white ${CategoryColor.get(categoryItem.color)} inline-block rounded-full text-xs md:text-sm ml-2 p-2 pt-0.5 pb-0.5 cursor-pointer hover:bg-green-200 transition-colors`}>{categoryItem.name}</div>
+                            props.post.category.map((categoryItem,index) => {
+                                return <div key={index} className={`text-white ${CategoryColor.get(categoryItem.color)} inline-block rounded-full text-xs md:text-sm ml-2 p-2 pt-0.5 pb-0.5 cursor-pointer hover:bg-green-200 transition-colors`}>{categoryItem.name}</div>
                             })
                         }
                     </div>
@@ -33,7 +33,7 @@ function BlogCard(props: {post:Post}) {
                         <div className="flex m-1 md:m-2 font-thin text-sm">
                             <div>{props.post.date}</div>
                             <span>&nbsp;&nbsp;&frasl;&frasl;&nbsp;&nbsp;</span>
-                            <div>{props.post.read} read</div>
+                            <div>{props.post.readNum} read</div>
                             <div className="ml-auto text-gray-300 text-sm cursor-pointer hover:text-slate-100 transition-colors">查看更多</div>
                         </div>
                     </div>
