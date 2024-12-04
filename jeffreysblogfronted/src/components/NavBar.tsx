@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:52:43
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 11:12:44
+ * @LastEditTime: 2024-12-04 20:14:28
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\NavBar.tsx
  * @Description: File Description Here...
  * 
@@ -30,9 +30,9 @@ function NavBar() {
 
             <ul className='hidden md:flex font-bold text-lg'>
                 {
-                    links.map((item) => {
+                    links.map((item,index) => {
                         if (item.name && item.number === 1) {
-                            return <Link to={item.path} replace className='p-4 hover:underline hover:decoration-solid hover:underline-offset-8 decoration-4 cursor-pointer transition-colors duration-500'>{item.name}</Link>
+                            return <Link key={index} to={item.path} replace className='p-4 hover:underline hover:decoration-solid hover:underline-offset-8 decoration-4 cursor-pointer transition-colors duration-500'>{item.name}</Link>
                         }
                         return null;
                     })
@@ -50,8 +50,8 @@ function NavBar() {
 
                 <ul className='uppercase p-4'>
                     {
-                        links.map((item) => {
-                            return <li className='p-4 border-b border-gray-600'>{item.name}</li>
+                        links.map((item,index) => {
+                            return <li key={index} className='p-4 border-b border-gray-600'>{item.name}</li>
                         })
                     }
 

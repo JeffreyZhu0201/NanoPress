@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-27 22:26:22
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-04 14:12:32
+ * @LastEditTime: 2024-12-04 14:18:00
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\PostCard.tsx
  * @Description: File Description Here..II
  * 
@@ -19,7 +19,7 @@ function BlogCard(props: {post:Post}) {
     return (
 
         <>
-            <Link to={`/articledetail/blog/${props.post.postId}`}>
+            <Link to={`/articledetail/post/${props.post.postId}`}>
                 <div className="m-2 md:m-4 border-b-1 border-x-white">
                     <div className="">
                         {

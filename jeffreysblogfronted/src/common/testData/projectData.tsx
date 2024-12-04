@@ -1,132 +1,16 @@
+/*
+ * @Author: JeffreyZhu 1624410543@qq.com
+ * @Date: 2024-12-04 20:01:19
+ * @LastEditors: JeffreyZhu 1624410543@qq.com
+ * @LastEditTime: 2024-12-04 20:01:23
+ * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\common\testData\postData copy.tsx
+ * @Description: File Description Here...
+ * 
+ * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
+ */
+import Project from "../entity/Project"
 
-const testProjects = [
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    }, 
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    },
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    }, 
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    },
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    }, 
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    },
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    }, 
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    },
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    }, 
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    },
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    }, 
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    },
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    }, 
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    },
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    }, 
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    },
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    }, 
-    {
-        projectId: "123",
-        title: "123",
-        intro: "123",
-        date: "123",
-        content: "123"
-    },
-
+const testProject:Project[] = [
 ]
 
-export default testProjects
+export default testProject

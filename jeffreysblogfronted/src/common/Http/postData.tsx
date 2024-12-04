@@ -11,7 +11,6 @@
 
 import axios from "axios";
 import staticResource from "../staticResource";
-import exp from "constants";
 
 export function getHomePagePostData(beginPage:number,count:number){
     return axios({
@@ -24,7 +23,7 @@ export function getHomePagePostData(beginPage:number,count:number){
     })
 }
 
-export function getPostById(postId:string){
+export function getPostById(postId:any){
     return axios({
         method:'get',
         url:staticResource.baseUrl + '/post/getpostbyid',

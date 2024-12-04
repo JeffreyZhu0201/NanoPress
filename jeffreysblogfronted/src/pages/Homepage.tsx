@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-04 14:09:16
+ * @LastEditTime: 2024-12-04 20:18:03
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -27,7 +27,6 @@ function Homepage(){
     const [postPreview,setPostPreview] = useState([]);
 
     useEffect(()=>{
-        
         const FetchPostPreview = async ()=>{
             try{
                 const res = await getHomePagePostData(1,3);
@@ -39,7 +38,6 @@ function Homepage(){
         }
         FetchPostPreview();
     },[])
-    
 
     return (
         <div className="Homepage bg-slate-400 w-full flex flex-col p-2 md:p-14">
@@ -69,7 +67,7 @@ function Homepage(){
             <div className="p-2  grid grid-flow-row gap-4">
                 <div className="flex items-center">
                     <p className="text-2xl font-bold text-white">最新发布</p>
-                    <Link to="/blogs" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
+                    <Link to="/posts" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
                 </div>
                 {
                     postPreview.map((postItem,index) => {
