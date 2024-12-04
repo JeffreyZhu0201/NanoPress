@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:03:31
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-05 00:28:46
+ * @LastEditTime: 2024-12-05 00:30:58
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Posts.tsx
  * @Description: File Description Here...
  * 
@@ -27,7 +27,6 @@ function Posts() {
         const fetchPosts = async () => {
             try{
                 await getRangePost(currentPage,postsPerPage).then(res=>{
-                    console.log(res.data.data);
                     setPostList(res.data.data.posts);
                     setPostLength(res.data.data.count);
                 })
