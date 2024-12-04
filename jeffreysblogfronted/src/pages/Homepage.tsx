@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-04 20:18:03
+ * @LastEditTime: 2024-12-05 00:01:36
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -20,7 +20,7 @@ import testProjects from "../common/testData/projectData"
 import Post from "../common/entity/Post"
 import Project from "../common/entity/Project"
 
-import { getHomePagePostData } from "../common/Http/postData"
+import { getRangePost } from "../common/Http/postData"
 import Loading from "../common/Loading"
 
 function Homepage(){
@@ -29,9 +29,9 @@ function Homepage(){
     useEffect(()=>{
         const FetchPostPreview = async ()=>{
             try{
-                const res = await getHomePagePostData(1,3);
-                setPostPreview(res.data.data);
-                console.log(res.data.data);
+                const res = await getRangePost(1,3);
+                setPostPreview(res.data.data.posts);
+                console.log(res.data.data.posts);
             }catch(err){
 
             }

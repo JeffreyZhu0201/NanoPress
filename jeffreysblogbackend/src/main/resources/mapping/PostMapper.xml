@@ -17,7 +17,7 @@
     <update id="updatePost" parameterType="com.jeffrey.jeffreysblog.entity.Post">
         UPDATE post SET title=#{post.title},content=#{post.content},category=#{post.category},readNum=#{post.readNum},date=#{post.date} WHERE postId=#{post.postId}
     </update>
-    
+
     <select id="getPostById" parameterType="String">
         SELECT * FROM post WHERE postId=#{postId};
     </select>
@@ -28,6 +28,10 @@
 
     <select id="getAllPosts">
         SELECT * FROM post
+    </select>
+
+    <select id="getLength" resultType="int">
+        SELECT COUNT(*) FROM post
     </select>
 
 </mapper>

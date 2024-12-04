@@ -24,4 +24,7 @@ public interface PostMapper {
     List<Post> getRangePosts(Integer beginIndex, Integer count);
 
     List<Post> getAllPosts();
+
+    Integer getLength();
+
 }

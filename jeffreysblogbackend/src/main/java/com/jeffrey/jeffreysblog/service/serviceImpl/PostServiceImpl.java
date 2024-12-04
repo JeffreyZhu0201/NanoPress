@@ -1,7 +1,6 @@
 package com.jeffrey.jeffreysblog.service.serviceImpl;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.jeffrey.jeffreysblog.common.Result;
 import com.jeffrey.jeffreysblog.entity.Post;
@@ -85,7 +84,11 @@ public class PostServiceImpl implements PostService {
     public Result getRangePosts(Integer beginPage, Integer count) {
         List<Post> posts = postMapper.getRangePosts((beginPage-1)*count,count);
         posts.forEach(this::parseParam);
-        return Result.success("400","获取成功",posts);
+        Map<String,Object> map = new HashMap<>();
+        Integer postsLength = postMapper.getLength();
+        map.put("posts",posts);
+        map.put("count",postsLength);
+        return Result.success("400","获取成功",map);
     }
 
     @Override
@@ -94,4 +97,6 @@ public class PostServiceImpl implements PostService {
         posts.forEach(this::parseParam);
         return Result.success(posts);
     }
+
+
 }
