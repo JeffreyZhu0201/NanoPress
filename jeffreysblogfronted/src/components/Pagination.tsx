@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-30 19:46:25
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-02 18:56:50
+ * @LastEditTime: 2024-12-05 09:41:19
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\Pagination.tsx
  * @Description: File Description Here...
  * 
@@ -57,7 +57,7 @@ export default function Pagination(props: {
                     }
                 }}
                 href='#'
-                className={`${(props.currentPage === 1) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-transparent text-sm font-medium text-gray-500 hover:bg-gray-50`}
+                className={`${(props.currentPage === 1) ? 'pointer-events-none cursor-not-allowed' : ''} flex flex-row items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-transparent text-sm font-medium text-gray-500 hover:bg-gray-50`}
             >
                 <span><GoChevronLeft></GoChevronLeft></span>
             </a>
@@ -71,7 +71,7 @@ export default function Pagination(props: {
                     }
                 }}
                 href='#'
-                className={`${(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage)) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-12 w-12 rounded-full border border-gray-300 bg-transparent text-sm font-medium text-gray-500 hover:bg-gray-50`}
+                className={`${(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage)) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-transparent text-sm font-medium text-gray-500 hover:bg-gray-50`}
             >
                 <span><GoChevronRight></GoChevronRight></span>
             </a>
