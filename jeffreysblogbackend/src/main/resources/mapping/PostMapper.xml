@@ -23,7 +23,7 @@
     </select>
 
     <select id="getRangePosts" parameterType="int">
-        SELECT * FROM post LIMIT #{count} OFFSET #{beginIndex}
+        SELECT * FROM post order by date DESC LIMIT #{count} OFFSET #{beginIndex}
     </select>
 
     <select id="getAllPosts">

@@ -1,15 +1,30 @@
+/*
+ * @Author: JeffreyZhu 1624410543@qq.com
+ * @Date: 2024-11-29 11:08:05
+ * @LastEditors: JeffreyZhu 1624410543@qq.com
+ * @LastEditTime: 2024-12-05 19:05:21
+ * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\ArticleDetail.tsx
+ * @Description: File Description Here...
+ * 
+ * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
+ */
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPostById } from "../common/Http/postData"
 import Post from "../common/entity/Post";
 
+import Markdown from "react-markdown"
+
+
 function ArticleDetail() {
     const { type, id } = useParams();
     let [article, setArticle] = useState({} as Post);
+    
     useEffect(() => {
         const FetchArticleDetail = async () => {
             try {
                 getPostById(id).then(res => {
+                    res.data.data.content = (res.data.data.content)
                     setArticle(res.data.data)
                 })
             } catch (err) {
@@ -17,6 +32,7 @@ function ArticleDetail() {
         }
         FetchArticleDetail();
     }, [id])
+    
     return (
         <div className="bg-green-200 p-4 md:p-6 h-screen">
             <div className="mt-4 md:mt-8 border-b-1 border-gray-700">
@@ -30,7 +46,7 @@ function ArticleDetail() {
                 </div>
             </div>
             <div className="mt-4 md:mt-8">
-                {article?.content}
+                <Markdown>{article?.content}</Markdown>
             </div>
         </div>)
 
