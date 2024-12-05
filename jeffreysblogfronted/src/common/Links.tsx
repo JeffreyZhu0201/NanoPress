@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-28 14:26:40
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-03 09:35:34
+ * @LastEditTime: 2024-12-05 09:40:23
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\common\Links.tsx
  * @Description: File Description Here...
  * 
@@ -31,7 +31,7 @@ const links = [
     },
     {
         name: "Posts",
-        path: '/postss',
+        path: '/posts',
         page: <Post />,
         number: 1
     },
