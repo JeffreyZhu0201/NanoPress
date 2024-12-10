@@ -1,9 +1,10 @@
 package com.jeffrey.jeffreysblog.mapper;
 
 
-import com.jeffrey.jeffreysblog.common.Result;
 import com.jeffrey.jeffreysblog.entity.Post;
-import org.apache.ibatis.annotations.*;
+import com.jeffrey.jeffreysblog.entity.Project;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Repository;
 
@@ -11,19 +12,19 @@ import java.util.List;
 
 @Mapper
 @Repository
-public interface PostMapper {
+public interface ProjectMapper {
 
-    Boolean addPost(@Param("post") Post post);
+    Boolean addProject(@Param("post") Project project);
 
-    Boolean deletePost(String postId);
+    Boolean deleteProject(String projectId);
 
-    Boolean updatePost(@Param("post") Post post);
+    Boolean updateProject(@Param("post") Project project);
 
-    Post getPostById(@NonNull String postId);
+    Project getProjectById(@NonNull String projectId);
 
-    List<Post> getRangePosts(Integer beginIndex, Integer count);
+    List<Project> getRangeProjects(Integer beginIndex, Integer count);
 
-    List<Post> getAllPosts();
+    List<Project> getAllProjects();
 
     Integer getLength();
 

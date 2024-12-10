@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:04:39
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-10 10:00:24
+ * @LastEditTime: 2024-12-10 10:02:57
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Projects.tsx
  * @Description: File Description Here...
  * 
@@ -32,8 +32,6 @@ function Projects() {
             }catch(err){
 
             }
-            //const res = await axios.get("https://jsonplaceholder.typicode.com/posts");
-            //setPosts(res.data);
         };
         fetchPosts();
     }, [currentPage,projectsPerPage]);

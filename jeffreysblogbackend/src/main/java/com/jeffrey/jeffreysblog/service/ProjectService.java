@@ -1,24 +1,24 @@
 package com.jeffrey.jeffreysblog.service;
 
 import com.jeffrey.jeffreysblog.common.Result;
-import com.jeffrey.jeffreysblog.entity.Post;
+import com.jeffrey.jeffreysblog.entity.Project;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface PostService {
-    Post stringfyParam(Post post);
+public interface ProjectService {
+    Project stringfyParam(Project project);
 
-    Post parseParam(Post post);
+    Project parseParam(Project project);
 
-    Result addPost(Post post);
+    Result addProject(Project project);
 
-    Result deletePost(String postId);
+    Result deleteProject(String projectId);
 
-    Result updatePost(Post post);
+    Result updateProject(Project project);
 
-    Result getPostById(String postId);
+    Result getProjectById(String projectId);
 
-    Result getRangePosts(Integer beginPage, Integer count);
+    Result getRangeProjects(Integer beginPage, Integer count);
 
-    Result getAllPosts();
+    Result getAllProjects();
 }
