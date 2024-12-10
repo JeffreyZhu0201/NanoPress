@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-29 11:08:05
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-05 19:05:21
+ * @LastEditTime: 2024-12-10 09:49:31
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\ArticleDetail.tsx
  * @Description: File Description Here...
  * 
@@ -19,12 +19,11 @@ import Markdown from "react-markdown"
 function ArticleDetail() {
     const { type, id } = useParams();
     let [article, setArticle] = useState({} as Post);
-    
+
     useEffect(() => {
         const FetchArticleDetail = async () => {
             try {
                 getPostById(id).then(res => {
-                    res.data.data.content = (res.data.data.content)
                     setArticle(res.data.data)
                 })
             } catch (err) {
@@ -32,7 +31,7 @@ function ArticleDetail() {
         }
         FetchArticleDetail();
     }, [id])
-    
+
     return (
         <div className="bg-green-200 p-4 md:p-6 h-screen">
             <div className="mt-4 md:mt-8 border-b-1 border-gray-700">

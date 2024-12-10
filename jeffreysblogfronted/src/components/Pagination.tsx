@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-30 19:46:25
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-05 09:41:19
+ * @LastEditTime: 2024-12-10 10:00:52
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\Pagination.tsx
  * @Description: File Description Here...
  * 
@@ -15,19 +15,19 @@
 import { GoChevronLeft, GoChevronRight } from "react-icons/go"
 
 export default function Pagination(props: {
-    postsPerPage: number,
-    totalPosts: number,
+    PerPage: number,
+    total: number,
     paginateFront: any,
     paginateBack: any,
     currentPage: number,
     setCurrentPage: any
 }) {
 
-    var items = [...Array(Math.ceil(props.totalPosts / props.postsPerPage))].map((_item, _itemIndex) => {
+    var items = [...Array(Math.ceil(props.total / props.PerPage))].map((_item, _itemIndex) => {
         return <a key={_itemIndex} className={`h-10 w-10 cursor-pointer rounded-full mx-1 flex flex-row items-center justify-center select-none transition-all hover:bg-blue-300 duration-700 ease-in-out ${(props.currentPage === (_itemIndex + 1)) ? 'bg-blue-500' : 'bg-red-100'}`} onClick={() => handleClick(_itemIndex)}>
             {_itemIndex + 1}
         </a>
-    }).slice(Math.max(0,props.currentPage-3),Math.min(Math.max(0,props.currentPage-3)+5,Math.ceil(props.totalPosts / props.postsPerPage)))
+    }).slice(Math.max(0,props.currentPage-3),Math.min(Math.max(0,props.currentPage-3)+5,Math.ceil(props.total / props.PerPage)))
 
     // var [items,setItemsVal] = useState(a.slice(0,5));
 
@@ -66,12 +66,12 @@ export default function Pagination(props: {
             </div>
             <a
                 onClick={() => {
-                    if (!(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage))) {
+                    if (!(props.currentPage === Math.ceil(props.total / props.PerPage))) {
                         props.paginateFront();
                     }
                 }}
                 href='#'
-                className={`${(props.currentPage === Math.ceil(props.totalPosts / props.postsPerPage)) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-transparent text-sm font-medium text-gray-500 hover:bg-gray-50`}
+                className={`${(props.currentPage === Math.ceil(props.total / props.PerPage)) ? 'pointer-events-none' : ''} flex flex-row items-center justify-center h-10 w-10 rounded-full border border-gray-300 bg-transparent text-sm font-medium text-gray-500 hover:bg-gray-50`}
             >
                 <span><GoChevronRight></GoChevronRight></span>
             </a>

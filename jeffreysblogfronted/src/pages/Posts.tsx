@@ -11,8 +11,6 @@
 
 import React, { useEffect, useState } from "react"
 import Pagination from "../components/Pagination"
-import testPosts from "../common/testData/postData"
-import Post from "../common/entity/Post"
 import PostCard from "../components/PostCard"
 import { getRangePost } from "../common/Http/postData"
 
@@ -58,8 +56,8 @@ function Posts() {
             </div>
             <div className="mt-auto flex flex-row items-center justify-center">
                 <Pagination
-                    postsPerPage={postsPerPage}
-                    totalPosts={postLength}
+                    PerPage={postsPerPage}
+                    total={postLength}
                     paginateBack={paginateBack}
                     paginateFront={paginateFront}
                     currentPage={currentPage}

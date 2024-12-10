@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-30 20:21:43
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-04 14:58:57
+ * @LastEditTime: 2024-12-10 09:48:23
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\common\entity\Post.tsx
  * @Description: File Description Here...
  * 
@@ -13,10 +13,7 @@ import Author from "./Author"
 interface Post {
     postId: string,
     title: string,
-    author: {
-        name:string,
-        authorId:string,
-    },
+    author: Author,
     readNum: string,
     date: string,
     content: string,
