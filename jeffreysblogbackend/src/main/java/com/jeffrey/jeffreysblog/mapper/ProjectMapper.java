@@ -14,11 +14,11 @@ import java.util.List;
 @Repository
 public interface ProjectMapper {
 
-    Boolean addProject(@Param("post") Project project);
+    Boolean addProject(@Param("project") Project project);
 
     Boolean deleteProject(String projectId);
 
-    Boolean updateProject(@Param("post") Project project);
+    Boolean updateProject(@Param("project") Project project);
 
     Project getProjectById(@NonNull String projectId);
 

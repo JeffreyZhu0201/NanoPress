@@ -100,6 +100,4 @@ public class ProjectServiceImpl implements ProjectService {
         projects.forEach(this::parseParam);
         return Result.success(projects);
     }
-
-
 }

@@ -4,34 +4,34 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--	上面的依赖可以从mybatis中文网复制	-->
 <!-- namespace属性为Mapper接口全限定名一致 -->
-<mapper namespace="com.jeffrey.jeffreysblog.mapper.PostMapper">
+<mapper namespace="com.jeffrey.jeffreysblog.mapper.ProjectMapper">
     <!--  id为Mapper接口中对应的方法名，resultType为返回的实体全类名  -->
-    <insert id="addPost" parameterType="com.jeffrey.jeffreysblog.entity.Post">
-        INSERT INTO post(postId,title,author,readNum,date,content,category) VALUES (#{post.postId},#{post.title},#{post.author},#{post.readNum},#{post.date},#{post.content},#{post.category})
+    <insert id="addProject" parameterType="com.jeffrey.jeffreysblog.entity.Project">
+        INSERT INTO project(projectId,title,intro,date,content) VALUES (#{project.projectId},#{project.title},#{project.intro},#{project.date},#{project.content})
     </insert>
 
-    <delete id="deletePost" parameterType="String">
-        DELETE FROM post WHERE postId = #{postId}
+    <delete id="deleteProject" parameterType="String">
+        DELETE FROM project WHERE projectId = #{projectId}
     </delete>
 
-    <update id="updatePost" parameterType="com.jeffrey.jeffreysblog.entity.Post">
-        UPDATE post SET title=#{post.title},content=#{post.content},category=#{post.category},readNum=#{post.readNum},date=#{post.date} WHERE postId=#{post.postId}
+    <update id="updateProject" parameterType="com.jeffrey.jeffreysblog.entity.Project">
+        UPDATE project SET title=#{project.title},content=#{project.content},date=#{project.date} WHERE projectId=#{project.projectId}
     </update>
 
-    <select id="getPostById" parameterType="String">
-        SELECT * FROM post WHERE postId=#{postId};
+    <select id="getProjectById" parameterType="String">
+        SELECT * FROM project WHERE projectId=#{projectId};
     </select>
 
-    <select id="getRangePosts" parameterType="int">
-        SELECT * FROM post order by date DESC LIMIT #{count} OFFSET #{beginIndex}
+    <select id="getRangeProjects" parameterType="int">
+        SELECT * FROM project order by date DESC LIMIT #{count} OFFSET #{beginIndex}
     </select>
 
-    <select id="getAllPosts">
-        SELECT * FROM post
+    <select id="getAllProjects">
+        SELECT * FROM project
     </select>
 
     <select id="getLength" resultType="int">
-        SELECT COUNT(*) FROM post
+        SELECT COUNT(*) FROM project
     </select>
 
 </mapper>
