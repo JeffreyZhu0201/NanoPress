@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--	上面的依赖可以从mybatis中文网复制	-->
+<!-- namespace属性为Mapper接口全限定名一致 -->
+<mapper namespace="com.jeffrey.jeffreysblog.mapper.PostMapper">
+    <!--  id为Mapper接口中对应的方法名，resultType为返回的实体全类名  -->
+    <insert id="addPost" parameterType="com.jeffrey.jeffreysblog.entity.Post">
+        INSERT INTO post(postId,title,author,readNum,date,content,category) VALUES (#{post.postId},#{post.title},#{post.author},#{post.readNum},#{post.date},#{post.content},#{post.category})
+    </insert>
+
+    <delete id="deletePost" parameterType="String">
+        DELETE FROM post WHERE postId = #{postId}
+    </delete>
+
+    <update id="updatePost" parameterType="com.jeffrey.jeffreysblog.entity.Post">
+        UPDATE post SET title=#{post.title},content=#{post.content},category=#{post.category},readNum=#{post.readNum},date=#{post.date} WHERE postId=#{post.postId}
+    </update>
+
+    <select id="getPostById" parameterType="String">
+        SELECT * FROM post WHERE postId=#{postId};
+    </select>
+
+    <select id="getRangePosts" parameterType="int">
+        SELECT * FROM post order by date DESC LIMIT #{count} OFFSET #{beginIndex}
+    </select>
+
+    <select id="getAllPosts">
+        SELECT * FROM post
+    </select>
+
+    <select id="getLength" resultType="int">
+        SELECT COUNT(*) FROM post
+    </select>
+
+</mapper>
