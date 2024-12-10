@@ -52,7 +52,7 @@ public class ProjectServiceImpl implements ProjectService {
     public Result deleteProject(String projectId) {
         if(projectMapper.deleteProject(projectId)){
             Map<String,String> map = new HashMap<>();
-            map.put("postId",projectId);
+            map.put("projectId",projectId);
             return Result.success("200","删除成功",map);
         }
         else{
@@ -89,7 +89,7 @@ public class ProjectServiceImpl implements ProjectService {
         projects.forEach(this::parseParam);
         Map<String,Object> map = new HashMap<>();
         Integer postsLength = projectMapper.getLength();
-        map.put("posts",projects);
+        map.put("projects",projects);
         map.put("count",postsLength);
         return Result.success("400","获取成功",map);
     }

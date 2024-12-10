@@ -1,7 +1,5 @@
 package com.jeffrey.jeffreysblog.mapper;
 
-
-import com.jeffrey.jeffreysblog.entity.Post;
 import com.jeffrey.jeffreysblog.entity.Project;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-29 11:08:05
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-10 09:49:31
+ * @LastEditTime: 2024-12-10 15:17:57
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\ArticleDetail.tsx
  * @Description: File Description Here...
  * 
@@ -11,6 +11,7 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPostById } from "../common/Http/postData"
+import { getProjectById } from "../common/Http/projectData"
 import Post from "../common/entity/Post";
 
 import Markdown from "react-markdown"
@@ -22,11 +23,21 @@ function ArticleDetail() {
 
     useEffect(() => {
         const FetchArticleDetail = async () => {
-            try {
-                getPostById(id).then(res => {
-                    setArticle(res.data.data)
-                })
-            } catch (err) {
+            if(type === "post"){
+                try {
+                    getPostById(id).then(res => {
+                        setArticle(res.data.data)
+                    })
+                } catch (err) {
+                }
+            }
+            else{
+                try {
+                    getProjectById(id).then(res => {
+                        setArticle(res.data.data)
+                    })
+                } catch (err) {
+                }
             }
         }
         FetchArticleDetail();
@@ -40,7 +51,7 @@ function ArticleDetail() {
                 </div>
 
                 <div className="flex justify-between items-center text-gray-600 text-sm md:text-base mb-4">
-                    <div> Author : {article.author?.name} </div>
+                    <div> Author : {article?.author?.name} </div>
                     <div>{article?.date}</div>
                 </div>
             </div>

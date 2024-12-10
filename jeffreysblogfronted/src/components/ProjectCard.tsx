@@ -16,7 +16,7 @@ function ProjectCard(props: { project: Project }) {
 
     return (
         <Link to={`/articledetail/project/${props.project.projectId}`}>
-            <div className="bg-transparent border-yellow-200 rounded border hover:border-white transition-colors duration-300 shadow-purple-500 hover:shadow-2xl">
+            <div className="bg-transparent border-yellow-200 rounded border my-2 hover:border-white transition-colors duration-300 shadow-purple-500 hover:shadow-2xl">
                 <div className="m-3 flex flex-col  cursor-pointer">
                     <h1 className="text-xl md:text-2xl font-bold text-white truncate md:mb-2">{props.project.title}</h1>
                     <div className="line-clamp-1 text-sm font-thin text-white">{props.project.intro}</div>
@@ -27,7 +27,6 @@ function ProjectCard(props: { project: Project }) {
                 </div>
             </div>
         </Link>
-
     )
 }
 

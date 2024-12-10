@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:04:39
  * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-10 10:02:57
+ * @LastEditTime: 2024-12-10 15:13:41
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Projects.tsx
  * @Description: File Description Here...
  * 
@@ -20,20 +20,20 @@ function Projects() {
     const [projectLength,setProjectLength] = useState(0);
     const [projectsPerPage] = useState(5);
 
-    const [postList,setPostList] = useState([])
+    const [projectList,setProjectList] = useState([])
 
     useEffect(() => {
-        const fetchPosts = async () => {
+        const fetchProjects = async () => {
             try{
                 await getRangeProjects(currentPage,projectsPerPage).then(res=>{
-                    setPostList(res.data.data.posts);
+                    setProjectList(res.data.data.projects);
                     setProjectLength(res.data.data.count);
                 })
             }catch(err){
 
             }
         };
-        fetchPosts();
+        fetchProjects();
     }, [currentPage,projectsPerPage]);
 
     // Change page
@@ -43,12 +43,12 @@ function Projects() {
     return (
         <div className="p-2 md:pt-16 md:px-16 bg-slate-700 h-full min-h-screen flex flex-col">
             <div className="mb-2 md:mb-16">
-                <h1 className="font-bold text-xl md:text-4xl text-white mt-2 mb-8">Blogs</h1>
+                <h1 className="font-bold text-xl md:text-4xl text-white mt-2 mb-8">Projects</h1>
                 <p className="text-base md:text-lg text-white overflow-ellipsis">Articles, tutorials, snippets, rants, and everything else. Subscribe for updates as they happen.</p>
             </div>
             <div>
                 {
-                    postList.map((projectItem,index) => {
+                    projectList.map((projectItem,index) => {
                         return <ProjectCard key={index} project={projectItem}></ProjectCard>
                     })
                 }
