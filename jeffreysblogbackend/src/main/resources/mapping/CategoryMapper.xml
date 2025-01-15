@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--	上面的依赖可以从mybatis中文网复制	-->
+<!-- namespace属性为Mapper接口全限定名一致 -->
+<mapper namespace="com.jeffrey.jeffreysblog.mapper.CategoryMapper">
+    <!--  id为Mapper接口中对应的方法名，resultType为返回的实体全类名  -->
+
+    <insert id="addCategory" parameterType="com.jeffrey.jeffreysblog.entity.Category">
+        INSERT INTO category (id,name,textColor,bgColor) VALUES (#{category.categoryId},#{category.categoryName},#{category.textColor},#{category.bgColor});
+    </insert>
+
+    <delete id="deleteCategory" parameterType="String">
+        DELETE FROM category WHERE id = #{categoryId};
+    </delete>
+
+    <update id="updateCategory" parameterType="com.jeffrey.jeffreysblog.entity.Category">
+        UPDATE category SET name=#{category.categoryName},textColor=#{category.textColor},bgColor=#{category.bgColor} WHERE id=#{category.categoryId};
+    </update>
+
+    <select id="getCategoryById" parameterType="String" resultType="com.jeffrey.jeffreysblog.entity.Category">
+        SELECT * FROM category WHERE id=#{categoryId};
+    </select>
+
+    <select id="getAllCategories">
+        SELECT * FROM category;
+    </select>
+
+</mapper>

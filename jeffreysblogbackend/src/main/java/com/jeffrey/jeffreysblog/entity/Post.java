@@ -15,9 +15,9 @@ import java.util.List;
 public class Post {
     private String postId;
     private String title;
-    private Object author;
+    private String authorId;
     private String readNum;
     private Date date;
     private String content;
-    private Object category;
+    private String categoryId;
 }

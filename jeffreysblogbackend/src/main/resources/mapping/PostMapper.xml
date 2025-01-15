@@ -7,19 +7,19 @@
 <mapper namespace="com.jeffrey.jeffreysblog.mapper.PostMapper">
     <!--  id为Mapper接口中对应的方法名，resultType为返回的实体全类名  -->
     <insert id="addPost" parameterType="com.jeffrey.jeffreysblog.entity.Post">
-        INSERT INTO post(postId,title,author,readNum,date,content,category) VALUES (#{post.postId},#{post.title},#{post.author},#{post.readNum},#{post.date},#{post.content},#{post.category})
+        INSERT INTO post(id,title,authorId,readNum,date,content,categoryId) VALUES (#{post.postId},#{post.title},#{post.authorId},#{post.readNum},#{post.date},#{post.content},#{post.categoryId})
     </insert>
 
     <delete id="deletePost" parameterType="String">
-        DELETE FROM post WHERE postId = #{postId}
+        DELETE FROM post WHERE id = #{postId}
     </delete>
 
     <update id="updatePost" parameterType="com.jeffrey.jeffreysblog.entity.Post">
-        UPDATE post SET title=#{post.title},content=#{post.content},category=#{post.category},readNum=#{post.readNum},date=#{post.date} WHERE postId=#{post.postId}
+        UPDATE post SET title=#{post.title},content=#{post.content},categoryId=#{post.categoryId},readNum=#{post.readNum},date=#{post.date} WHERE id=#{post.postId}
     </update>
 
     <select id="getPostById" parameterType="String">
-        SELECT * FROM post WHERE postId=#{postId};
+        SELECT * FROM post WHERE id=#{postId};
     </select>
 
     <select id="getRangePosts" parameterType="int">

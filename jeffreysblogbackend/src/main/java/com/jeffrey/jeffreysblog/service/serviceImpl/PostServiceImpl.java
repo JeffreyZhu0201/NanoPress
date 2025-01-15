@@ -1,7 +1,5 @@
 package com.jeffrey.jeffreysblog.service.serviceImpl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.jeffrey.jeffreysblog.common.Result;
 import com.jeffrey.jeffreysblog.entity.Post;
 import com.jeffrey.jeffreysblog.mapper.PostMapper;
@@ -20,25 +18,11 @@ public class PostServiceImpl implements PostService {
     @Resource
     PostMapper postMapper;
 
-    public Post stringfyParam(Post post){
-        post.setAuthor(JSON.toJSONString(post.getAuthor()));
-        post.setCategory(JSON.toJSONString(post.getCategory()));
-        return post;
-    }
-
-    public Post parseParam(Post post){
-        post.setAuthor(JSON.parseObject(post.getAuthor().toString()));
-        post.setCategory(JSONObject.parseArray(post.getCategory().toString()));
-        return post;
-    }
-
     public Result addPost(@NotNull Post post) {
         post.setDate(new Date()); //发布时间设置为服务器系统时间
         post.setPostId(String.valueOf(UUID.randomUUID()));
-        stringfyParam(post);
 
         if(postMapper.addPost(post)){
-            parseParam(post);
             return Result.success("200","插入成功",post);
         }
         else{
@@ -59,9 +43,7 @@ public class PostServiceImpl implements PostService {
 
     public Result updatePost(Post post) {
         post.setDate(new Date()); //发布时间设置为服务器系统时间
-        stringfyParam(post);
         if(postMapper.updatePost(post)){
-            parseParam(post);
             return Result.success("200","更新成功",post);
         }
         else{
@@ -72,7 +54,6 @@ public class PostServiceImpl implements PostService {
     public Result getPostById(String postId) {
         Post post = postMapper.getPostById(postId);
         if(post != null){
-            parseParam(post);
             return Result.success("200","获取成功",post);
         }
         else{
@@ -83,7 +64,6 @@ public class PostServiceImpl implements PostService {
     @Override
     public Result getRangePosts(Integer beginPage, Integer count) {
         List<Post> posts = postMapper.getRangePosts((beginPage-1)*count,count);
-        posts.forEach(this::parseParam);
         Map<String,Object> map = new HashMap<>();
         Integer postsLength = postMapper.getLength();
         map.put("posts",posts);
@@ -94,9 +74,7 @@ public class PostServiceImpl implements PostService {
     @Override
     public Result getAllPosts(){
         List<Post> posts = postMapper.getAllPosts();
-        posts.forEach(this::parseParam);
         return Result.success(posts);
     }
-
 
 }
