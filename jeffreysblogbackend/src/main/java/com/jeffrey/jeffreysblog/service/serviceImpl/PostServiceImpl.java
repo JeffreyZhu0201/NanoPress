@@ -20,7 +20,7 @@ public class PostServiceImpl implements PostService {
 
     public Result addPost(@NotNull Post post) {
         post.setDate(new Date()); //发布时间设置为服务器系统时间
-        post.setPostId(String.valueOf(UUID.randomUUID()));
+        post.setId(String.valueOf(UUID.randomUUID()));
 
         if(postMapper.addPost(post)){
             return Result.success("200","插入成功",post);

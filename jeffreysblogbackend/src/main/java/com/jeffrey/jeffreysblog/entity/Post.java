@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Post {
-    private String postId;
+    private String id;
     private String title;
     private String authorId;
     private String readNum;
