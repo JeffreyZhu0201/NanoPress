@@ -11,8 +11,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new JWTInterceptors())
-                .addPathPatterns("/test")  // 其他接口token验证
-                .excludePathPatterns("/account/login")  // 所有用户都放行
-                .excludePathPatterns("/post");  // 所有用户都放行
+//                .addPathPatterns("/test")  // 其他接口token验证
+                .addPathPatterns("/post/**")  // 其他接口token验证
+//                .excludePathPatterns("/account/login","/account/register")  // 所有用户都放行
+                .excludePathPatterns("/post/getallposts");  // 所有用户都放行
     }
 }
