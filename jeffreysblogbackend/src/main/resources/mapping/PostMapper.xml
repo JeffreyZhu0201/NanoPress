@@ -11,15 +11,15 @@
     </insert>
 
     <delete id="deletePost" parameterType="String">
-        DELETE FROM post WHERE postId = #{postId}
+        DELETE FROM post WHERE id = #{postId}
     </delete>
 
     <update id="updatePost" parameterType="com.jeffrey.jeffreysblog.entity.Post">
-        UPDATE post SET title=#{post.title},content=#{post.content},category=#{post.categoryId},readNum=#{post.readNum},date=#{post.date} WHERE postId=#{post.postId}
+        UPDATE post SET title=#{post.title},content=#{post.content},categoryId=#{post.categoryId},readNum=#{post.readNum},date=#{post.date} WHERE id=#{post.postId}
     </update>
 
     <select id="getPostById" parameterType="String">
-        SELECT * FROM post WHERE postId=#{postId};
+        SELECT * FROM post WHERE id=#{postId};
     </select>
 
     <select id="getRangePosts" parameterType="int">

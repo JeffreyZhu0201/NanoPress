@@ -7,19 +7,19 @@
 <mapper namespace="com.jeffrey.jeffreysblog.mapper.ProjectMapper">
     <!--  id为Mapper接口中对应的方法名，resultType为返回的实体全类名  -->
     <insert id="addProject" parameterType="com.jeffrey.jeffreysblog.entity.Project">
-        INSERT INTO project(projectId,title,intro,date,content) VALUES (#{project.projectId},#{project.title},#{project.intro},#{project.date},#{project.content})
+        INSERT INTO project(id,title,intro,date,content) VALUES (#{project.projectId},#{project.title},#{project.intro},#{project.date},#{project.content})
     </insert>
 
     <delete id="deleteProject" parameterType="String">
-        DELETE FROM project WHERE projectId = #{projectId}
+        DELETE FROM project WHERE id = #{projectId}
     </delete>
 
     <update id="updateProject" parameterType="com.jeffrey.jeffreysblog.entity.Project">
-        UPDATE project SET title=#{project.title},content=#{project.content},date=#{project.date} WHERE projectId=#{project.projectId}
+        UPDATE project SET title=#{project.title},content=#{project.content},date=#{project.date} WHERE id=#{project.projectId}
     </update>
 
     <select id="getProjectById" parameterType="String">
-        SELECT * FROM project WHERE projectId=#{projectId};
+        SELECT * FROM project WHERE id=#{projectId};
     </select>
 
     <select id="getRangeProjects" parameterType="int">
