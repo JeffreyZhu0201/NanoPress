@@ -23,4 +23,8 @@
         SELECT * FROM category WHERE id=#{categoryId};
     </select>
 
+    <select id="getAllCategories">
+        SELECT * FROM category;
+    </select>
+
 </mapper>

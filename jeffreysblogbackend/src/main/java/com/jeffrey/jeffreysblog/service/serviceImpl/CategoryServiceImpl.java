@@ -8,6 +8,7 @@ import com.jeffrey.jeffreysblog.entity.Category;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -46,6 +47,15 @@ public class CategoryServiceImpl implements CategoryService {
         Category category = categoryMapper.getCategoryById(categoryId);
         if(category != null){
             return Result.success("200","success",category);
+        }
+        return Result.error("403","update failed",null);
+    }
+
+    @Override
+    public Result getAllCategories() {
+        List<Category> allCategories = categoryMapper.getAllCategories();
+        if(allCategories != null){
+            return Result.success("200","success",allCategories);
         }
         return Result.error("403","update failed",null);
     }

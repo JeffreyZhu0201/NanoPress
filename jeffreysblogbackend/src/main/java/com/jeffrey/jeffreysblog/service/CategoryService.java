@@ -11,5 +11,5 @@ public interface CategoryService {
     Result deleteCategory(String categoryId);
     Result updateCategory(Category category);
     Result getCategoryById(String categoryId);
-
+    Result getAllCategories();
 }
