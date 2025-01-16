@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-01-16 10:06:44
+ * @LastEditTime: 2025-01-16 12:38:43
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -28,7 +28,6 @@ function Homepage(){
                 setPostPreview(res.data.data.posts);
                 console.log(res.data.data.posts);
             }catch(err){
-
             }
         }
         FetchPostPreview();

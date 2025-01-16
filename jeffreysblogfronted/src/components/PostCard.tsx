@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-27 22:26:22
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-01-16 11:29:34
+ * @LastEditTime: 2025-01-16 12:44:39
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\PostCard.tsx
  * @Description: File Description Here..II
  * 
@@ -24,8 +24,14 @@ function BlogCard(props: {post:Post}) {
             console.log(props.post)
             try{
                 props.post.categoryId.map(async (categoryIdItem,index) => {
+                    console.log(categoryIdItem)
                     var categoryItem = await getCategoryData(categoryIdItem)
-                    setCategory([...category,categoryItem.data.data])
+                    if(categoryItem.data.code === "200"){
+                        setCategory(category => [...category,categoryItem.data.data])
+                    }
+                    else{
+                        console.log(categoryItem.data.message)
+                    }
                 })
             }catch(e){
                 console.log(e)
