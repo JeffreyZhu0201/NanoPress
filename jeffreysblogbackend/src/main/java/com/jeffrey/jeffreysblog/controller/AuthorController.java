@@ -5,9 +5,9 @@ import com.jeffrey.jeffreysblog.service.AuthorService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/author")
-@CrossOrigin
 public class AuthorController {
 
     @Resource

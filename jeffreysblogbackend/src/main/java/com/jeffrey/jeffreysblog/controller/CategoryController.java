@@ -6,6 +6,7 @@ import com.jeffrey.jeffreysblog.service.CategoryService;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/category")
 public class CategoryController {
