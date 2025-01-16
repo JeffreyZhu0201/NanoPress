@@ -1,11 +1,10 @@
-package com.jeffrey.jeffreysblog.entity;
+package com.jeffrey.jeffreysblog;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 

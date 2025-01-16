@@ -8,19 +8,19 @@
     <!--  id为Mapper接口中对应的方法名，resultType为返回的实体全类名  -->
 
     <insert id="addCategory" parameterType="com.jeffrey.jeffreysblog.entity.Category">
-        INSERT INTO category (id,name,textColor,bgColor) VALUES (#{category.categoryId},#{category.categoryName},#{category.textColor},#{category.bgColor});
+        INSERT INTO category (id,categoryName,textColor,bgColor) VALUES (#{category.id},#{category.categoryName},#{category.textColor},#{category.bgColor});
     </insert>
 
     <delete id="deleteCategory" parameterType="String">
-        DELETE FROM category WHERE id = #{categoryId};
+        DELETE FROM category WHERE id = #{id};
     </delete>
 
     <update id="updateCategory" parameterType="com.jeffrey.jeffreysblog.entity.Category">
-        UPDATE category SET name=#{category.categoryName},textColor=#{category.textColor},bgColor=#{category.bgColor} WHERE id=#{category.categoryId};
+        UPDATE category SET categoryName=#{category.categoryName},textColor=#{category.textColor},bgColor=#{category.bgColor} WHERE id=#{category.id};
     </update>
 
     <select id="getCategoryById" parameterType="String" resultType="com.jeffrey.jeffreysblog.entity.Category">
-        SELECT * FROM category WHERE id=#{categoryId};
+        SELECT * FROM category WHERE id=#{id};
     </select>
 
     <select id="getAllCategories">

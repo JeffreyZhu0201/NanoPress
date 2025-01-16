@@ -1,24 +1,19 @@
 /*
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
- * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-05 00:01:36
+ * @LastEditors: Jeffrey Zhu 1624410543@qq.com
+ * @LastEditTime: 2025-01-16 10:06:44
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
-import React, { ReactElement, Suspense, useEffect, useState } from "react"
+import React, { Suspense, useEffect, useState } from "react"
 import Avatar from "../resource/avatar.jpeg"
 
-import ProjectCard from "../components/ProjectCard"
-import BlogCard from "../components/PostCard"
+import PostCard from "../components/PostCard"
 import { Link } from "react-router-dom"
-import testPosts from "../common/testData/postData"
-import testProjects from "../common/testData/projectData"
-import Post from "../common/entity/Post"
-import Project from "../common/entity/Project"
 
 import { getRangePost } from "../common/Http/postData"
 import Loading from "../common/Loading"
@@ -71,7 +66,7 @@ function Homepage(){
                 </div>
                 {
                     postPreview.map((postItem,index) => {
-                        return <Suspense key={index} fallback={<Loading></Loading>}><BlogCard  post={postItem}></BlogCard></Suspense>
+                        return <Suspense key={index} fallback={<Loading></Loading>}><PostCard  post={postItem}></PostCard></Suspense>
                     })
                 }
             </div>

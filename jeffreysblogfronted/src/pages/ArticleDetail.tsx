@@ -1,8 +1,8 @@
 /*
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-29 11:08:05
- * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-10 15:21:49
+ * @LastEditors: Jeffrey Zhu 1624410543@qq.com
+ * @LastEditTime: 2025-01-16 12:05:14
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\ArticleDetail.tsx
  * @Description: File Description Here...
  * 
@@ -15,23 +15,33 @@ import { getProjectById } from "../common/Http/projectData"
 
 import Markdown from "react-markdown"
 import Project from "../common/entity/Project"
+import Post from "../common/entity/Post"
+import { getAuthorNameById } from "../common/Http/authorData"
 
 
 function ArticleDetail() {
     const { type, id } = useParams();
-    let [article, setArticle] = useState({} as Project);
-
+    const [article, setArticle] = useState({} as Post | Project);
+    const [authorName,setAuthorName] = useState({} as string);
     useEffect(() => {
         const FetchArticleDetail = async () => {
-            if(type === "post"){
+            if (type === "post") {
                 try {
-                    getPostById(id).then(res => {
-                        setArticle(res.data.data)
+                    await getPostById(id as string).then(res => {
+                        setArticle(res.data.data as Post)
                     })
-                } catch (err) {
+                    
+                    if ((article as Post)?.authorId) {
+                        await getAuthorNameById((article as Post).authorId).then(res => {
+                            setAuthorName(res.data.data.authorName);
+                        })
+                    }
+                } 
+                catch (err) {
+                    console.log(err)
                 }
             }
-            else{
+            else {
                 try {
                     getProjectById(id).then(res => {
                         setArticle(res.data.data)
@@ -51,7 +61,7 @@ function ArticleDetail() {
                 </div>
 
                 <div className="flex justify-between items-center text-gray-600 text-sm md:text-base mb-4">
-                    <div> Author : {article?.author?.name} </div>
+                    {(type === "post") ? <div>作者：{authorName}</div>:<></>}
                     <div>{article?.date}</div>
                 </div>
             </div>
@@ -63,4 +73,5 @@ function ArticleDetail() {
 }
 
 export default ArticleDetail
+
 

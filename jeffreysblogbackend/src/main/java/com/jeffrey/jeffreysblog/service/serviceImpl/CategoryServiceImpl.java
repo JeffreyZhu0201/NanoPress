@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Result addCategory(Category category) {
-        category.setCategoryId(String.valueOf(UUID.randomUUID()));
+        category.setId(String.valueOf(UUID.randomUUID()));
         if(categoryMapper.addCategory(category)){
             return Result.success("200","success",category);
         }
