@@ -1,5 +1,7 @@
 package com.jeffrey.jeffreysblog.service.serviceImpl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.jeffrey.jeffreysblog.common.Result;
 import com.jeffrey.jeffreysblog.entity.Post;
 import com.jeffrey.jeffreysblog.mapper.PostMapper;
@@ -22,7 +24,10 @@ public class PostServiceImpl implements PostService {
         post.setDate(new Date()); //发布时间设置为服务器系统时间
         post.setId(String.valueOf(UUID.randomUUID()));
 
+        post.setCategoryId(JSONArray.toJSON(post.getCategoryId()).toString());
+
         if(postMapper.addPost(post)){
+            post.setCategoryId(JSON.parseArray(post.getCategoryId().toString()));
             return Result.success("200","插入成功",post);
         }
         else{
@@ -43,7 +48,9 @@ public class PostServiceImpl implements PostService {
 
     public Result updatePost(Post post) {
         post.setDate(new Date()); //发布时间设置为服务器系统时间
+        post.setCategoryId(JSONArray.toJSON(post.getCategoryId()).toString());
         if(postMapper.updatePost(post)){
+            post.setCategoryId(JSON.parseArray(post.getCategoryId().toString()));
             return Result.success("200","更新成功",post);
         }
         else{
@@ -54,6 +61,7 @@ public class PostServiceImpl implements PostService {
     public Result getPostById(String postId) {
         Post post = postMapper.getPostById(postId);
         if(post != null){
+            post.setCategoryId(JSON.parseArray(post.getCategoryId().toString()));
             return Result.success("200","获取成功",post);
         }
         else{
@@ -65,6 +73,9 @@ public class PostServiceImpl implements PostService {
     public Result getRangePosts(Integer beginPage, Integer count) {
         List<Post> posts = postMapper.getRangePosts((beginPage-1)*count,count);
         Map<String,Object> map = new HashMap<>();
+        posts.forEach(post -> {
+            post.setCategoryId(JSON.parseArray(post.getCategoryId().toString()));
+        });
         Integer postsLength = postMapper.getLength();
         map.put("posts",posts);
         map.put("count",postsLength);
@@ -74,7 +85,9 @@ public class PostServiceImpl implements PostService {
     @Override
     public Result getAllPosts(){
         List<Post> posts = postMapper.getAllPosts();
+        posts.forEach(post -> {
+            post.setCategoryId(JSON.parseArray(post.getCategoryId().toString()));
+        });
         return Result.success(posts);
     }
-
 }

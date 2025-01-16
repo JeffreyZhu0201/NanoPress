@@ -10,8 +10,10 @@
  */
 
 interface Category{
-    name:string,
-    color:string
+    id:string,
+    categoryName:string,
+    textColor:string,
+    bgColor:string
 }
 
 export default Category
