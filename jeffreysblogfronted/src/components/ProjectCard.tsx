@@ -1,8 +1,8 @@
 /*
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-26 15:46:51
- * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-11-30 20:42:23
+ * @LastEditors: Jeffrey Zhu 1624410543@qq.com
+ * @LastEditTime: 2025-01-16 12:09:10
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\ProjectCard.tsx
  * @Description: File Description Here...
  * 
@@ -15,7 +15,7 @@ import Project from "../common/entity/Project"
 function ProjectCard(props: { project: Project }) {
 
     return (
-        <Link to={`/articledetail/project/${props.project.projectId}`}>
+        <Link to={`/articledetail/project/${props.project.id}`}>
             <div className="bg-transparent border-yellow-200 rounded border my-2 hover:border-white transition-colors duration-300 shadow-purple-500 hover:shadow-2xl">
                 <div className="m-3 flex flex-col  cursor-pointer">
                     <h1 className="text-xl md:text-2xl font-bold text-white truncate md:mb-2">{props.project.title}</h1>

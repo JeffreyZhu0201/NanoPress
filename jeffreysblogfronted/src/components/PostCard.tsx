@@ -2,34 +2,34 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-27 22:26:22
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-01-16 11:05:37
+ * @LastEditTime: 2025-01-16 11:29:34
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\PostCard.tsx
  * @Description: File Description Here..II
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
-import CategoryColor from "../common/entity/CategoryColor"
+import Category from "../common/entity/Category"
 import { Link } from "react-router-dom"
 import Post from "../common/entity/Post"
 import { useEffect, useState } from "react"
+import getCategoryData from "../common/Http/categoryData"
 
 function BlogCard(props: {post:Post}) {
     
-    const [category,setCategory] = useState([])
+    const [category,setCategory] = useState([] as Category[])
 
     useEffect(()=>{
-        function FetchCategory(){
-            props.post.categoryId.map((categoryItem,index) => {
-
-                
-
-                const category = CategoryColor.find((item) => item.id === categoryItem)
-                if(category){
-                    categoryItem.bgColor = category.bgColor;
-                    categoryItem.textColor = category.textColor;
-                }
-            })
+        const FetchCategory = async ()=> {
+            console.log(props.post)
+            try{
+                props.post.categoryId.map(async (categoryIdItem,index) => {
+                    var categoryItem = await getCategoryData(categoryIdItem)
+                    setCategory([...category,categoryItem.data.data])
+                })
+            }catch(e){
+                console.log(e)
+            }
         }
         FetchCategory();
     },[])
@@ -40,8 +40,8 @@ function BlogCard(props: {post:Post}) {
                 <div className="m-2 md:m-4 border-b-1 border-x-white">
                     <div className="">
                         {
-                            props.post.categoryId.map((categoryItem,index) => {
-                                return <div key={index} className={`${categoryItem.textColor} ${categoryItem.bgColor}  inline-block rounded-full text-xs md:text-sm ml-2 p-2 pt-0.5 pb-0.5 cursor-pointer hover:bg-green-200 transition-colors`}>{categoryItem.name}</div>
+                            category.map((categoryItem,index) => {
+                                return <div key={index} className={`${categoryItem.textColor} ${categoryItem.bgColor}  inline-block rounded-full text-xs md:text-sm ml-2 p-2 pt-0.5 pb-0.5 cursor-pointer hover:bg-green-200 transition-colors`}>{categoryItem.categoryName}</div>
                             })
                         }
                     </div>

@@ -10,7 +10,7 @@
  */
 
 interface Project{
-    projectId:string,
+    id:string,
     title:string,
     intro:string,
     date:string,
