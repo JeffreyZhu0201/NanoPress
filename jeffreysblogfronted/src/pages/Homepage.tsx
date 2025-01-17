@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-01-16 12:38:43
+ * @LastEditTime: 2025-01-17 15:07:25
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -65,7 +65,7 @@ function Homepage(){
                 </div>
                 {
                     postPreview.map((postItem,index) => {
-                        return <Suspense key={index} fallback={<Loading></Loading>}><PostCard  post={postItem}></PostCard></Suspense>
+                        return <Suspense key={index} fallback={<Loading></Loading>}><PostCard key={index} post={postItem}></PostCard></Suspense>
                     })
                 }
             </div>
