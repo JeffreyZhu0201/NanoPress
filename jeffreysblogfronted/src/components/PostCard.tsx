@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-27 22:26:22
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-01-16 12:44:39
+ * @LastEditTime: 2025-01-17 16:27:38
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\PostCard.tsx
  * @Description: File Description Here..II
  * 
@@ -15,19 +15,19 @@ import Post from "../common/entity/Post"
 import { useEffect, useState } from "react"
 import getCategoryData from "../common/Http/categoryData"
 
-function BlogCard(props: {post:Post}) {
+function PostCard(props: {post:Post}) {
     
     const [category,setCategory] = useState([] as Category[])
-
     useEffect(()=>{
-        const FetchCategory = async ()=> {
+        
+        const FetchCategory = ()=> {
             console.log(props.post)
             try{
-                props.post.categoryId.map(async (categoryIdItem,index) => {
+                props.post.categoryId.map(async (categoryIdItem) => {
                     console.log(categoryIdItem)
                     var categoryItem = await getCategoryData(categoryIdItem)
                     if(categoryItem.data.code === "200"){
-                        setCategory(category => [...category,categoryItem.data.data])
+                        setCategory([...category,categoryItem.data.data])
                     }
                     else{
                         console.log(categoryItem.data.message)
@@ -47,7 +47,7 @@ function BlogCard(props: {post:Post}) {
                     <div className="">
                         {
                             category.map((categoryItem,index) => {
-                                return <div key={index} className={`${categoryItem.textColor} ${categoryItem.bgColor}  inline-block rounded-full text-xs md:text-sm ml-2 p-2 pt-0.5 pb-0.5 cursor-pointer hover:bg-green-200 transition-colors`}>{categoryItem.categoryName}</div>
+                                return <div key={index} className={`${categoryItem.textColor}  ${categoryItem.bgColor} inline-block rounded-full text-xs md:text-sm ml-2 p-2 pt-0.5 pb-0.5 cursor-pointer hover:bg-green-200`}>{categoryItem.categoryName}</div>
                             })
                         }
                     </div>
@@ -64,4 +64,4 @@ function BlogCard(props: {post:Post}) {
             </Link ></>)
 }
 
-export default BlogCard
+export default PostCard

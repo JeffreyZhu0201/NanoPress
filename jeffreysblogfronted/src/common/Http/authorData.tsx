@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-01-16 11:36:14
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-01-16 11:50:41
+ * @LastEditTime: 2025-01-17 15:20:25
  * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\common\Http\authorData.tsx
  * @Description: File Description Here...
  * 
@@ -17,7 +17,7 @@ export function getAuthorNameById(authorId:string){
         method:'get',
         url:staticResource.baseUrl + '/author/getauthornamebyid',
         params:{
-            authorId
+            authorId:authorId
         }
     })
 }
