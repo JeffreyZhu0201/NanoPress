@@ -18,5 +18,4 @@ public class AuthorController {
 
         return authorService.getAuthorNameById(authorId);
     }
-
 }
