@@ -1,4 +1,6 @@
 
+import React from "react"
+
 function Loading(){
     return (
         <div className="w-full h-screen bg-yellow-500 items-center justify-center flex">
