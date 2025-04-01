@@ -1,3 +1,13 @@
+/*
+ * @Author: Jeffrey Zhu 1624410543@qq.com
+ * @Date: 2025-04-01 13:35:07
+ * @LastEditors: Jeffrey Zhu 1624410543@qq.com
+ * @LastEditTime: 2025-04-02 00:07:33
+ * @FilePath: \go-backend\controller\AuthHandler.go
+ * @Description: File Description Here...
+ *
+ * Copyright (c) 2025 by JeffreyZhu, All Rights Reserved.
+ */
 package controller
 
 import (
@@ -72,5 +82,5 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, models.Response{Code: 200, Message: Var.USER_LOGIN_SUCCESS, Data: map[string]interface{}{"token": token}})
+	c.JSON(http.StatusOK, models.Response{Code: 200, Message: Var.USER_LOGIN_SUCCESS, Data: map[string]interface{}{"token": token, "user": existingUser}})
 }

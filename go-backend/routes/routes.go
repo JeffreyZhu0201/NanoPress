@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:31:46
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-01 23:53:56
+ * @LastEditTime: 2025-04-02 00:05:06
  * @FilePath: \go-backend\routes\routes.go
  * @Description: File Description Here...
  *
@@ -48,11 +48,11 @@ func SetupRoutes(r *gin.Engine) {
 		post.POST("/create", controller.CreatePost)
 		post.POST("/delete", controller.DeletePost)
 		post.POST("/update", controller.UpdatePost)
+		post.GET("/getbyuserid", controller.GetPostsByUserId)
+		post.GET("/getbytagid", controller.GetPostsByTagId)
 
 		// admin permission
 		post.GET("/getall", controller.GetRangedPosts)
-		post.POST("/create", controller.CreatePost)
-		post.POST("/delete", controller.DeletePost)
 
 	}
 

@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:34:55
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-01 23:51:40
+ * @LastEditTime: 2025-04-02 00:23:57
  * @FilePath: \go-backend\controller\PostHandler.go
  * @Description: 帖子相关的处理函数
  *
@@ -29,9 +29,11 @@ import (
 	"go-backend/Var"
 	"go-backend/models"
 	"go-backend/utils"
+	"log"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
 )
 
 // 获取指定范围的帖子
@@ -138,10 +140,13 @@ func GetPostById(c *gin.Context) {
 func CreatePost(c *gin.Context) {
 	var post models.Post
 	// 绑定请求中的JSON数据到帖子对象
-	if err := c.ShouldBindJSON(&post); err != nil {
+	if err := c.ShouldBindBodyWith(&post, binding.JSON); err != nil {
+		log.Default().Println("Binding error:", err)
 		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
 		return
 	}
+
+	log.Default().Println(post)
 
 	// 将帖子数据插入数据库
 	if err := utils.DB.Create(&post).Error; err != nil {

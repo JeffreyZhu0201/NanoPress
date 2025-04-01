@@ -16,9 +16,9 @@ import "gorm.io/gorm"
 type Post struct {
 	gorm.Model
 	Id       uint   `json:"id" gorm:"primaryKey;autoIncrement"`
-	AutherID uint   `json:"auther_id"`
-	PostID   uint   `json:"post_id"`
-	Content  string `json:"content"`
-	Likes    uint   `json:"likes"`
-	Read     uint   `json:"read"`
+	AutherID uint   `json:"auther_id" binding:"required"`
+	TagId    uint   `json:"tag_id" binding:"required"`
+	Content  string `json:"content" binding:"required"`
+	Likes    uint   `json:"likes" binding:"required"`
+	Read     uint   `json:"read" binding:"required"`
 }
