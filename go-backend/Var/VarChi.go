@@ -18,6 +18,7 @@ const (
 	SYSTEM_UNPROCESSABLE_ENTITY   = "无法处理的实体"
 	SYSTEM_TOO_MANY_REQUESTS      = "请求过多"
 	SYSTEM_NOT_IMPLEMENTED        = "未实现的功能"
+	TOKEN_INVALID                 = "无效的令牌"
 )
 
 //用户相关常量

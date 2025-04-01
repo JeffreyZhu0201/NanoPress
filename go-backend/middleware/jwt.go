@@ -11,6 +11,7 @@
 package middleware
 
 import (
+	"go-backend/Var"
 	"go-backend/models"
 	"go-backend/utils"
 	"net/http"
@@ -52,7 +53,7 @@ func JWTAuthMiddleware(c *gin.Context) {
 	token, _, err := ValidToken(c.GetHeader("Authorization"))
 
 	if err != nil || !token.Valid {
-		c.AbortWithStatusJSON(http.StatusUnauthorized, models.Response{Code: 401, Message: "Unauthorized"})
+		c.AbortWithStatusJSON(http.StatusUnauthorized, models.Response{Code: 401, Message: Var.TOKEN_INVALID})
 		return
 	}
 
