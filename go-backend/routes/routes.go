@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:31:46
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-01 13:31:46
+ * @LastEditTime: 2025-04-01 23:53:56
  * @FilePath: \go-backend\routes\routes.go
  * @Description: File Description Here...
  *
@@ -38,11 +38,23 @@ func SetupRoutes(r *gin.Engine) {
 		tags.DELETE("/deletetag", controller.DeleteTag)
 	}
 
-	// post := r.Group("/post")
-	// {
-	// 	post.GET("/", GetPostsHandler)
-	// 	post.GET("/:id", GetPostHandler)
-	// }
+	post := r.Group("/post")
+	{
+		// user permission
+		post.GET("/:id", controller.GetPostById)
+		post.GET("/search", controller.GetPostsBySearch)
+		post.GET("/range", controller.GetRangedPostsNotDeleted)
+		post.GET("/", controller.GetRangedPostsNotDeleted)
+		post.POST("/create", controller.CreatePost)
+		post.POST("/delete", controller.DeletePost)
+		post.POST("/update", controller.UpdatePost)
+
+		// admin permission
+		post.GET("/getall", controller.GetRangedPosts)
+		post.POST("/create", controller.CreatePost)
+		post.POST("/delete", controller.DeletePost)
+
+	}
 
 	// comment := r.Group("/comment")
 	// {

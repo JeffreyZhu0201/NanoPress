@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:34:55
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-01 23:27:10
+ * @LastEditTime: 2025-04-01 23:51:40
  * @FilePath: \go-backend\controller\PostHandler.go
  * @Description: 帖子相关的处理函数
  *
@@ -43,8 +43,9 @@ func GetRangedPosts(c *gin.Context) {
 	limited_string, exist_limited := c.GetQuery("limited")
 	// 判断参数是否存在
 	if !exist_index || !exist_limited {
-		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
-		return
+		// Set default values if parameters are missing
+		start_index_string = "0"
+		limited_string = "5"
 	}
 	// 将字符串转换为整数
 	start_index_uint, err := strconv.ParseInt(start_index_string, 10, 32)
@@ -78,8 +79,9 @@ func GetRangedPostsNotDeleted(c *gin.Context) {
 
 	// 判断参数是否存在
 	if !exist_index || !exist_limited {
-		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
-		return
+		// Set default values if parameters are missing
+		start_index_string = "0"
+		limited_string = "5"
 	}
 
 	// 将字符串转换为整数
@@ -109,7 +111,7 @@ func GetRangedPostsNotDeleted(c *gin.Context) {
 func GetPostById(c *gin.Context) {
 	var post models.Post
 	// 获取ID参数
-	id_string, exist := c.GetQuery("id")
+	id_string, exist := c.Params.Get("id")
 	// 判断参数是否存在
 	if !exist {
 		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
