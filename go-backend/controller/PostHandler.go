@@ -2,73 +2,314 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:34:55
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-01 13:37:01
+ * @LastEditTime: 2025-04-01 23:27:10
  * @FilePath: \go-backend\controller\PostHandler.go
- * @Description: File Description Here...
+ * @Description: 帖子相关的处理函数
  *
  * Copyright (c) 2025 by JeffreyZhu, All Rights Reserved.
  */
 
+// 文件总体说明:
+// 本文件包含了所有与帖子相关的处理函数，包括:
+// - 获取指定范围的帖子
+// - 获取未删除的帖子
+// - 根据ID获取帖子
+// - 创建新帖子
+// - 更新帖子
+// - 删除帖子
+// - 根据用户ID获取帖子
+// - 根据标签ID获取帖子
+// - 根据日期获取帖子
+// - 根据搜索条件获取帖子
+// - 根据状态获取帖子
+
 package controller
 
-func GetRangedPosts() {
-	// Get the range from the request
-	// Call the service to get the posts
-	// Return the posts as a JSON response
-}
-func GetPostById() {
-	// Get the post ID from the request
-	// Call the service to get the post by ID
-	// Return the post as a JSON response
-}
-func CreatePost() {
-	// Get the post data from the request
-	// Call the service to create the post
-	// Return the created post as a JSON response
-}
-func UpdatePost() {
-	// Get the post ID and data from the request
-	// Call the service to update the post
-	// Return the updated post as a JSON response
-}
-func DeletePost() {
-	// Get the post ID from the request
-	// Call the service to delete the post
-	// Return a success message as a JSON response
+import (
+	"go-backend/Var"
+	"go-backend/models"
+	"go-backend/utils"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+)
+
+// 获取指定范围的帖子
+// 从请求中获取范围参数，调用服务获取帖子，并将帖子作为JSON响应返回
+func GetRangedPosts(c *gin.Context) {
+	var posts []models.Post
+	// 获取范围参数
+	start_index_string, exist_index := c.GetQuery("start_index")
+	limited_string, exist_limited := c.GetQuery("limited")
+	// 判断参数是否存在
+	if !exist_index || !exist_limited {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+	// 将字符串转换为整数
+	start_index_uint, err := strconv.ParseInt(start_index_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	limited_uint, err := strconv.ParseInt(limited_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 查询数据库获取帖子
+	if err := utils.DB.Model(&models.Post{}).Limit(int(limited_uint)).Offset(int(start_index_uint)).Find(&posts).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
+		return
+	}
+	// 返回成功响应
+	c.JSON(200, models.Response{Code: 200, Message: Var.POST_GET_SUCCESSFULLY, Data: posts})
 }
 
-func GetPostsByUserId() {
-	// Get the user ID from the request
-	// Call the service to get the posts by user ID
-	// Return the posts as a JSON response
+// 获取未删除的帖子
+// 从请求中获取范围参数，调用服务获取未删除的帖子，并将帖子作为JSON响应返回
+func GetRangedPostsNotDeleted(c *gin.Context) {
+	var posts []models.Post
+	// 获取范围参数
+	start_index_string, exist_index := c.GetQuery("start_index")
+	limited_string, exist_limited := c.GetQuery("limited")
+
+	// 判断参数是否存在
+	if !exist_index || !exist_limited {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 将字符串转换为整数
+	start_index_uint, err := strconv.ParseInt(start_index_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	limited_uint, err := strconv.ParseInt(limited_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 查询数据库获取未删除的帖子
+	if err := utils.DB.Model(&models.Post{}).Where("deleted_at IS NULL").Limit(int(limited_uint)).Offset(int(start_index_uint)).Find(&posts).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
+		return
+	}
+	// 返回成功响应
+	c.JSON(200, models.Response{Code: 200, Message: Var.POST_GET_SUCCESSFULLY, Data: posts})
 }
 
-func GetPostsByTagId() {
-	// Get the tag ID from the request
-	// Call the service to get the posts by tag ID
-	// Return the posts as a JSON response
+// 根据ID获取帖子
+// 从请求中获取帖子ID，调用服务获取帖子，并将帖子作为JSON响应返回
+func GetPostById(c *gin.Context) {
+	var post models.Post
+	// 获取ID参数
+	id_string, exist := c.GetQuery("id")
+	// 判断参数是否存在
+	if !exist {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+	// 将字符串转换为整数
+	id_uint, err := strconv.ParseInt(id_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 查询数据库获取帖子
+	if err := utils.DB.Model(&models.Post{}).First(&post, id_uint).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
+		return
+	}
+	// 返回成功响应
+	c.JSON(200, models.Response{Code: 200, Message: Var.POST_GET_SUCCESSFULLY, Data: map[string]interface{}{"post": post}})
 }
 
-func GetPostsByCategoryId() {
-	// Get the category ID from the request
-	// Call the service to get the posts by category ID
-	// Return the posts as a JSON response
+// 创建新帖子
+// 从请求中获取帖子数据，调用服务创建帖子，并将创建的帖子作为JSON响应返回
+func CreatePost(c *gin.Context) {
+	var post models.Post
+	// 绑定请求中的JSON数据到帖子对象
+	if err := c.ShouldBindJSON(&post); err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 将帖子数据插入数据库
+	if err := utils.DB.Create(&post).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_ADD_FAILED})
+		return
+	}
+
+	// 返回成功响应
+	c.JSON(200, models.Response{
+		Code:    200,
+		Message: Var.POST_ADD_SUCCESSFULLY,
+		Data:    map[string]interface{}{"post": post},
+	})
 }
 
+// 更新帖子
+// 从请求中获取帖子ID和更新数据，调用服务更新帖子，并将更新后的帖子作为JSON响应返回
+func UpdatePost(c *gin.Context) {
+	var post models.Post
+
+	// 从查询参数中获取帖子ID
+	id_string, exist := c.GetQuery("id")
+	if !exist {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 将字符串转换为整数
+	id_uint, err := strconv.ParseInt(id_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 绑定请求中的JSON数据到帖子对象
+	if err := c.ShouldBindJSON(&post); err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 更新数据库中的帖子数据
+	if err := utils.DB.Model(&models.Post{}).Where("id = ?", id_uint).Updates(&post).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_UPDATE_FAILED})
+		return
+	}
+
+	// 返回成功响应
+	c.JSON(200, models.Response{
+		Code:    200,
+		Message: Var.POST_UPDATE_SUCCESSFULLY,
+		Data:    map[string]interface{}{"post": post},
+	})
+}
+
+// 删除帖子
+// 从请求中获取帖子ID，调用服务删除帖子，并返回成功消息作为JSON响应
+func DeletePost(c *gin.Context) {
+	// 从查询参数中获取帖子ID
+	id_string, exist := c.GetQuery("id")
+	if !exist {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 将字符串转换为整数
+	id_uint, err := strconv.ParseInt(id_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 从数据库中删除帖子
+	if err := utils.DB.Delete(&models.Post{}, id_uint).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_DELETE_FAILED})
+		return
+	}
+
+	// 返回成功响应
+	c.JSON(200, models.Response{
+		Code:    200,
+		Message: Var.POST_DELETE_SUCCESSFULLY,
+	})
+}
+
+// 根据用户ID获取帖子
+// 从请求中获取用户ID，调用服务获取用户的帖子，并将帖子作为JSON响应返回
+func GetPostsByUserId(c *gin.Context) {
+	var posts []models.Post
+	// 从查询参数中获取用户ID
+	user_id_string, exist := c.GetQuery("user_id")
+	if !exist {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 将字符串转换为整数
+	user_id_uint, err := strconv.ParseInt(user_id_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 查询数据库获取用户的帖子
+	if err := utils.DB.Model(&models.Post{}).Where("user_id = ?", user_id_uint).Find(&posts).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
+		return
+	}
+	// 返回成功响应
+	c.JSON(200, models.Response{Code: 200, Message: Var.POST_GET_SUCCESSFULLY, Data: map[string]interface{}{"posts": posts}})
+}
+
+// 根据标签ID获取帖子
+// 从请求中获取标签ID，调用服务获取对应标签的帖子，并将帖子作为JSON响应返回
+func GetPostsByTagId(c *gin.Context) {
+	var posts []models.Post
+	// 从查询参数中获取标签ID
+	tag_id_string, exist := c.GetQuery("tag_id")
+	if !exist {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 将字符串转换为整数
+	tag_id_uint, err := strconv.ParseInt(tag_id_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 查询数据库获取对应标签的帖子
+	if err := utils.DB.Model(&models.Post{}).Where("tag_id = ?", tag_id_uint).Find(&posts).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
+		return
+	}
+	// 返回成功响应
+	c.JSON(200, models.Response{Code: 200, Message: Var.POST_GET_SUCCESSFULLY, Data: map[string]interface{}{"posts": posts}})
+}
+
+// 根据日期获取帖子
+// 从请求中获取日期，调用服务获取对应日期的帖子，并将帖子作为JSON响应返回
 func GetPostsByDate() {
-	// Get the date from the request
-	// Call the service to get the posts by date
-	// Return the posts as a JSON response
+	// 从请求中获取日期
+	// 调用服务获取对应日期的帖子
+	// 将帖子作为JSON响应返回
 }
 
-func GetPostsBySearch() {
-	// Get the search query from the request
-	// Call the service to get the posts by search query
-	// Return the posts as a JSON response
+// 根据搜索条件获取帖子
+// 从请求中获取搜索条件，调用服务获取符合条件的帖子，并将帖子作为JSON响应返回
+func GetPostsBySearch(c *gin.Context) {
+	var posts []models.Post
+	// 从查询参数中获取搜索条件
+	query_string, exist := c.GetQuery("query")
+	if !exist {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	// 查询数据库获取符合条件的帖子
+	if err := utils.DB.Model(&models.Post{}).Where("title LIKE ?", "%"+query_string+"%").Find(&posts).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
+		return
+	}
+	// 返回成功响应
+	c.JSON(200, models.Response{Code: 200, Message: Var.POST_GET_SUCCESSFULLY, Data: map[string]interface{}{"posts": posts}})
 }
 
+// 根据状态获取帖子
+// 从请求中获取状态，调用服务获取指定状态的帖子，并将帖子作为JSON响应返回
 func GetPostsByStatus() {
-	// Get the status from the request
-	// Call the service to get the posts by status
-	// Return the posts as a JSON response
+	// 从请求中获取状态
+	// 调用服务获取指定状态的帖子
+	// 将帖子作为JSON响应返回
 }

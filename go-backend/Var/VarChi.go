@@ -20,6 +20,7 @@ const (
 	SYSTEM_NOT_IMPLEMENTED        = "未实现的功能"
 	TOKEN_INVALID                 = "无效的令牌"
 	PARAMS_ERR                    = "参数错误"
+	DB_ERR                        = "数据库错误"
 )
 
 //用户相关常量
@@ -51,4 +52,15 @@ const (
 	TAG_GET_FAILED          = "标签获取失败"
 	TAG_GET_SUCCESSFULLY    = "标签获取成功"
 	TAG_EXIST               = "标签已存在"
+)
+
+const (
+	POST_GET_SUCCESSFULLY    = "获取帖子成功"
+	POST_GET_FAILED          = "获取帖子失败"
+	POST_ADD_SUCCESSFULLY    = "帖子添加成功"
+	POST_ADD_FAILED          = "帖子添加失败"
+	POST_DELETE_SUCCESSFULLY = "帖子删除成功"
+	POST_UPDATE_FAILED       = "帖子更新失败"
+	POST_UPDATE_SUCCESSFULLY = "帖子更新成功"
+	POST_DELETE_FAILED       = "帖子删除失败"
 )
