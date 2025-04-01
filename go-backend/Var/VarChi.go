@@ -19,6 +19,7 @@ const (
 	SYSTEM_TOO_MANY_REQUESTS      = "请求过多"
 	SYSTEM_NOT_IMPLEMENTED        = "未实现的功能"
 	TOKEN_INVALID                 = "无效的令牌"
+	PARAMS_ERR                    = "参数错误"
 )
 
 //用户相关常量
@@ -40,4 +41,14 @@ const (
 	USER_PASSWORD_RESET_SUCCESS  = "密码重置成功"
 	USER_PASSWORD_UPDATE_SUCCESS = "密码更新成功"
 	USER_ADD_SUCCESSFULLY        = "用户添加成功"
+)
+
+const (
+	TAG_ADD_SUCCESSFULLY    = "标签添加成功"
+	TAG_ADD_FAILED          = "标签添加失败"
+	TAG_DELETE_FAILED       = "标签删除失败"
+	TAG_DELETE_SUCCESSFULLY = "标签删除成功"
+	TAG_GET_FAILED          = "标签获取失败"
+	TAG_GET_SUCCESSFULLY    = "标签获取成功"
+	TAG_EXIST               = "标签已存在"
 )

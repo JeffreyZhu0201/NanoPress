@@ -26,6 +26,7 @@ func RegisterHandler(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, models.Response{Code: 400, Message: Var.USER_EXIST})
 		return
 	}
+
 	//加密密码
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(user.Password), bcrypt.DefaultCost)
 	if err != nil {

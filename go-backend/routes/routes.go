@@ -31,6 +31,13 @@ func SetupRoutes(r *gin.Engine) {
 		})
 	})
 
+	tags := r.Group("/tag")
+	{
+		tags.GET("/", controller.GetTags)
+		tags.POST("/createtag", controller.CreateTag)
+		tags.DELETE("/deletetag", controller.DeleteTag)
+	}
+
 	// post := r.Group("/post")
 	// {
 	// 	post.GET("/", GetPostsHandler)
