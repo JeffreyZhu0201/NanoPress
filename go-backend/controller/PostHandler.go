@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:34:55
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-02 20:22:50
+ * @LastEditTime: 2025-04-02 23:21:16
  * @FilePath: \go-backend\controller\PostHandler.go
  * @Description: 帖子相关的处理函数
  *
@@ -46,7 +46,7 @@ func GetRangedPosts(c *gin.Context) {
 	// 如果参数不存在，则设置默认值
 	if !exist_index || !exist_limited {
 		start_index_string = "0" // 默认起始索引为0
-		limited_string = "5"    // 默认限制数量为5
+		limited_string = "5"     // 默认限制数量为5
 	}
 	// 将字符串转换为整数
 	start_index_uint, err := strconv.ParseInt(start_index_string, 10, 32)
@@ -84,7 +84,7 @@ func GetRangedPostsNotDeleted(c *gin.Context) {
 	// 如果参数不存在，则设置默认值
 	if !exist_index || !exist_limited {
 		start_index_string = "0" // 默认起始索引为0
-		limited_string = "5"    // 默认限制数量为5
+		limited_string = "5"     // 默认限制数量为5
 	}
 
 	// 将字符串转换为整数
@@ -251,6 +251,7 @@ func DeletePost(c *gin.Context) {
 	c.JSON(200, models.Response{
 		Code:    200,
 		Message: Var.POST_DELETE_SUCCESSFULLY,
+		Data:    map[string]interface{}{"ID": id_uint},
 	})
 }
 
