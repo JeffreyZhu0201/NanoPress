@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 19:17:50
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 00:00:03
+ * @LastEditTime: 2025-04-03 00:09:57
  * @FilePath: \go-backend\controller\TagHandler.go
  * @Description: 标签处理器，提供创建、删除、更新和获取标签的接口
  *
@@ -104,7 +104,7 @@ func UpdateTag(c *gin.Context) {
 	}
 
 	// 查找并更新标签
-	if err := utils.DB.First(&tag, id_uint).Error; err != nil {
+	if err := utils.DB.Where("deleted_at IS NULL").First(&tag, id_uint).Error; err != nil {
 		c.JSON(http.StatusBadRequest, models.Response{Code: 400, Message: Var.TAG_UPDATE_FAILED})
 		return
 	}
