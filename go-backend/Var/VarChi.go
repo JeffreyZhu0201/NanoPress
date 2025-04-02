@@ -52,6 +52,8 @@ const (
 	TAG_GET_FAILED          = "标签获取失败"
 	TAG_GET_SUCCESSFULLY    = "标签获取成功"
 	TAG_EXIST               = "标签已存在"
+	TAG_UPDATE_FAILED       = "标签更新失败"
+	TAG_UPDATE_SUCCESSFULLY = "标签更新成功"
 )
 
 const (

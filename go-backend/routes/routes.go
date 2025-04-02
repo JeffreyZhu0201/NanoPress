@@ -36,6 +36,7 @@ func SetupRoutes(r *gin.Engine) {
 		tags.GET("/", controller.GetTags)
 		tags.POST("/createtag", controller.CreateTag)
 		tags.DELETE("/deletetag", controller.DeleteTag)
+		tags.POST("/update", controller.UpdateTag)
 	}
 
 	post := r.Group("/post")
