@@ -15,6 +15,7 @@ import "gorm.io/gorm"
 
 type Post struct {
 	gorm.Model
+	Title    string `json:"title" binding:"required"`
 	AutherID *uint  `json:"auther_id" binding:"required"`
 	TagId    *uint  `json:"tag_id" binding:"required"`
 	Content  string `json:"content" binding:"required"`

@@ -166,46 +166,46 @@ func CreatePost(c *gin.Context) {
 // 更新帖子
 // 从请求中获取帖子ID和更新数据，调用服务更新帖子，并将更新后的帖子作为JSON响应返回
 func UpdatePost(c *gin.Context) {
-    var post models.Post
+	var post models.Post
 
-    // 从查询参数中获取帖子ID
-    id_string, exist := c.GetQuery("id")
-    if !exist {
-        c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
-        return
-    }
+	// 从查询参数中获取帖子ID
+	id_string, exist := c.GetQuery("id")
+	if !exist {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
 
-    // 将字符串转换为整数
-    id_uint, err := strconv.ParseInt(id_string, 10, 32)
-    if err != nil {
-        c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
-        return
-    }
+	// 将字符串转换为整数
+	id_uint, err := strconv.ParseInt(id_string, 10, 32)
+	if err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
 
-    // 从数据库中加载原始记录
-    if err := utils.DB.First(&post, id_uint).Error; err != nil {
-        c.JSON(404, models.Response{Code: 404, Message: Var.POST_NOT_FOUND})
-        return
-    }
+	// 从数据库中加载原始记录
+	if err := utils.DB.First(&post, id_uint).Error; err != nil {
+		c.JSON(404, models.Response{Code: 404, Message: Var.POST_NOT_FOUND})
+		return
+	}
 
-    // 绑定请求中的JSON数据到帖子对象
-    if err := c.ShouldBindJSON(&post); err != nil {
-        c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
-        return
-    }
+	// 绑定请求中的JSON数据到帖子对象
+	if err := c.ShouldBindJSON(&post); err != nil {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
 
-    // 更新数据库中的帖子数据
-    if err := utils.DB.Save(&post).Error; err != nil {
-        c.JSON(500, models.Response{Code: 500, Message: Var.POST_UPDATE_FAILED})
-        return
-    }
+	// 更新数据库中的帖子数据
+	if err := utils.DB.Save(&post).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_UPDATE_FAILED})
+		return
+	}
 
-    // 返回成功响应
-    c.JSON(200, models.Response{
-        Code:    200,
-        Message: Var.POST_UPDATE_SUCCESSFULLY,
-        Data:    map[string]interface{}{"post": post},
-    })
+	// 返回成功响应
+	c.JSON(200, models.Response{
+		Code:    200,
+		Message: Var.POST_UPDATE_SUCCESSFULLY,
+		Data:    map[string]interface{}{"post": post},
+	})
 }
 
 // 删除帖子
@@ -240,10 +240,10 @@ func DeletePost(c *gin.Context) {
 
 // 根据用户ID获取帖子
 // 从请求中获取用户ID，调用服务获取用户的帖子，并将帖子作为JSON响应返回
-func GetPostsByUserId(c *gin.Context) {
+func GetPostsByAutherId(c *gin.Context) {
 	var posts []models.Post
 	// 从查询参数中获取用户ID
-	user_id_string, exist := c.GetQuery("user_id")
+	user_id_string, exist := c.GetQuery("auther_id")
 	if !exist {
 		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
 		return
@@ -257,7 +257,7 @@ func GetPostsByUserId(c *gin.Context) {
 	}
 
 	// 查询数据库获取用户的帖子
-	if err := utils.DB.Model(&models.Post{}).Where("user_id = ?", user_id_uint).Find(&posts).Error; err != nil {
+	if err := utils.DB.Model(&models.Post{}).Where("auther_id = ?", user_id_uint).Find(&posts).Error; err != nil {
 		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
 		return
 	}
