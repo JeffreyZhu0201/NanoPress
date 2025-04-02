@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:34:55
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-02 23:21:16
+ * @LastEditTime: 2025-04-03 00:08:45
  * @FilePath: \go-backend\controller\PostHandler.go
  * @Description: 帖子相关的处理函数
  *
@@ -130,9 +130,8 @@ func GetPostById(c *gin.Context) {
 		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
 		return
 	}
-
-	// 查询数据库获取帖子
-	if err := utils.DB.Model(&models.Post{}).First(&post, id_uint).Error; err != nil {
+	// 查询数据库获取未删除的帖子
+	if err := utils.DB.Model(&models.Post{}).Where("deleted_at IS NULL").First(&post, id_uint).Error; err != nil {
 		// 如果查询失败，返回服务器错误响应
 		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
 		return
@@ -276,7 +275,7 @@ func GetPostsByAutherId(c *gin.Context) {
 	}
 
 	// 查询数据库获取用户的帖子
-	if err := utils.DB.Model(&models.Post{}).Where("auther_id = ?", user_id_uint).Find(&posts).Error; err != nil {
+	if err := utils.DB.Model(&models.Post{}).Where("deleted_at IS NULL").Where("auther_id = ?", user_id_uint).Find(&posts).Error; err != nil {
 		// 如果查询失败，返回服务器错误响应
 		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
 		return
@@ -306,7 +305,7 @@ func GetPostsByTagId(c *gin.Context) {
 	}
 
 	// 查询数据库获取对应标签的帖子
-	if err := utils.DB.Model(&models.Post{}).Where("tag_id = ?", tag_id_uint).Find(&posts).Error; err != nil {
+	if err := utils.DB.Model(&models.Post{}).Where("deleted_at IS NULL").Where("tag_id = ?", tag_id_uint).Find(&posts).Error; err != nil {
 		// 如果查询失败，返回服务器错误响应
 		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
 		return
@@ -336,7 +335,7 @@ func GetPostsBySearch(c *gin.Context) {
 	}
 
 	// 查询数据库获取符合条件的帖子
-	if err := utils.DB.Model(&models.Post{}).Where("title LIKE ?", "%"+query_string+"%").Find(&posts).Error; err != nil {
+	if err := utils.DB.Model(&models.Post{}).Where("deleted_at IS NULL").Where("title LIKE ?", "%"+query_string+"%").Find(&posts).Error; err != nil {
 		// 如果查询失败，返回服务器错误响应
 		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
 		return
