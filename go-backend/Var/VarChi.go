@@ -63,4 +63,5 @@ const (
 	POST_UPDATE_FAILED       = "帖子更新失败"
 	POST_UPDATE_SUCCESSFULLY = "帖子更新成功"
 	POST_DELETE_FAILED       = "帖子删除失败"
+	POST_NOT_FOUND           = "帖子不存在"
 )

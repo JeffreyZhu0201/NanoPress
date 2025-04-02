@@ -1,3 +1,13 @@
+/*
+ * @Author: Jeffrey Zhu 1624410543@qq.com
+ * @Date: 2025-04-01 19:17:50
+ * @LastEditors: Jeffrey Zhu 1624410543@qq.com
+ * @LastEditTime: 2025-04-02 19:49:33
+ * @FilePath: \go-backend\controller\TagHandler.go
+ * @Description: File Description Here...
+ *
+ * Copyright (c) 2025 by JeffreyZhu, All Rights Reserved.
+ */
 package controller
 
 import (
@@ -50,10 +60,10 @@ func DeleteTag(c *gin.Context) {
 		return
 	}
 	var tag models.Tag
-	tag.Id = uint(parsedID)
-	log.Default().Println(tag.Id)
+	tag.ID = uint(parsedID)
+	log.Default().Println(tag.ID)
 
-	if err := utils.DB.Where("id = ?", tag.Id).Delete(&models.Tag{}).Error; err != nil {
+	if err := utils.DB.Where("id = ?", tag.ID).Delete(&models.Tag{}).Error; err != nil {
 		c.JSON(http.StatusBadRequest, models.Response{Code: 400, Message: Var.TAG_DELETE_FAILED})
 		return
 	} else {
@@ -68,7 +78,7 @@ func UpdateTag() {
 func GetTags(c *gin.Context) {
 	var tagsArray []models.Tag
 
-	if err := utils.DB.Find(&tagsArray).Error; err != nil {
+	if err := utils.DB.Model(&models.Tag{}).Find(&tagsArray).Error; err != nil {
 		c.JSON(http.StatusBadRequest, models.Response{Code: 400, Message: Var.TAG_GET_FAILED})
 		return
 	} else {

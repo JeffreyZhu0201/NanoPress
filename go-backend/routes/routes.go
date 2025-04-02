@@ -41,13 +41,13 @@ func SetupRoutes(r *gin.Engine) {
 	post := r.Group("/post")
 	{
 		// user permission
-		post.GET("/:id", controller.GetPostById)
+		post.GET("/:id", controller.GetPostById) //+
 		post.GET("/search", controller.GetPostsBySearch)
 		post.GET("/range", controller.GetRangedPostsNotDeleted)
-		post.GET("/", controller.GetRangedPostsNotDeleted)
-		post.POST("/create", controller.CreatePost)
-		post.POST("/delete", controller.DeletePost)
-		post.POST("/update", controller.UpdatePost)
+		post.GET("/", controller.GetRangedPostsNotDeleted) //+
+		post.POST("/create", controller.CreatePost)//+
+		post.POST("/delete", controller.DeletePost)//+
+		post.POST("/update", controller.UpdatePost)//
 		post.GET("/getbyuserid", controller.GetPostsByUserId)
 		post.GET("/getbytagid", controller.GetPostsByTagId)
 

@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:34:55
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-02 00:23:57
+ * @LastEditTime: 2025-04-02 20:05:50
  * @FilePath: \go-backend\controller\PostHandler.go
  * @Description: 帖子相关的处理函数
  *
@@ -147,6 +147,7 @@ func CreatePost(c *gin.Context) {
 	}
 
 	log.Default().Println(post)
+	log.Default().Println(*post.AutherID)
 
 	// 将帖子数据插入数据库
 	if err := utils.DB.Create(&post).Error; err != nil {
@@ -165,40 +166,46 @@ func CreatePost(c *gin.Context) {
 // 更新帖子
 // 从请求中获取帖子ID和更新数据，调用服务更新帖子，并将更新后的帖子作为JSON响应返回
 func UpdatePost(c *gin.Context) {
-	var post models.Post
+    var post models.Post
 
-	// 从查询参数中获取帖子ID
-	id_string, exist := c.GetQuery("id")
-	if !exist {
-		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
-		return
-	}
+    // 从查询参数中获取帖子ID
+    id_string, exist := c.GetQuery("id")
+    if !exist {
+        c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+        return
+    }
 
-	// 将字符串转换为整数
-	id_uint, err := strconv.ParseInt(id_string, 10, 32)
-	if err != nil {
-		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
-		return
-	}
+    // 将字符串转换为整数
+    id_uint, err := strconv.ParseInt(id_string, 10, 32)
+    if err != nil {
+        c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+        return
+    }
 
-	// 绑定请求中的JSON数据到帖子对象
-	if err := c.ShouldBindJSON(&post); err != nil {
-		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
-		return
-	}
+    // 从数据库中加载原始记录
+    if err := utils.DB.First(&post, id_uint).Error; err != nil {
+        c.JSON(404, models.Response{Code: 404, Message: Var.POST_NOT_FOUND})
+        return
+    }
 
-	// 更新数据库中的帖子数据
-	if err := utils.DB.Model(&models.Post{}).Where("id = ?", id_uint).Updates(&post).Error; err != nil {
-		c.JSON(500, models.Response{Code: 500, Message: Var.POST_UPDATE_FAILED})
-		return
-	}
+    // 绑定请求中的JSON数据到帖子对象
+    if err := c.ShouldBindJSON(&post); err != nil {
+        c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+        return
+    }
 
-	// 返回成功响应
-	c.JSON(200, models.Response{
-		Code:    200,
-		Message: Var.POST_UPDATE_SUCCESSFULLY,
-		Data:    map[string]interface{}{"post": post},
-	})
+    // 更新数据库中的帖子数据
+    if err := utils.DB.Save(&post).Error; err != nil {
+        c.JSON(500, models.Response{Code: 500, Message: Var.POST_UPDATE_FAILED})
+        return
+    }
+
+    // 返回成功响应
+    c.JSON(200, models.Response{
+        Code:    200,
+        Message: Var.POST_UPDATE_SUCCESSFULLY,
+        Data:    map[string]interface{}{"post": post},
+    })
 }
 
 // 删除帖子
