@@ -2,7 +2,7 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 19:17:50
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-02 23:45:06
+ * @LastEditTime: 2025-04-03 00:00:03
  * @FilePath: \go-backend\controller\TagHandler.go
  * @Description: 标签处理器，提供创建、删除、更新和获取标签的接口
  *
@@ -33,8 +33,8 @@ func CreateTag(c *gin.Context) {
 	log.Default().Println(tagName)
 
 	// 检查标签是否已存在
-	var existingTag models.Tag
-	if err := utils.DB.Model(&models.Tag{}).Where("tag_name = ?", tagName).First(&existingTag).Error; err == nil {
+	var count int64
+	if err := utils.DB.Model(&models.Tag{}).Where("tag_name = ?", tagName).Count(&count).Error; err != nil || count > 0 {
 		c.JSON(http.StatusBadRequest, models.Response{Code: 400, Message: Var.TAG_EXIST})
 		return
 	}
