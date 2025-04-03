@@ -64,6 +64,7 @@ function ArticleDetail() {
                 <div className="flex justify-between items-center text-gray-600 text-sm md:text-base mb-4">
                     {/* {`作者：${authorName}`} */}
                     <div>{article?.CreatedAt}</div>
+                    <div>阅读量: {article?.read}</div>
                 </div>
             </div>
             <div className="markdown mt-4 md:mt-8">

@@ -23,13 +23,13 @@ const links = [
         number: 1
     },
     {
-        name: "Home",
+        name: "主页",
         path: '/home',
         page: <Homepage />,
         number: 1
     },
     {
-        name: "Posts",
+        name: "文章",
         path: '/posts',
         page: <Post />,
         number: 1
@@ -41,7 +41,7 @@ const links = [
     //     number: 1
     // },
     {
-        name: "ArticleDetail",
+        name: "详情页",
         path: '/articledetail/:type/:id',
         page: <ArticleDetail />
     }

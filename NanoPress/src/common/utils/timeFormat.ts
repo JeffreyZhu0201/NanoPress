@@ -13,6 +13,5 @@ export function ISO_TO_Local(origin_time: string):string {
 
     // 格式化为：YYYY-MM-DD HH:mm:ss
     const readableTime = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-    console.log(readableTime); // 输出：2025-04-03 21:51:14
     return readableTime
 }

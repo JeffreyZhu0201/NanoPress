@@ -25,13 +25,13 @@ function NavBar() {
 
     return (
         <div className="flex justify-between items-center h-20 md:h-24 w-full mx-auto px-4 text-white bg-slate-600 md:px-10">
-            <h1 className="w-full text-3xl font-bold text-[#00df9a] hover:text-[#00df00] cursor-pointer duration-300">Jeffrey's Blog</h1>
+            <h1 className="w-full text-3xl font-bold text-[#00df9a] hover:text-[#00df00] cursor-pointer duration-300">Nano Press v1</h1>
 
             <ul className='hidden md:flex font-bold text-lg'>
                 {
                     links.map((item, index) => {
                         if (item.name && item.number === 1) {
-                            return <Link key={index} to={item.path} replace className='p-4 hover:underline hover:decoration-solid hover:underline-offset-8 decoration-4 cursor-pointer transition-colors duration-500'>{item.name}</Link>
+                            return <Link key={index} to={item.path} replace className='p-4 hover:underline hover:decoration-solid hover:underline-offset-8 decoration-4 cursor-pointer transition-colors duration-500 text-nowrap'>{item.name}</Link>
                         }
                         return null;
                     })
@@ -45,7 +45,7 @@ function NavBar() {
             </div>
 
             <div className={nav ? ' fixed right-0 top-0 w-[60%] h-full border-r bg-slate-600 ease-in-out duration-500 md:hidden' : "fixed right-[-60%] top-0 w-[60%] h-full border-r bg-slate-600 ease-in-out duration-500 md:hidden"}>
-                <h1 className='w-full text-3xl font-bold text-[#00df9a] m-8'>Jeffrey's Blog</h1>
+                <h1 className='w-full text-3xl font-bold text-[#00df9a] m-8'>Nano Press v1</h1>
 
                 <ul className='uppercase p-4'>
                     {

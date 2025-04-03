@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-27 22:26:22
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 22:05:27
+ * @LastEditTime: 2025-04-03 22:16:26
  * @FilePath: \NanoPress\NanoPress\src\components\PostCard.tsx
  * @Description: File Description Here..II
  * 
@@ -19,7 +19,6 @@ function PostCard(props: { post: Post }) {
     const [tag, setTag] = useState()
     useEffect(() => {
         const FetchTag = async () => {
-            console.log(props.post)
             try {
                 var tag_id = props.post.tag_id
                 var tagItem = await getTagById(tag_id)
@@ -34,7 +33,7 @@ function PostCard(props: { post: Post }) {
             }
         }
         FetchTag();
-    }, [])
+    },[props.post])
 
     return (
         <>

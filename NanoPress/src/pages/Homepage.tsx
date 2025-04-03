@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 22:05:38
+ * @LastEditTime: 2025-04-03 22:15:55
  * @FilePath: \NanoPress\NanoPress\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -32,7 +32,7 @@ function Homepage(){
             }
         }
         FetchPostPreview();
-    },[])
+    },[]) // Remove postPreview from dependency array
 
     return (
         <div className="Homepage bg-slate-400 w-full flex flex-col p-2 md:p-14">
@@ -71,8 +71,6 @@ function Homepage(){
                     })
                 }
             </div>
-
-
         </div>
     )
 
