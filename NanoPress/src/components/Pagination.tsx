@@ -25,7 +25,7 @@ export default function Pagination(props: {
 
     var items = [...Array(Math.ceil(props.total / props.PerPage))].map((_item, _itemIndex) => {
         return <a key={_itemIndex} className={`h-10 w-10 cursor-pointer rounded-full mx-1 flex flex-row items-center justify-center select-none transition-all hover:bg-blue-300 duration-700 ease-in-out ${(props.currentPage === (_itemIndex + 1)) ? 'bg-blue-500' : 'bg-red-100'}`} onClick={() => handleClick(_itemIndex)}>
-            {_itemIndex + 1}
+            {_itemIndex+1}
         </a>
     }).slice(Math.max(0,props.currentPage-3),Math.min(Math.max(0,props.currentPage-3)+5,Math.ceil(props.total / props.PerPage)))
 
@@ -33,7 +33,7 @@ export default function Pagination(props: {
 
     function handleClick(_itemIndex: number) {
         // setItemsVal(a.slice(Math.max(_itemIndex-1,0),Math.min(Math.max(_itemIndex-1,0)+4,Math.ceil(props.totalPosts / props.postsPerPage))));
-        props.setCurrentPage(_itemIndex + 1)
+        props.setCurrentPage(_itemIndex+1)
     }
 
     return (

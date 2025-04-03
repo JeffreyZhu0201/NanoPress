@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:03:31
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 22:03:43
+ * @LastEditTime: 2025-04-03 22:35:14
  * @FilePath: \NanoPress\NanoPress\src\pages\Posts.tsx
  * @Description: File Description Here...
  * 
@@ -26,7 +26,7 @@ function Posts() {
     useEffect(() => {
         const fetchPosts = async () => {
             try{
-                await getRangePost(currentPage,postsPerPage).then(res=>{
+                await getRangePost((currentPage-1)*postsPerPage,postsPerPage).then(res=>{
                     setPostList(res.data.data.posts);
                     setPostLength(res.data.data.count);
                 })
