@@ -26,8 +26,8 @@ function FootBar() {
             </div>
 
             <div className="flex items-center gap-4">
-                <AiFillGithub color="white" size={26}></AiFillGithub>
-                <AiFillTwitterCircle color="white" size={26}></AiFillTwitterCircle>
+                <span className="cursor-pointer"><AiFillGithub color="white" size={26}></AiFillGithub></span>
+                <span className="cursor-pointer"><AiFillTwitterCircle color="white" size={26}></AiFillTwitterCircle></span>
             </div>
         </div>
     )
