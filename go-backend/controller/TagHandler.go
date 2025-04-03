@@ -2,8 +2,8 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 19:17:50
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 00:09:57
- * @FilePath: \go-backend\controller\TagHandler.go
+ * @LastEditTime: 2025-04-03 17:03:55
+ * @FilePath: \NanoPress\go-backend\controller\TagHandler.go
  * @Description: 标签处理器，提供创建、删除、更新和获取标签的接口
  *
  * Copyright (c) 2025 by JeffreyZhu, All Rights Reserved.
@@ -125,4 +125,27 @@ func GetTags(c *gin.Context) {
 		c.JSON(http.StatusAccepted, models.Response{Code: 200, Message: Var.TAG_GET_SUCCESSFULLY, Data: map[string]interface{}{"tags": tagsArray}})
 		return
 	}
+}
+
+func GetTagById(c *gin.Context) {
+	var tag models.Tag
+
+	id_string, exist := c.Params.Get("id")
+	// 如果参数不存在，返回参数错误响应
+	if !exist {
+		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	id_uint, err := strconv.ParseUint(id_string, 10, 32)
+	if err != nil {
+		c.JSON(http.StatusBadGateway, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+
+	if err := utils.DB.Model(&models.Tag{}).First(&tag, id_uint).Error; err != nil {
+		c.JSON(http.StatusBadGateway, models.Response{Code: 400, Message: Var.TAG_GET_FAILED})
+		return
+	}
+	c.JSON(http.StatusAccepted, models.Response{Code: 200, Message: Var.TAG_GET_SUCCESSFULLY, Data: tag})
 }

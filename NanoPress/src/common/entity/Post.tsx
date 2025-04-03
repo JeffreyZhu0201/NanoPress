@@ -2,21 +2,22 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-30 20:21:43
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-01-16 10:57:48
- * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\common\entity\Post.tsx
+ * @LastEditTime: 2025-04-03 17:11:18
+ * @FilePath: \NanoPress\NanoPress\src\common\entity\Post.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
 interface Post {
-    id: string,
+    ID: string,
     title: string,
-    authorId: string,
-    readNum: string,
-    date: string,
+    author_id: string,
+    read: string,
+    CreatedAt: string,
     content: string,
-    categoryId: string[]
+    tag_id: string,
+    likes:Number
 }
 
 export default Post

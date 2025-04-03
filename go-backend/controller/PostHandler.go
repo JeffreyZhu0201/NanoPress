@@ -102,14 +102,16 @@ func GetRangedPostsNotDeleted(c *gin.Context) {
 		return
 	}
 
+	var count int64
+
 	// 查询数据库获取未删除的帖子
-	if err := utils.DB.Model(&models.Post{}).Where("deleted_at IS NULL").Limit(int(limited_uint)).Offset(int(start_index_uint)).Find(&posts).Error; err != nil {
+	if err := utils.DB.Model(&models.Post{}).Where("deleted_at IS NULL").Count(&count).Limit(int(limited_uint)).Offset(int(start_index_uint)).Find(&posts).Error; err != nil {
 		// 如果查询失败，返回服务器错误响应
 		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
 		return
 	}
 	// 返回成功响应
-	c.JSON(200, models.Response{Code: 200, Message: Var.POST_GET_SUCCESSFULLY, Data: posts})
+	c.JSON(200, models.Response{Code: 200, Message: Var.POST_GET_SUCCESSFULLY, Data: map[string]interface{}{"posts": posts, "count": count}})
 }
 
 // 根据ID获取帖子

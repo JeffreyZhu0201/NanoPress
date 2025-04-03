@@ -2,8 +2,8 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-01-17 15:07:25
- * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Homepage.tsx
+ * @LastEditTime: 2025-04-03 17:24:55
+ * @FilePath: \NanoPress\NanoPress\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
@@ -17,16 +17,16 @@ import { Link } from "react-router-dom"
 
 import { getRangePost } from "../common/Http/postData"
 import Loading from "../common/Loading"
+import Post from "../common/entity/Post"
 
 function Homepage(){
-    const [postPreview,setPostPreview] = useState([]);
+    const [postPreview,setPostPreview] = useState([] as Post[]);
 
     useEffect(()=>{
         const FetchPostPreview = async ()=>{
             try{
                 const res = await getRangePost(1,3);
                 setPostPreview(res.data.data.posts);
-                console.log(res.data.data.posts);
             }catch(err){
             }
         }

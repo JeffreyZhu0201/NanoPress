@@ -2,61 +2,58 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-27 22:26:22
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-01-17 16:27:38
- * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\components\PostCard.tsx
+ * @LastEditTime: 2025-04-03 17:29:06
+ * @FilePath: \NanoPress\NanoPress\src\components\PostCard.tsx
  * @Description: File Description Here..II
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
  */
 
-import Category from "../common/entity/Category"
 import { Link } from "react-router-dom"
 import Post from "../common/entity/Post"
+import { getTagById } from "../common/Http/tagData"
 import { useEffect, useState } from "react"
-import getCategoryData from "../common/Http/categoryData"
 
 function PostCard(props: {post:Post}) {
     
-    const [category,setCategory] = useState([] as Category[])
+    const [tag,setTag] = useState()
     useEffect(()=>{
-        
-        const FetchCategory = ()=> {
+        const FetchTag = async ()=> {
             console.log(props.post)
             try{
-                props.post.categoryId.map(async (categoryIdItem) => {
-                    console.log(categoryIdItem)
-                    var categoryItem = await getCategoryData(categoryIdItem)
-                    if(categoryItem.data.code === "200"){
-                        setCategory([...category,categoryItem.data.data])
-                    }
-                    else{
-                        console.log(categoryItem.data.message)
-                    }
-                })
+                var tag_id = props.post.tag_id
+                var tagItem = await getTagById(tag_id)
+                if(tagItem.data.code === 200){
+                    setTag(tagItem.data.data.tag_name)
+                }
+                else{
+                    console.log(tagItem.data.message)
+                }
             }catch(e){
                 console.log(e)
             }
         }
-        FetchCategory();
+        FetchTag();
     },[])
 
     return (
         <>
-            <Link to={`/articledetail/post/${props.post.id}`}>
+            <Link to={`/articledetail/post/${props.post.ID}`}>
                 <div className="m-2 md:m-4 border-b-1 border-x-white">
                     <div className="">
-                        {
+                        {/* {
                             category.map((categoryItem,index) => {
                                 return <div key={index} className={`${categoryItem.textColor}  ${categoryItem.bgColor} inline-block rounded-full text-xs md:text-sm ml-2 p-2 pt-0.5 pb-0.5 cursor-pointer hover:bg-green-200`}>{categoryItem.categoryName}</div>
                             })
-                        }
+                        } */}
+                        {tag}
                     </div>
                     <div className=" text-white">
                         <div className="ml-2 text-xl md:text-2xl font-bold truncate md:m-2 cursor-pointer hover:text-green-200 transition-colors duration-500">{props.post.title}</div>
                         <div className="flex m-1 md:m-2 font-thin text-sm">
-                            <div>{props.post.date}</div>
+                            <div>{props.post.CreatedAt}</div>
                             <span>&nbsp;&nbsp;&frasl;&frasl;&nbsp;&nbsp;</span>
-                            <div>{props.post.readNum} read</div>
+                            <div>{props.post.read} read</div>
                             <div className="ml-auto text-gray-300 text-sm cursor-pointer hover:text-slate-100 transition-colors">查看更多</div>
                         </div>
                     </div>

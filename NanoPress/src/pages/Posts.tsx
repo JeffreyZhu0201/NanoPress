@@ -1,9 +1,9 @@
 /*
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:03:31
- * @LastEditors: JeffreyZhu 1624410543@qq.com
- * @LastEditTime: 2024-12-05 00:30:58
- * @FilePath: \JeffreysBlog\jeffreysblogfronted\src\pages\Posts.tsx
+ * @LastEditors: Jeffrey Zhu 1624410543@qq.com
+ * @LastEditTime: 2025-04-03 16:29:48
+ * @FilePath: \NanoPress\NanoPress\src\pages\Posts.tsx
  * @Description: File Description Here...
  * 
  * Copyright (c) 2024 by JeffreyZhu, All Rights Reserved. 
@@ -11,8 +11,8 @@
 
 import React, { useEffect, useState } from "react"
 import Pagination from "../components/Pagination"
-import PostCard from "../components/PostCard"
 import { getRangePost } from "../common/Http/postData"
+import PostCard from "../components/PostCard";
 
 function Posts() {
     const [currentPage, setCurrentPage] = useState(1);

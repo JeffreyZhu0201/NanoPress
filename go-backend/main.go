@@ -12,6 +12,7 @@ package main
 
 import (
 	"fmt"
+	"go-backend/models"
 	"go-backend/routes"
 	"go-backend/utils"
 
@@ -31,6 +32,9 @@ func main() {
 
 	r := gin.Default()
 	routes.SetupRoutes(r)
+	// 解决cors跨域
+	//配置gin允许跨域请求
+	r.Use(models.Cors())
 
 	if err := r.Run(":8080"); err != nil {
 		fmt.Println("Error starting server:", err)

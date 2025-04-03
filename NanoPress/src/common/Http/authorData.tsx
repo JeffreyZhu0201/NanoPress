@@ -10,12 +10,11 @@
  */
 
 import axios from "axios";
-import staticResource from "../staticResource";
 
 export function getAuthorNameById(authorId:string){
     return axios({
         method:'get',
-        url:staticResource.baseUrl + '/author/getauthornamebyid',
+        url:'api/author/getauthornamebyid',
         params:{
             authorId:authorId
         }

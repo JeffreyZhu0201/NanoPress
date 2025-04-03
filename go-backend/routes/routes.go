@@ -2,8 +2,8 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:31:46
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-02 20:18:56
- * @FilePath: \go-backend\routes\routes.go
+ * @LastEditTime: 2025-04-03 16:59:59
+ * @FilePath: \NanoPress\go-backend\routes\routes.go
  * @Description: File Description Here...
  *
  * Copyright (c) 2025 by JeffreyZhu, All Rights Reserved.
@@ -34,6 +34,7 @@ func SetupRoutes(r *gin.Engine) {
 	tags := r.Group("/tag")
 	{
 		tags.GET("/", controller.GetTags)
+		tags.GET("/:id", controller.GetTagById)
 		tags.POST("/createtag", controller.CreateTag)
 		tags.DELETE("/deletetag", controller.DeleteTag)
 		tags.POST("/update", controller.UpdateTag)
