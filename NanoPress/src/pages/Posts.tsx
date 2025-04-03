@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:03:31
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 16:29:48
+ * @LastEditTime: 2025-04-03 21:28:21
  * @FilePath: \NanoPress\NanoPress\src\pages\Posts.tsx
  * @Description: File Description Here...
  * 
@@ -44,7 +44,7 @@ function Posts() {
     return (
         <div className="p-2 md:pt-16 md:px-16 bg-slate-700 h-full min-h-screen flex flex-col">
             <div className="mb-2 md:mb-16">
-                <h1 className="font-bold text-xl md:text-4xl text-white mt-2 mb-8">Blogs</h1>
+                <h1 className="font-bold text-xl md:text-4xl text-white mt-2 mb-8">Posts</h1>
                 <p className="text-base md:text-lg text-white overflow-ellipsis">Articles, tutorials, snippets, rants, and everything else. Subscribe for updates as they happen.</p>
             </div>
             <div>

@@ -28,10 +28,10 @@ function App() {
   return (
     <Router>
       <div className="App overflow-ellipsis">
-        <div className='max-w-[950px] m-auto min-w-[258px]'>
+        <div className='max-w-[950px] m-auto min-w-[258px] h-screen'>
           <NavBar />
 
-          <div className='min-h-screen'>
+          <div className=''>
             <Routes>
               {
                 links.map((item,index) => {

@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 17:24:55
+ * @LastEditTime: 2025-04-03 21:26:19
  * @FilePath: \NanoPress\NanoPress\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -58,7 +58,7 @@ function Homepage(){
             </div>
 
             {/* 博客板块 */}
-            <div className="p-2  grid grid-flow-row gap-4">
+            <div className="p-2 h-full">
                 <div className="flex items-center">
                     <p className="text-2xl font-bold text-white">最新发布</p>
                     <Link to="/posts" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
