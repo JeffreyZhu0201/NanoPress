@@ -70,17 +70,6 @@ function Homepage(){
                 }
             </div>
 
-            <div className="p-2  grid grid-flow-row gap-4">
-                <div className="flex items-center">
-                    <p className="text-2xl font-bold text-white">最新项目</p>
-                    <Link to="/projects" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多项目--&gt;</Link>
-                </div>
-                {/* {
-                    proejctPreviewList.map((projectItem) => {
-                        return <ProjectCard project={projectItem}></ProjectCard>
-                    })
-                } */}
-            </div>
 
         </div>
     )

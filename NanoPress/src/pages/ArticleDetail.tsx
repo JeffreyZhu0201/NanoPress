@@ -11,7 +11,6 @@
 import React, { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPostById } from "../common/Http/postData"
-import { getProjectById } from "../common/Http/projectData"
 
 import Project from "../common/entity/Project"
 import Post from "../common/entity/Post"
@@ -49,14 +48,6 @@ function ArticleDetail() {
                 }
                 catch (err) {
                     console.log(err)
-                }
-            }
-            else {
-                try {
-                    getProjectById(id).then(res => {
-                        setArticle(res.data.data)
-                    })
-                } catch (err) {
                 }
             }
         }
