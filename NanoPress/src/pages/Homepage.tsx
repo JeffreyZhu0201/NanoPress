@@ -59,7 +59,7 @@ function Homepage(){
             </div>
 
             {/* 博客板块 */}
-            <div className="p-2 h-full">
+            <div className="p-2 h-full my-14">
                 <div className="flex items-center">
                     <p className="text-2xl font-bold text-white">最新发布</p>
                     <Link to="/posts" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
