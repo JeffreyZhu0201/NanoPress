@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-29 11:08:05
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 22:06:23
+ * @LastEditTime: 2025-04-03 22:26:33
  * @FilePath: \NanoPress\NanoPress\src\pages\ArticleDetail.tsx
  * @Description: File Description Here...
  * 
@@ -55,9 +55,9 @@ function ArticleDetail() {
     }, [id])
 
     return (
-        <div className="bg-green-200 p-4 md:p-6 h-screen">
+        <div className="bg-slate-400 p-4 md:p-6 min-h-screen">
             <div className="mt-4 md:mt-8 border-b-1 border-gray-700">
-                <div className="flex items-center py-2 md:py-4">
+                <div className="flex items-center py-4 md:py-6">
                     <h1 className="text-3xl md:text-4xl font-bold line-clamp-2 overflow-ellipsis">{article?.title}</h1>
                 </div>
 

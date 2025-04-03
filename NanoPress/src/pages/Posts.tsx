@@ -45,8 +45,8 @@ function Posts() {
 
     return (
         <div className="p-2 md:pt-16 md:px-16 bg-slate-700 h-full min-h-screen flex flex-col">
-            <div className="mb-2 md:mb-16">
-                <h1 className="font-bold text-xl md:text-4xl text-white mt-2 mb-8">Posts</h1>
+            <div className="m-2 md:mb-16">
+                <h1 className="font-bold text-3xl md:text-6xl text-white my-4 mb-8">Posts</h1>
                 <p className="text-base md:text-lg text-white overflow-ellipsis">Articles, tutorials, snippets, rants, and everything else. Subscribe for updates as they happen.</p>
             </div>
             <div>

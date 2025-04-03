@@ -38,7 +38,7 @@ function PostCard(props: { post: Post }) {
     return (
         <>
             <Link to={`/articledetail/post/${props.post.ID}`}>
-                <div className="m-2 md:m-4 border-b-1 border-x-white">
+                <div className="m-3 md:my-6 border-b-1 border-x-white">
                     <div className="">
                         {/* {
                             category.map((categoryItem,index) => {
