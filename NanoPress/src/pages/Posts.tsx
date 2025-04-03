@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 21:03:31
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 21:28:21
+ * @LastEditTime: 2025-04-03 22:03:43
  * @FilePath: \NanoPress\NanoPress\src\pages\Posts.tsx
  * @Description: File Description Here...
  * 
@@ -13,13 +13,15 @@ import React, { useEffect, useState } from "react"
 import Pagination from "../components/Pagination"
 import { getRangePost } from "../common/Http/postData"
 import PostCard from "../components/PostCard";
+import { ISO_TO_Local } from "../common/utils/timeFormat";
+import Post from "../common/entity/Post";
 
 function Posts() {
     const [currentPage, setCurrentPage] = useState(1);
     const [postLength,setPostLength] = useState(0);
     const [postsPerPage] = useState(5);
 
-    const [postList,setPostList] = useState([])
+    const [postList,setPostList] = useState([] as Post[])
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -50,6 +52,7 @@ function Posts() {
             <div>
                 {
                     postList.map((postItem,index) => {
+                        postItem.CreatedAt = ISO_TO_Local(postItem.CreatedAt)
                         return <PostCard key={index} post={postItem}></PostCard>
                     })
                 }

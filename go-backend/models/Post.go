@@ -2,8 +2,8 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:24:11
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-02 19:47:01
- * @FilePath: \go-backend\models\Post.go
+ * @LastEditTime: 2025-04-03 21:48:45
+ * @FilePath: \NanoPress\go-backend\models\Post.go
  * @Description: File Description Here...
  *
  * Copyright (c) 2025 by JeffreyZhu, All Rights Reserved.
@@ -11,7 +11,9 @@
 
 package models
 
-import "gorm.io/gorm"
+import (
+	"gorm.io/gorm"
+)
 
 type Post struct {
 	gorm.Model

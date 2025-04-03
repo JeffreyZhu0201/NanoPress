@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-29 11:08:05
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 16:15:12
+ * @LastEditTime: 2025-04-03 22:06:23
  * @FilePath: \NanoPress\NanoPress\src\pages\ArticleDetail.tsx
  * @Description: File Description Here...
  * 
@@ -16,6 +16,7 @@ import Post from "../common/entity/Post"
 //import { getAuthorNameById } from "../common/Http/authorData"
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { ISO_TO_Local } from "../common/utils/timeFormat";
 
 function ArticleDetail() {
     const { id } = useParams();
@@ -35,7 +36,8 @@ function ArticleDetail() {
             try {
                 await getPostById(id as string).then(async res => {
                     console.log(res.data.data.post)
-                    const post = res.data.data.post as Post;
+                    var post = res.data.data.post as Post;
+                    post.CreatedAt = ISO_TO_Local(post.CreatedAt)
                     setArticle(post);
                     // if (post.author_id) {
                     //     await getAuthorNameById(post.author_id).then(res => {

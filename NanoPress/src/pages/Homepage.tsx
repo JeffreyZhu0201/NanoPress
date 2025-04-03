@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-25 20:51:21
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 21:26:19
+ * @LastEditTime: 2025-04-03 22:05:38
  * @FilePath: \NanoPress\NanoPress\src\pages\Homepage.tsx
  * @Description: File Description Here...
  * 
@@ -18,6 +18,7 @@ import { Link } from "react-router-dom"
 import { getRangePost } from "../common/Http/postData"
 import Loading from "../common/Loading"
 import Post from "../common/entity/Post"
+import { ISO_TO_Local } from "../common/utils/timeFormat"
 
 function Homepage(){
     const [postPreview,setPostPreview] = useState([] as Post[]);
@@ -65,6 +66,7 @@ function Homepage(){
                 </div>
                 {
                     postPreview.map((postItem,index) => {
+                        postItem.CreatedAt = ISO_TO_Local(postItem.CreatedAt)
                         return <Suspense key={index} fallback={<Loading></Loading>}><PostCard key={index} post={postItem}></PostCard></Suspense>
                     })
                 }
