@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-29 11:08:05
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 22:26:33
+ * @LastEditTime: 2025-04-08 23:34:26
  * @FilePath: \NanoPress\NanoPress\src\pages\ArticleDetail.tsx
  * @Description: File Description Here...
  * 
@@ -24,7 +24,7 @@ function ArticleDetail() {
     //const [authorName, setAuthorName] = useState("");
 
     const components = {
-        h1: ({ ...props }: { [key: string]: any }) => <h1 className="text-3xl font-bold" {...props} aria-label={props.children}>{props.children}</h1>,
+        h1: ({ ...props }: { [key: string]: any }) => <h1 className="text-3xl font-sans" {...props} aria-label={props.children}>{props.children}</h1>,
         h2: ({ ...props }: { [key: string]: any }) => <h2 className="text-2xl font-semibold" {...props} aria-label={props.children}>{props.children}</h2>,
         p: ({ ...props }: { [key: string]: any }) => <p className="text-base" {...props} />,
         code: ({ ...props }: { [key: string]: any }) => <code className="bg-gray-200 p-1 rounded" {...props} />,
