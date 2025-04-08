@@ -17,6 +17,7 @@ import Post from "../common/entity/Post"
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { ISO_TO_Local } from "../common/utils/timeFormat";
+import { Helmet } from "react-helmet-async";
 
 function ArticleDetail() {
     const { id } = useParams();
@@ -55,24 +56,28 @@ function ArticleDetail() {
     }, [id])
 
     return (
-        <div className="bg-slate-400 p-4 md:p-6 min-h-screen">
-            <div className="mt-4 md:mt-8 border-b-1 border-gray-700">
-                <div className="flex items-center py-4 md:py-6">
-                    <h1 className="text-3xl md:text-4xl font-bold line-clamp-2 overflow-ellipsis">{article?.title}</h1>
-                </div>
+        <>
+            <Helmet>
+                <title>{article?.title}</title>
+            </Helmet>
+            <div className="bg-slate-400 p-4 md:p-6 min-h-screen">
+                <div className="mt-4 md:mt-8 border-b-1 border-gray-700">
+                    <div className="flex items-center py-4 md:py-6">
+                        <h1 className="text-3xl md:text-4xl font-bold line-clamp-2 overflow-ellipsis">{article.title}</h1>
+                    </div>
 
-                <div className="flex justify-between items-center text-gray-600 text-sm md:text-base mb-4">
-                    {/* {`作者：${authorName}`} */}
-                    <div>{article?.CreatedAt}</div>
-                    <div>阅读量: {article?.read}</div>
+                    <div className="flex justify-between items-center text-gray-600 text-sm md:text-base mb-4">
+                        {/* {`作者：${authorName}`} */}
+                        <div>{article.CreatedAt}</div>
+                        <div>阅读量: {article.read}</div>
+                    </div>
                 </div>
-            </div>
-            <div className="markdown mt-4 md:mt-8">
-                <ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
-                    {article?.content}
-                </ReactMarkdown>
-            </div>
-        </div>)
+                <div className="markdown mt-4 md:mt-8">
+                    <ReactMarkdown components={components} remarkPlugins={[remarkGfm]}>
+                        {article.content}
+                    </ReactMarkdown>
+                </div>
+            </div></>)
 }
 
 export default ArticleDetail

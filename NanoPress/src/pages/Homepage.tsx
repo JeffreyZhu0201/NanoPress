@@ -19,59 +19,65 @@ import { getRangePost } from "../common/Http/postData"
 import Loading from "../common/Loading"
 import Post from "../common/entity/Post"
 import { ISO_TO_Local } from "../common/utils/timeFormat"
+import { Helmet } from "react-helmet-async"
 
-function Homepage(){
-    const [postPreview,setPostPreview] = useState([] as Post[]);
+function Homepage() {
+    const [postPreview, setPostPreview] = useState([] as Post[]);
 
-    useEffect(()=>{
-        const FetchPostPreview = async ()=>{
-            try{
-                const res = await getRangePost(1,3);
+    useEffect(() => {
+        const FetchPostPreview = async () => {
+            try {
+                const res = await getRangePost(1, 3);
                 setPostPreview(res.data.data.posts);
-            }catch(err){
+            } catch (err) {
             }
         }
         FetchPostPreview();
-    },[]) // Remove postPreview from dependency array
+    }, []) // Remove postPreview from dependency array
 
     return (
-        <div className="Homepage bg-slate-400 w-full flex flex-col p-2 md:p-14">
-            {/* hero板块 */}
-            <div className="introduction my-12 md:mb-20">
-                {/* 介绍板块 */}
-                <img src={Avatar} alt="" className="border-2 md:border-4 h-14 md:h-20 border-emerald-100 md:border-emerald-300 my-6 rounded-full" />
-                <p className="text-3xl font-extrabold md:text-4xl my-6">Hi,I am Jeffrey Zhu</p>
-                <p className="text-xl font-sans my-6 ">A software engineer and open-source advocate enjoying the sunny life in Barcelona, Spain.</p>
+        <>
+            <Helmet>
+                <title>Nano-Press 主页</title>
+            </Helmet>
+            <div className="Homepage bg-slate-400 w-full flex flex-col p-2 md:p-14">
+                {/* hero板块 */}
+                <div className="introduction my-12 md:mb-20">
+                    {/* 介绍板块 */}
+                    <img src={Avatar} alt="" className="border-2 md:border-4 h-14 md:h-20 border-emerald-100 md:border-emerald-300 my-6 rounded-full" />
+                    <p className="text-3xl font-extrabold md:text-4xl my-6">Hi,I am Jeffrey Zhu</p>
+                    <p className="text-xl font-sans my-6 ">A software engineer and open-source advocate enjoying the sunny life in Barcelona, Spain.</p>
 
-                <div className="flex h-12 md:w-36 w-full text-2xl font-bold text-gray-200 duration-500
+                    <div className="flex h-12 md:w-36 w-full text-2xl font-bold text-gray-200 duration-500
                 rounded-s-sm items-center justify-center bg-green-500 hover:bg-green-800 ease-in-out transition-colors cursor-pointer
                 ">
-                    <div>Say Hello!</div>
+                        <div>Say Hello!</div>
+                    </div>
+
                 </div>
 
-            </div>
-
-            {/* 详细介绍板块 */}
-            <div className="p-2">
-                <p className="text-2xl font-bold">My Story</p>
-                <p className="text-base font-light md:text-lg my-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh mauris cursus mattis molestie. Et leo duis ut diam. Sit amet tellus cras adipiscing enim eu turpis. Adipiscing at in tellus integer feugiat.</p>
-                <p className="text-base font-light md:text-lg">Maecenas accumsan lacus vel facilisis. Eget egestas purus viverra accumsan in nisl nisi scelerisque eu. Non tellus orci ac auctor augue mauris augue neque gravida. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Amet mauris commodo quis imperdiet massa. Integer vitae justo eget magna fermentum iaculis eu non.</p>
-            </div>
-
-            {/* 博客板块 */}
-            <div className="p-2 h-full my-14">
-                <div className="flex items-center">
-                    <p className="text-2xl font-bold text-white">最新发布</p>
-                    <Link to="/posts" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
+                {/* 详细介绍板块 */}
+                <div className="p-2">
+                    <p className="text-2xl font-bold">My Story</p>
+                    <p className="text-base font-light md:text-lg my-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh mauris cursus mattis molestie. Et leo duis ut diam. Sit amet tellus cras adipiscing enim eu turpis. Adipiscing at in tellus integer feugiat.</p>
+                    <p className="text-base font-light md:text-lg">Maecenas accumsan lacus vel facilisis. Eget egestas purus viverra accumsan in nisl nisi scelerisque eu. Non tellus orci ac auctor augue mauris augue neque gravida. Auctor augue mauris augue neque gravida in fermentum et sollicitudin. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Amet mauris commodo quis imperdiet massa. Integer vitae justo eget magna fermentum iaculis eu non.</p>
                 </div>
-                {
-                    postPreview.map((postItem,index) => {
-                        postItem.CreatedAt = ISO_TO_Local(postItem.CreatedAt)
-                        return <Suspense key={index} fallback={<Loading></Loading>}><PostCard key={index} post={postItem}></PostCard></Suspense>
-                    })
-                }
+
+                {/* 博客板块 */}
+                <div className="p-2 h-full my-14">
+                    <div className="flex items-center">
+                        <p className="text-2xl font-bold text-white">最新发布</p>
+                        <Link to="/posts" className="ml-8 text-gray-200 mb-auto font-light cursor-pointer hover:text-white transition-colors">更多文章--&gt;</Link>
+                    </div>
+                    {
+                        postPreview.map((postItem, index) => {
+                            postItem.CreatedAt = ISO_TO_Local(postItem.CreatedAt)
+                            return <Suspense key={index} fallback={<Loading></Loading>}><PostCard key={index} post={postItem}></PostCard></Suspense>
+                        })
+                    }
+                </div>
             </div>
-        </div>
+        </>
     )
 
 }

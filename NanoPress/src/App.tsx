@@ -23,31 +23,36 @@ import NavBar from "./components/NavBar"
 import FootBar from './components/FootBar';
 import links from './common/Links';
 import Loading from './common/Loading';
+import { HelmetProvider } from 'react-helmet-async';
 
 function App() {
   return (
-    <Router>
-      <div className="App bg-slate-500">
-        <div className='max-w-[950px] m-auto min-w-[258px] '>
-          <NavBar />
 
-          <div className=''>
-            <Routes>
-              {
-                links.map((item,index) => {
-                  return <Route key={index} path={item.path} element={
-                    <Suspense fallback={<Loading></Loading>}>{item.page}</Suspense>}
-                  >
-                  </Route>
-                })
-              }
-            </Routes>
+    <HelmetProvider>
+      <Router>
+        <div className="App bg-slate-500">
+          <div className='max-w-[950px] m-auto min-w-[258px] '>
+            <NavBar />
+
+            <div className=''>
+              <Routes>
+                {
+                  links.map((item, index) => {
+                    return <Route key={index} path={item.path} element={
+                      <Suspense fallback={<Loading></Loading>}>{item.page}</Suspense>}
+                    >
+                    </Route>
+                  })
+                }
+              </Routes>
+            </div>
+
+            <FootBar />
           </div>
-
-          <FootBar />
         </div>
-      </div>
-    </Router>
+      </Router>
+    </HelmetProvider>
+
   );
 }
 
