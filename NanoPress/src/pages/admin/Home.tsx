@@ -15,28 +15,30 @@ function Home() {
                 <div
                     className={`${
                         isSidebarOpen ? "w-64" : "w-16"
-                    } bg-white shadow-md transition-all duration-300`}
+                    } bg-white shadow-md transition-all duration-300 justify-center items-center`}
                 >
-                    <button
-                        className="p-4 focus:outline-none"
-                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                    >
-                        {isSidebarOpen ? "<<" : ">>"}
-                    </button>
+                    <div className={`flex flex-col ${isSidebarOpen ? 'items-end' : 'justify-center'}`}>
+                        <button
+                            className={`p-4 focus:outline-none `}
+                            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                        >
+                            {isSidebarOpen ? "<" : ">"}
+                        </button>
+                    </div>
                     <ul className="mt-4 text-nowrap flex-row justify-center">
-                        <li className="p-4 hover:bg-gray-200 cursor-pointer flex items-center">
+                        <li className="p-4 hover:bg-gray-200 cursor-pointer flex justify-center">
                             <FaTachometerAlt className="text-lg" />
                             {isSidebarOpen && <span className="ml-4">仪表盘</span>}
                         </li>
-                        <li className="p-4 hover:bg-gray-200 cursor-pointer flex items-center">
+                        <li className="p-4 hover:bg-gray-200 cursor-pointer flex justify-center">
                             <FaFileAlt className="text-lg" />
                             {isSidebarOpen && <span className="ml-4">文章管理</span>}
                         </li>
-                        <li className="p-4 hover:bg-gray-200 cursor-pointer flex items-center">
+                        <li className="p-4 hover:bg-gray-200 cursor-pointer flex justify-center">
                             <FaTags className="text-lg" />
                             {isSidebarOpen && <span className="ml-4">分类管理</span>}
                         </li>
-                        <li className="p-4 hover:bg-gray-200 cursor-pointer flex items-center">
+                        <li className="p-4 hover:bg-gray-200 cursor-pointer flex justify-center">
                             <FaUsers className="text-lg" />
                             {isSidebarOpen && <span className="ml-4">用户管理</span>}
                         </li>

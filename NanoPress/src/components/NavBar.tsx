@@ -12,7 +12,7 @@
 // 导入必要的图标、React钩子和路由组件
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
 import { useState } from 'react'
-import links from "../common/Links"
+import {links} from "../common/Links"
 import { Link } from "react-router-dom"
 
 function NavBar() {
@@ -35,7 +35,8 @@ function NavBar() {
                 {
                     // 渲染导航链接，只显示number为1的项目
                     links.map((item, index) => {
-                        if (item.name && item.number === 1) {
+                        if (item.name && item.type === 'fronted') {
+                            // 如果是前端链接，渲染Link组件
                             return <Link key={index} to={item.path} replace className='p-4 hover:underline hover:decoration-solid hover:underline-offset-8 decoration-4 cursor-pointer transition-colors duration-500 text-nowrap'>{item.name}</Link>
                         }
                         return null;

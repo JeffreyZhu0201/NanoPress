@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-28 14:26:40
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-09 13:21:46
+ * @LastEditTime: 2025-04-09 19:35:03
  * @FilePath: \NanoPress\NanoPress\src\common\Links.tsx
  * @Description: File Description Here...
  * 
@@ -22,46 +22,46 @@ const links = [
         name: '',
         path: '/',
         page: <Navigate to='/home' replace></Navigate>,
-        number: 1
+        type: 'fronted'
     },
     {
         name: "主页",
         path: '/home',
         page: <Homepage />,
-        number: 1
+        type: 'fronted'
     },
     {
         name: "文章",
         path: '/posts',
         page: <Post />,
-        number: 1
+        type: 'fronted'
     },
-    // {
-    //     name: "Projects",
-    //     path: '/projects',
-    //     page: <Projects />,
-    //     number: 1
-    // },
     {
         name: "详情页",
         path: '/articledetail/:type/:id',
         page: <ArticleDetail />
-    },
+    }
+]
+
+const adminLinks = [
     {
         name: "后台登录",
         path: '/admin/login',
-        page: <Login />
+        page: <Login />,
+        type: 'backend'
     },
     {
         name: "NanoPress管理后台",
         path: '/admin',
-        page: <Navigate to='/admin/home' replace></Navigate>
+        page: <Navigate to='/admin/home' replace></Navigate>,
+        type: 'backend'
     },
     {
         name: "NanoPress管理后台",
         path: '/admin/home',
-        page: <AdminHome></AdminHome>
+        page: <AdminHome></AdminHome>,
+        type: 'backend'
     }
 ]
 
-export default links
+export { links, adminLinks }
