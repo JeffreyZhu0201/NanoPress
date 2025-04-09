@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-28 14:26:40
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 15:51:10
+ * @LastEditTime: 2025-04-09 13:21:46
  * @FilePath: \NanoPress\NanoPress\src\common\Links.tsx
  * @Description: File Description Here...
  * 
@@ -10,6 +10,8 @@
  */
 import { Navigate } from 'react-router-dom';
 import React from 'react';
+import Login from '../pages/admin/Login';
+import AdminHome from '../pages/admin/Home';
 
 const Post = React.lazy(() => import('../pages/Posts'))
 const Homepage = React.lazy(() => import('../pages/Homepage'))
@@ -44,6 +46,21 @@ const links = [
         name: "详情页",
         path: '/articledetail/:type/:id',
         page: <ArticleDetail />
+    },
+    {
+        name: "后台登录",
+        path: '/admin/login',
+        page: <Login />
+    },
+    {
+        name: "NanoPress管理后台",
+        path: '/admin',
+        page: <Navigate to='/admin/home' replace></Navigate>
+    },
+    {
+        name: "NanoPress管理后台",
+        path: '/admin/home',
+        page: <AdminHome></AdminHome>
     }
 ]
 
