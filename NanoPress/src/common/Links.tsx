@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-no-undef */
 /*
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-28 14:26:40
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-09 19:35:03
+ * @LastEditTime: 2025-04-09 20:09:18
  * @FilePath: \NanoPress\NanoPress\src\common\Links.tsx
  * @Description: File Description Here...
  * 
@@ -10,8 +11,11 @@
  */
 import { Navigate } from 'react-router-dom';
 import React from 'react';
+import Icon, { EditFilled, HomeOutlined, TagFilled } from '@ant-design/icons';
 import Login from '../pages/admin/Login';
 import AdminHome from '../pages/admin/Home';
+import PostManage from '../pages/admin/PostManage';
+import TagManager from '../pages/admin/TagManager';
 
 const Post = React.lazy(() => import('../pages/Posts'))
 const Homepage = React.lazy(() => import('../pages/Homepage'))
@@ -47,21 +51,34 @@ const adminLinks = [
     {
         name: "后台登录",
         path: '/admin/login',
-        page: <Login />,
-        type: 'backend'
+        page: <Login />
     },
     {
-        name: "NanoPress管理后台",
+        name: "仪表板",
         path: '/admin',
-        page: <Navigate to='/admin/home' replace></Navigate>,
-        type: 'backend'
+        page: <Navigate to='/admin/home' replace></Navigate>
     },
     {
-        name: "NanoPress管理后台",
+        name: "仪表板",
         path: '/admin/home',
+        icon:<HomeOutlined/>,
         page: <AdminHome></AdminHome>,
         type: 'backend'
-    }
+    },
+    {
+        name: "文章管理",
+        path: '/admin/post',
+        page: <PostManage></PostManage>,
+        icon:<EditFilled />,
+        type: 'backend'
+    },
+    {
+        name: "分类管理管理",
+        path: '/admin/tag',
+        page: <TagManager></TagManager>,
+        icon:<TagFilled />,
+        type: 'backend'
+    },
 ]
 
 export { links, adminLinks }
