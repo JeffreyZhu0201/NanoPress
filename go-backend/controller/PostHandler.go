@@ -2,8 +2,8 @@
  * @Author: Jeffrey Zhu 1624410543@qq.com
  * @Date: 2025-04-01 13:34:55
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-03 00:08:45
- * @FilePath: \go-backend\controller\PostHandler.go
+ * @LastEditTime: 2025-04-21 23:06:28
+ * @FilePath: \NanoPress\go-backend\controller\PostHandler.go
  * @Description: 帖子相关的处理函数
  *
  * Copyright (c) 2025 by JeffreyZhu, All Rights Reserved.
@@ -64,7 +64,7 @@ func GetRangedPosts(c *gin.Context) {
 	}
 
 	// 查询数据库获取帖子
-	if err := utils.DB.Model(&models.Post{}).Limit(int(limited_uint)).Offset(int(start_index_uint)).Find(&posts).Error; err != nil {
+	if err := utils.DB.Order("created_at DESC").Model(&models.Post{}).Limit(int(limited_uint)).Offset(int(start_index_uint)).Find(&posts).Error; err != nil {
 		// 如果查询失败，返回服务器错误响应
 		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
 		return
@@ -105,7 +105,7 @@ func GetRangedPostsNotDeleted(c *gin.Context) {
 	var count int64
 
 	// 查询数据库获取未删除的帖子
-	if err := utils.DB.Model(&models.Post{}).Where("deleted_at IS NULL").Count(&count).Limit(int(limited_uint)).Offset(int(start_index_uint)).Find(&posts).Error; err != nil {
+	if err := utils.DB.Order("created_at DESC").Model(&models.Post{}).Where("deleted_at IS NULL").Count(&count).Limit(int(limited_uint)).Offset(int(start_index_uint)).Find(&posts).Error; err != nil {
 		// 如果查询失败，返回服务器错误响应
 		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
 		return
@@ -130,6 +130,18 @@ func GetPostById(c *gin.Context) {
 	if err != nil {
 		// 如果转换失败，返回参数错误响应
 		c.JSON(400, models.Response{Code: 400, Message: Var.PARAMS_ERR})
+		return
+	}
+	// 更新数据库中的帖子数据
+	// First get the post to access its current read count
+	if err := utils.DB.Model(&models.Post{}).Where("id = ? AND deleted_at IS NULL", id_uint).First(&post).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_GET_FAILED})
+		return
+	}
+
+	// Then increment the read count
+	if err := utils.DB.Model(&post).Update("read", *post.Read+1).Error; err != nil {
+		c.JSON(500, models.Response{Code: 500, Message: Var.POST_UPDATE_FAILED})
 		return
 	}
 	// 查询数据库获取未删除的帖子

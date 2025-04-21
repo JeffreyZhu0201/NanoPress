@@ -1,6 +1,15 @@
+/*
+ * @Author: Jeffrey Zhu 1624410543@qq.com
+ * @Date: 2025-04-09 13:03:09
+ * @LastEditors: Jeffrey Zhu 1624410543@qq.com
+ * @LastEditTime: 2025-04-21 23:15:38
+ * @FilePath: \NanoPress\NanoPress\src\pages\admin\Home.tsx
+ * @Description: File Description Here...
+ * 
+ * Copyright (c) 2025 by JeffreyZhu, All Rights Reserved. 
+ */
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { FaTachometerAlt, FaFileAlt, FaTags, FaUsers } from "react-icons/fa";
 import { adminLinks } from "../../common/Links";
 import { Link } from "react-router-dom";
 

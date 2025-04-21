@@ -24,7 +24,7 @@ function Posts() {
     // 分页状态管理
     const [currentPage, setCurrentPage] = useState(1);
     const [postLength, setPostLength] = useState(0);
-    const [postsPerPage] = useState(5);
+    const [postsPerPage] = useState(8);
 
     // 文章列表状态管理
     const [postList, setPostList] = useState([] as Post[])

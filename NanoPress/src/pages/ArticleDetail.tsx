@@ -2,7 +2,7 @@
  * @Author: JeffreyZhu 1624410543@qq.com
  * @Date: 2024-11-29 11:08:05
  * @LastEditors: Jeffrey Zhu 1624410543@qq.com
- * @LastEditTime: 2025-04-08 23:34:26
+ * @LastEditTime: 2025-04-21 23:10:48
  * @FilePath: \NanoPress\NanoPress\src\pages\ArticleDetail.tsx
  * @Description: File Description Here...
  * 
@@ -51,9 +51,8 @@ function ArticleDetail() {
                 console.log(err)
             }
         }
-
         FetchArticleDetail();
-    }, [id])
+    },[id])
 
     return (
         <>
